@@ -12,7 +12,11 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        let button = UIButton.init(type: .custom)
+        button.frame = self.view.bounds;
+        self.view.addSubview(button)
+        button.addTarget(self, action: #selector(tovc), for: .touchUpInside)
     }
 
     override func didReceiveMemoryWarning() {
@@ -20,6 +24,10 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @objc func tovc() {
+        let vc = TestViewController.init();
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 
 }
 

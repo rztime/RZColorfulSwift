@@ -7,14 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7603EAE520F443EC00C15E45 /* NSAttributedString+RZColorful.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7603EAE420F443EC00C15E45 /* NSAttributedString+RZColorful.swift */; };
 		7604BB9F20F3011E00063105 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7604BB9E20F3011E00063105 /* AppDelegate.swift */; };
 		7604BBA120F3011E00063105 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7604BBA020F3011E00063105 /* ViewController.swift */; };
 		7604BBA420F3011F00063105 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7604BBA220F3011F00063105 /* Main.storyboard */; };
 		7604BBA620F3012000063105 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7604BBA520F3012000063105 /* Assets.xcassets */; };
 		7604BBA920F3012000063105 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7604BBA720F3012000063105 /* LaunchScreen.storyboard */; };
+		7604BBB620F33A0400063105 /* RZColorfulConferrer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7604BBB520F33A0400063105 /* RZColorfulConferrer.swift */; };
+		7604BBB820F3571A00063105 /* RZTextAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7604BBB720F3571A00063105 /* RZTextAttribute.swift */; };
+		7604BBBA20F358D600063105 /* RZImageAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7604BBB920F358D600063105 /* RZImageAttribute.swift */; };
+		7604BBBC20F35EB600063105 /* indexMore@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7604BBBB20F35EB500063105 /* indexMore@3x.png */; };
+		7604BBBE20F3679200063105 /* RZHtmlAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7604BBBD20F3679200063105 /* RZHtmlAttribute.swift */; };
+		760B3B5820F5EDF600848299 /* RZParagraphStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760B3B5720F5EDF600848299 /* RZParagraphStyle.swift */; };
+		769F5F7920F728E700E86E04 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769F5F7820F728E700E86E04 /* TestViewController.swift */; };
+		769F5F7B20F7317700E86E04 /* RZImageUrlAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769F5F7A20F7317700E86E04 /* RZImageUrlAttribute.swift */; };
+		769F5F7D20F74A5400E86E04 /* RZShadowStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769F5F7C20F74A5400E86E04 /* RZShadowStyle.swift */; };
+		76A78B0C20F857D1004FD319 /* UILabel+RZColorful.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A78B0B20F857D1004FD319 /* UILabel+RZColorful.swift */; };
+		76A78B0E20F882C5004FD319 /* UITextView+RZColorful.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A78B0D20F882C5004FD319 /* UITextView+RZColorful.swift */; };
+		76A78B1020F883C7004FD319 /* UITextField+RZColorful.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A78B0F20F883C7004FD319 /* UITextField+RZColorful.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7603EAE420F443EC00C15E45 /* NSAttributedString+RZColorful.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+RZColorful.swift"; sourceTree = "<group>"; };
 		7604BB9B20F3011E00063105 /* RZColorfulSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RZColorfulSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7604BB9E20F3011E00063105 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7604BBA020F3011E00063105 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +36,18 @@
 		7604BBA520F3012000063105 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7604BBA820F3012000063105 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7604BBAA20F3012100063105 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7604BBB520F33A0400063105 /* RZColorfulConferrer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZColorfulConferrer.swift; sourceTree = "<group>"; };
+		7604BBB720F3571A00063105 /* RZTextAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZTextAttribute.swift; sourceTree = "<group>"; };
+		7604BBB920F358D600063105 /* RZImageAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZImageAttribute.swift; sourceTree = "<group>"; };
+		7604BBBB20F35EB500063105 /* indexMore@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "indexMore@3x.png"; sourceTree = "<group>"; };
+		7604BBBD20F3679200063105 /* RZHtmlAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZHtmlAttribute.swift; sourceTree = "<group>"; };
+		760B3B5720F5EDF600848299 /* RZParagraphStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZParagraphStyle.swift; sourceTree = "<group>"; };
+		769F5F7820F728E700E86E04 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		769F5F7A20F7317700E86E04 /* RZImageUrlAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZImageUrlAttribute.swift; sourceTree = "<group>"; };
+		769F5F7C20F74A5400E86E04 /* RZShadowStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZShadowStyle.swift; sourceTree = "<group>"; };
+		76A78B0B20F857D1004FD319 /* UILabel+RZColorful.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+RZColorful.swift"; sourceTree = "<group>"; };
+		76A78B0D20F882C5004FD319 /* UITextView+RZColorful.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+RZColorful.swift"; sourceTree = "<group>"; };
+		76A78B0F20F883C7004FD319 /* UITextField+RZColorful.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+RZColorful.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +80,51 @@
 		7604BB9D20F3011E00063105 /* RZColorfulSwift */ = {
 			isa = PBXGroup;
 			children = (
+				7604BBBB20F35EB500063105 /* indexMore@3x.png */,
+				7604BBB020F3030200063105 /* RZColorfulSwift */,
 				7604BB9E20F3011E00063105 /* AppDelegate.swift */,
 				7604BBA020F3011E00063105 /* ViewController.swift */,
+				769F5F7820F728E700E86E04 /* TestViewController.swift */,
 				7604BBA220F3011F00063105 /* Main.storyboard */,
 				7604BBA520F3012000063105 /* Assets.xcassets */,
 				7604BBA720F3012000063105 /* LaunchScreen.storyboard */,
 				7604BBAA20F3012100063105 /* Info.plist */,
 			);
 			path = RZColorfulSwift;
+			sourceTree = "<group>";
+		};
+		7604BBB020F3030200063105 /* RZColorfulSwift */ = {
+			isa = PBXGroup;
+			children = (
+				7604BBB220F30CA100063105 /* UICore */,
+				7604BBB120F30C9700063105 /* AttributeCore */,
+			);
+			path = RZColorfulSwift;
+			sourceTree = "<group>";
+		};
+		7604BBB120F30C9700063105 /* AttributeCore */ = {
+			isa = PBXGroup;
+			children = (
+				7603EAE420F443EC00C15E45 /* NSAttributedString+RZColorful.swift */,
+				7604BBB520F33A0400063105 /* RZColorfulConferrer.swift */,
+				7604BBB720F3571A00063105 /* RZTextAttribute.swift */,
+				7604BBB920F358D600063105 /* RZImageAttribute.swift */,
+				769F5F7A20F7317700E86E04 /* RZImageUrlAttribute.swift */,
+				7604BBBD20F3679200063105 /* RZHtmlAttribute.swift */,
+				760B3B5720F5EDF600848299 /* RZParagraphStyle.swift */,
+				769F5F7C20F74A5400E86E04 /* RZShadowStyle.swift */,
+			);
+			path = AttributeCore;
+			sourceTree = "<group>";
+		};
+		7604BBB220F30CA100063105 /* UICore */ = {
+			isa = PBXGroup;
+			children = (
+				76A78B0B20F857D1004FD319 /* UILabel+RZColorful.swift */,
+				76A78B0D20F882C5004FD319 /* UITextView+RZColorful.swift */,
+				76A78B0F20F883C7004FD319 /* UITextField+RZColorful.swift */,
+			);
+			path = UICore;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -123,6 +186,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7604BBA920F3012000063105 /* LaunchScreen.storyboard in Resources */,
+				7604BBBC20F35EB600063105 /* indexMore@3x.png in Resources */,
 				7604BBA620F3012000063105 /* Assets.xcassets in Resources */,
 				7604BBA420F3011F00063105 /* Main.storyboard in Resources */,
 			);
@@ -135,8 +199,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7604BBB620F33A0400063105 /* RZColorfulConferrer.swift in Sources */,
+				76A78B1020F883C7004FD319 /* UITextField+RZColorful.swift in Sources */,
+				7604BBBE20F3679200063105 /* RZHtmlAttribute.swift in Sources */,
+				769F5F7D20F74A5400E86E04 /* RZShadowStyle.swift in Sources */,
+				7604BBBA20F358D600063105 /* RZImageAttribute.swift in Sources */,
 				7604BBA120F3011E00063105 /* ViewController.swift in Sources */,
+				769F5F7B20F7317700E86E04 /* RZImageUrlAttribute.swift in Sources */,
+				76A78B0C20F857D1004FD319 /* UILabel+RZColorful.swift in Sources */,
+				760B3B5820F5EDF600848299 /* RZParagraphStyle.swift in Sources */,
+				7603EAE520F443EC00C15E45 /* NSAttributedString+RZColorful.swift in Sources */,
 				7604BB9F20F3011E00063105 /* AppDelegate.swift in Sources */,
+				769F5F7920F728E700E86E04 /* TestViewController.swift in Sources */,
+				7604BBB820F3571A00063105 /* RZTextAttribute.swift in Sources */,
+				76A78B0E20F882C5004FD319 /* UITextView+RZColorful.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,6 +359,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LBSWTUGGNB;
 				INFOPLIST_FILE = RZColorfulSwift/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -301,6 +378,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LBSWTUGGNB;
 				INFOPLIST_FILE = RZColorfulSwift/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
