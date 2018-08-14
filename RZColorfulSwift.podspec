@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "RZColorfulSwift"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "NSAttributedString富文本的快捷设置方法集合,以及UITextView、UITextField、UILabel富文本简单优雅的使用"
 
   # This description is used to generate tags and improve search results.
@@ -96,9 +96,9 @@ Pod::Spec.new do |s|
     ss.source_files = "RZColorfulSwift/RZColorfulSwift/AttributeCore/*.swift"
   end
 
-  s.subspec 'UICore' do |ss|
+  s.subspec 'Core' do |ss|
     ss.dependency 'RZColorfulSwift/AttributeCore'
-    ss.source_files = "RZColorfulSwift/RZColorfulSwift/UICore/*.swift"
+    ss.source_files = "RZColorfulSwift/RZColorfulSwift/Core/*.swift"
   end
 
   # s.public_header_files = "Classes/**/*.h"

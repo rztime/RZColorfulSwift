@@ -7,7 +7,7 @@ NSAttributedString 富文本方法 (图文混排、多样式文本)
 * 添加UITextField、UITextView、UILabel的attributedText的富文本设置。
 * 富文本方法内容可单独抽出来,在下边这个文件中
 ```
-#import "NSAttributedString+RZColorful.swift"
+RZColorful
 ```
 
 ## 关于RZColorfulSwift
@@ -30,7 +30,6 @@ NSAttributedString 富文本方法 (图文混排、多样式文本)
 
 * 主要的功能：
     * AttributeCore
-        * NSAttributedString+RZColorful.swift       富文本的方法
         * RZColorfulConferrer.swift                         富文本中对文字、图片、段落、阴影、网页源码等归纳集合
         * RZTextAttribute.swift                                对文字的属性方法设置集合
         * RZImageAttribute.swift                            对图片的 属性方法集合
@@ -38,10 +37,11 @@ NSAttributedString 富文本方法 (图文混排、多样式文本)
         * RZHtmlAttribute.swift                              对加载网页源码的富文本的属性的集合
         * RZParagraphStyle.swift                           对段落样式的一个属性方法集合
         * RZShadowStyle.swift                               对阴影样式的一个属性方法集合
-    * UICore 对UILabel、UITextView、UITextField添加的富文本快捷写入提供入口
-        * UILabel+RZColorful.swift                        
-        * UITextView+RZColorful.swift
-        * UITextField+RZColorful.swift
+    * Core 对UILabel、UITextView、UITextField添加的富文本快捷写入提供入口
+        * NSAttributedString       富文本的方法
+        * UILabel                       
+        * UITextView
+        * UITextField
 可以覆盖原文本、追加、以及指定位置插入等功能
     
 ### 基本的简单使用方法与OC版本差不多 [查看详细用法](https://github.com/rztime/RZColorful)
