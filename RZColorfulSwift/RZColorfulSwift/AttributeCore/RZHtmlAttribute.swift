@@ -7,6 +7,21 @@
 //
 
 import UIKit
+// MARK: - NSAttributedString 扩展
+extension NSAttributedString {
+    static func htmlString(_ html: String?) ->NSAttributedString? {
+        if html?.count == 0 || html == nil {
+            return nil;
+        }
+        let data = html!.data(using: String.Encoding.unicode)
+        do {
+            return try NSAttributedString.init(data: data!, options: [NSAttributedString.DocumentReadingOptionKey.documentType : NSAttributedString.DocumentType.html], documentAttributes: nil)
+        } catch let error as NSError {
+            print("html转换失败:\(error.localizedDescription)")
+        }
+        return nil
+    }
+}
 
 class RZHtmlAttribute: NSObject {
     var htmlCode : NSAttributedString?
