@@ -8,13 +8,13 @@
 
 import UIKit
 
-class RZTextAttribute : NSObject {
+public class RZTextAttribute : NSObject {
     public var text : String = ""
     private var attributeDict = NSMutableDictionary.init()
     
     private var _paragraphStyle : RZTextParagraphStyle?
     /// 段落
-    var paragraphStyle : RZTextParagraphStyle? {
+    public var paragraphStyle : RZTextParagraphStyle? {
         get {
             if _paragraphStyle == nil {
                 _paragraphStyle = RZTextParagraphStyle.init()
@@ -26,7 +26,7 @@ class RZTextAttribute : NSObject {
     
     private var _shadow : RZTextShadowStyle?
     /// 阴影
-    var shadow : RZTextShadowStyle? {
+    public var shadow : RZTextShadowStyle? {
         get {
             if _shadow == nil {
                 _shadow = RZTextShadowStyle.init()

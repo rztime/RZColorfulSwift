@@ -8,12 +8,12 @@
 
 import UIKit
 
-class RZColorfulConferrer : NSObject {
+public class RZColorfulConferrer : NSObject {
     private var texts = NSMutableArray.init()
         
     /// 文字
     @discardableResult
-    func text(_ text:String?) ->  RZTextAttribute?{
+    public func text(_ text:String?) ->  RZTextAttribute?{
         if text?.count == 0 || text == nil {
             return nil;
         }
@@ -26,7 +26,7 @@ class RZColorfulConferrer : NSObject {
     
     /// 图片 可以设置bounds
     @discardableResult
-    func image(_ image:UIImage?) -> RZImageAttribute? {
+    public func image(_ image:UIImage?) -> RZImageAttribute? {
         if image == nil {
             return nil;
         }
@@ -39,7 +39,7 @@ class RZColorfulConferrer : NSObject {
     
     /// url图片 可以设置size，maxSize
     @discardableResult
-    func imageByUrl(_ imageUrl:String?) -> RZImageUrlAttribute? {
+    public func imageByUrl(_ imageUrl:String?) -> RZImageUrlAttribute? {
         if imageUrl?.count == 0 || imageUrl == nil {
             return nil;
         }
@@ -51,7 +51,7 @@ class RZColorfulConferrer : NSObject {
     }
     /// 富文本（如网页源码）
     @discardableResult
-    func htmlString(_ htmlString:String?) -> RZHtmlAttribute? {
+    public func htmlString(_ htmlString:String?) -> RZHtmlAttribute? {
         if htmlString?.count == 0 || htmlString == nil {
             return nil;
         }
@@ -64,7 +64,7 @@ class RZColorfulConferrer : NSObject {
     
     private var _paragraphStyle : RZColorfulConferrerParagraphStyle?
     /// 段落
-    var paragraphStyle : RZColorfulConferrerParagraphStyle? {
+    public var paragraphStyle : RZColorfulConferrerParagraphStyle? {
         get {
             if _paragraphStyle == nil {
                 _paragraphStyle = RZColorfulConferrerParagraphStyle.init()
@@ -76,7 +76,7 @@ class RZColorfulConferrer : NSObject {
     
     private var _shadow : RZColorfulConferrerShadowStyle?
     /// 阴影
-    var shadow : RZColorfulConferrerShadowStyle? {
+    public var shadow : RZColorfulConferrerShadowStyle? {
         get {
             if _shadow == nil {
                 _shadow = RZColorfulConferrerShadowStyle.init()

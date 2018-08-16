@@ -9,21 +9,21 @@
 import Foundation
 import UIKit
 
-enum RZConferInsertPosition {
+public enum RZConferInsertPosition {
     case Default
     case Header
     case End
     case Cursor
 }
 
-typealias ColorfulBlock = ((_ confer: RZColorfulConferrer) -> Void)
+public typealias ColorfulBlock = ((_ confer: RZColorfulConferrer) -> Void)
 
 
 // MARK: - NSAttributedString 扩展
-extension NSAttributedString {
+public extension NSAttributedString {
     
     /// 富文本 归纳
-    static func rz_colorfulConfer(confer:ColorfulBlock) -> NSAttributedString? {
+    public static func rz_colorfulConfer(confer:ColorfulBlock) -> NSAttributedString? {
         let connferrer = RZColorfulConferrer.init()
         confer(connferrer)
         return connferrer.confer();
@@ -32,16 +32,16 @@ extension NSAttributedString {
 
 
 // MARK: - 对Label的富文本支持
-extension UILabel {
+public extension UILabel {
     
     /// 设置富文本 （原内容将被清空）
-    func rz_colorfulConfer(confer:ColorfulBlock?) -> Void {
-        self.rzSetAttributedText(attr: nil)
+    public func rz_colorfulConfer(confer:ColorfulBlock?) -> Void {
+        self.attributedText = nil;
         self.rz_colorfulConferInsetToLocation(0, confer)
     }
     
     /// 在指定位置插入富文本
-    func rz_colorfulConferInsetTo(position: RZConferInsertPosition, _ append:ColorfulBlock?) -> Void {
+    public func rz_colorfulConferInsetTo(position: RZConferInsertPosition, _ append:ColorfulBlock?) -> Void {
         var location = 0;
         switch position {
         case .Default, .Cursor :
@@ -55,7 +55,7 @@ extension UILabel {
     }
     
     /// 在指定位置处加入富文本
-    func rz_colorfulConferInsetToLocation(_ location:Int, _ confer:ColorfulBlock?) -> Void {
+    public func rz_colorfulConferInsetToLocation(_ location:Int, _ confer:ColorfulBlock?) -> Void {
         if confer == nil {
             return ;
         }
@@ -68,23 +68,15 @@ extension UILabel {
         if conferrerColorful?.length == 0 || conferrerColorful == nil {
             return ;
         }
-        var originAttr = self.rzAttributedString()
+        var originAttr = self.attributedText
         if  originAttr == nil{
             originAttr = NSAttributedString.init()
         }
         let attr = NSMutableAttributedString.init(attributedString:originAttr!)
         attr.insert(conferrerColorful!, at: loc)
-        self .rzSetAttributedText(attr: attr)
-    }
-    
-    // 文本框的内容
-    func rzAttributedString() -> NSAttributedString? {
-        return self.attributedText;
-    }
-    // 设置文本框的内容
-    func rzSetAttributedText(attr : NSAttributedString?) -> Void {
         self.attributedText = attr;
     }
+    
     // 尾部的位置
     func getEndLocation() -> Int {
         return (self.attributedText?.length)!
@@ -97,16 +89,16 @@ extension UILabel {
 
 
 // MARK: - 对TextView的富文本的支持
-extension UITextView {
+public extension UITextView {
     
     /// 设置富文本 （原内容将被清空）
-    func rz_colorfulConfer(confer:ColorfulBlock?) -> Void {
-        self.rzSetAttributedText(attr: nil)
+    public func rz_colorfulConfer(confer:ColorfulBlock?) -> Void {
+        self.attributedText = nil;
         self.rz_colorfulConferInsetToLocation(0, confer)
     }
     
     /// 在指定位置插入富文本
-    func rz_colorfulConferInsetTo(position: RZConferInsertPosition, _ append:ColorfulBlock?) -> Void {
+    public func rz_colorfulConferInsetTo(position: RZConferInsertPosition, _ append:ColorfulBlock?) -> Void {
         var location = 0;
         switch position {
         case .Default, .Cursor :
@@ -120,7 +112,7 @@ extension UITextView {
     }
     
     /// 在指定位置处加入富文本
-    func rz_colorfulConferInsetToLocation(_ location:Int, _ confer:ColorfulBlock?) -> Void {
+    public func rz_colorfulConferInsetToLocation(_ location:Int, _ confer:ColorfulBlock?) -> Void {
         if confer == nil {
             return ;
         }
@@ -133,21 +125,12 @@ extension UITextView {
         if conferrerColorful?.length == 0 || conferrerColorful == nil {
             return ;
         }
-        var originAttr = self.rzAttributedString()
+        var originAttr = self.attributedText
         if  originAttr == nil{
             originAttr = NSAttributedString.init()
         }
         let attr = NSMutableAttributedString.init(attributedString:originAttr!)
         attr.insert(conferrerColorful!, at: loc)
-        self .rzSetAttributedText(attr: attr)
-    }
-    
-    // 文本框的内容
-    func rzAttributedString() -> NSAttributedString? {
-        return self.attributedText;
-    }
-    // 设置文本框的内容
-    func rzSetAttributedText(attr : NSAttributedString?) -> Void {
         self.attributedText = attr;
     }
     // 尾部的位置
@@ -162,16 +145,16 @@ extension UITextView {
 
 
 // MARK: - 对TextField的富文本支持
-extension UITextField {
+public extension UITextField {
     
     /// 设置富文本 （原内容将被清空）
-    func rz_colorfulConfer(confer:ColorfulBlock?) -> Void {
-        self.rzSetAttributedText(attr: nil)
+    public func rz_colorfulConfer(confer:ColorfulBlock?) -> Void {
+        self.attributedText = nil;
         self.rz_colorfulConferInsetToLocation(0, confer)
     }
     
     /// 在指定位置插入富文本
-    func rz_colorfulConferInsetTo(position: RZConferInsertPosition, _ append:ColorfulBlock?) -> Void {
+    public func rz_colorfulConferInsetTo(position: RZConferInsertPosition, _ append:ColorfulBlock?) -> Void {
         var location = 0;
         switch position {
         case .Default, .Cursor :
@@ -185,7 +168,7 @@ extension UITextField {
     }
     
     /// 在指定位置处加入富文本
-    func rz_colorfulConferInsetToLocation(_ location:Int, _ confer:ColorfulBlock?) -> Void {
+    public func rz_colorfulConferInsetToLocation(_ location:Int, _ confer:ColorfulBlock?) -> Void {
         if confer == nil {
             return ;
         }
@@ -198,33 +181,25 @@ extension UITextField {
         if conferrerColorful?.length == 0 || conferrerColorful == nil {
             return ;
         }
-        var originAttr = self.rzAttributedString()
+        var originAttr = self.attributedText
         if  originAttr == nil{
             originAttr = NSAttributedString.init()
         }
         let attr = NSMutableAttributedString.init(attributedString:originAttr!)
         attr.insert(conferrerColorful!, at: loc)
-        self .rzSetAttributedText(attr: attr)
-    }
-    
-    // 文本框的内容
-    func rzAttributedString() -> NSAttributedString? {
-        return self.attributedText;
-    }
-    // 设置文本框的内容
-    func rzSetAttributedText(attr : NSAttributedString?) -> Void {
         self.attributedText = attr;
     }
+
     // 尾部的位置
     func getEndLocation() -> Int {
         return (self.attributedText?.length)!
     }
     // 光标的位置
     func getCursorLocation() -> Int {
-        return self.selectedRange().location
+        return self.rz_selectedRange().location
     }
     
-    func selectedRange() -> NSRange {
+    public func rz_selectedRange() -> NSRange {
         let beginning = self.beginningOfDocument;
         let selectedRange = self.selectedTextRange;
         let selectionStart = selectedRange!.start;
@@ -236,7 +211,7 @@ extension UITextField {
         return NSRange.init(location: location, length: length)
     }
     
-    func setSelectedRange(range: NSRange) -> Void {
+    public func rz_setSelectedRange(range: NSRange) -> Void {
         let beginning = self.beginningOfDocument;
         let startPosition = self.position(from: beginning, offset: range.location)!
         let endPosition = self.position(from: beginning, offset: range.location + range.length)!

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RZImageAttribute: NSObject {
+public class RZImageAttribute: NSObject {
     var image: UIImage?
     
     let imageAttchment = NSTextAttachment.init()
@@ -31,7 +31,7 @@ class RZImageAttribute: NSObject {
     
     // 设置段落样式
     private var _paragraphStyle : RZImageParagraphStyle?
-    var paragraphStyle : RZImageParagraphStyle? {
+    public var paragraphStyle : RZImageParagraphStyle? {
         get {
             if _paragraphStyle == nil {
                 _paragraphStyle = RZImageParagraphStyle.init()
@@ -43,7 +43,7 @@ class RZImageAttribute: NSObject {
     
     /// 图片大小和位置，y轴为正，图片上移
     @discardableResult
-    func bounds(_ bounds: CGRect) -> Self {
+    public func bounds(_ bounds: CGRect) -> Self {
         self.imageAttchment.bounds = bounds
         return self
     }

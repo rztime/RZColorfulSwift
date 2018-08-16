@@ -8,13 +8,13 @@
 
 import UIKit
 
-enum RZImagePosition: String {
+public enum RZImagePosition: String {
     case left   = "text-align: left;"
     case center = "text-align: center;"
     case right  = "text-align: right;"
 }
 
-class RZImageUrlAttribute: NSObject {
+public class RZImageUrlAttribute: NSObject {
     var imageByUrl : String?
     
     private var maxSize : CGSize?
@@ -33,14 +33,14 @@ class RZImageUrlAttribute: NSObject {
     /// 最大尺寸 默认宽为（屏幕宽-10），
     /// 高为0时，高度自适应
     @discardableResult
-    func maxSize(_ size: CGSize?) -> Self {
+    public func maxSize(_ size: CGSize?) -> Self {
         self.maxSize = size
         return self
     }
     
     /// 固定尺寸 宽高为0时，自适应
     @discardableResult
-    func size(_ size: CGSize?) -> Self {
+    public func size(_ size: CGSize?) -> Self {
         self.size = size
         return self
     }
@@ -48,12 +48,12 @@ class RZImageUrlAttribute: NSObject {
     private var alignment : RZImagePosition?
     /// 对齐方式 需单独一行时，设置有效
     @discardableResult
-    func alignment(_ alignment: RZImagePosition) -> Self {
+    public func alignment(_ alignment: RZImagePosition) -> Self {
         self.alignment = alignment
         return self
     }
     
-    func toHtmlString() -> String? {
+    public func toHtmlString() -> String? {
         if self.imageByUrl == nil || self.imageByUrl?.count == 0 {
             return nil
         }

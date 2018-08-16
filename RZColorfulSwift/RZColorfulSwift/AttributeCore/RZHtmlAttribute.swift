@@ -8,8 +8,8 @@
 
 import UIKit
 // MARK: - NSAttributedString 扩展
-extension NSAttributedString {
-    static func htmlString(_ html: String?) ->NSAttributedString? {
+public extension NSAttributedString {
+    public static func htmlString(_ html: String?) ->NSAttributedString? {
         if html?.count == 0 || html == nil {
             return nil;
         }
@@ -23,7 +23,7 @@ extension NSAttributedString {
     }
 }
 
-class RZHtmlAttribute: NSObject {
+public class RZHtmlAttribute: NSObject {
     var htmlCode : NSAttributedString?
     
     func package() -> NSAttributedString? {
@@ -35,7 +35,7 @@ class RZHtmlAttribute: NSObject {
     
     // 富文本（如网页源码）
     @discardableResult
-    func htmlText(_ htmlText: String?) -> Self? {
+    public func htmlText(_ htmlText: String?) -> Self? {
         if htmlText?.count == 0 || htmlText == nil {
             return nil;
         }
