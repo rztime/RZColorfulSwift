@@ -27,7 +27,11 @@ RZColorful
     * 通过url添加图片到富文本
     * 等等
 ## How to use
+```
+use_frameworks!
 
+pod 'RZColorfulSwift'
+```
 * 主要的功能：
     * AttributeCore
         * RZColorfulConferrer.swift                         富文本中对文字、图片、段落、阴影、网页源码等归纳集合
