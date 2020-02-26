@@ -7,18 +7,20 @@ Pod::Spec.new do |s|
                    DESC
   s.homepage     = "https://github.com/rztime/RZColorfulSwift"
   s.license      = "LICENSE"
-  s.author             = { "rztime" => "rztime@vip.qq.com" }
+  s.author       = { "rztime" => "rztime@vip.qq.com" }
   
   s.platform     = :ios, "8.0"
 
   s.source       = { :git => "https://github.com/rztime/RZColorfulSwift.git", :tag => "#{s.version}" }
 
-  s.subspec 'AttributeCore' do |ss| 
-    ss.source_files = "RZColorfulSwift/RZColorfulSwift/AttributeCore/*"
-  end
+  s.source_files = "RZColorfulSwift/RZColorfulSwift/**/*.swift"
 
-  s.subspec 'Core' do |ss|
-    ss.dependency 'RZColorfulSwift/AttributeCore'
-    ss.source_files = "RZColorfulSwift/RZColorfulSwift/Core/*"
-  end
+  # s.subspec 'AttributeCore' do |ss| 
+  #   ss.source_files = "RZColorfulSwift/RZColorfulSwift/AttributeCore/*"
+  # end
+
+  # s.subspec 'Core' do |ss|
+  #   ss.dependency 'RZColorfulSwift/AttributeCore'
+  #   ss.source_files = "RZColorfulSwift/RZColorfulSwift/Core/*"
+  # end
 end

@@ -28,7 +28,7 @@ class TestViewController: UIViewController {
         text.isEditable = false
         text.rz_colorfulConfer { (confer) in
             confer.paragraphStyle?.lineSpacing(10).paragraphSpacingBefore(15)
-            confer.htmlString("<p>测试文本</p>")
+//            confer.htmlString("<p>测试文本</p>")
             confer.image(UIImage.init(named: "indexMore"))?.bounds(CGRect.init(x: 0, y: 0, width: 20, height: 20))
             confer.text("  姓名 : ")?.font(UIFont.systemFont(ofSize: 15)).textColor(.gray)
             confer.text("rztime")?.font(UIFont.systemFont(ofSize: 15)).textColor(.black)
@@ -38,7 +38,7 @@ class TestViewController: UIViewController {
             confer.text("成都软件园")?.font(UIFont.systemFont(ofSize: 11)).textColor(.black)
             
             confer.text("\n\n\n\n")
-            confer.imageByUrl("http://pic28.photophoto.cn/20130830/0005018667531249_b.jpg")?.alignment(.center).maxSize(CGSize.init(width: 100, height: 100))
+        confer.imageByUrl("http://pic28.photophoto.cn/20130830/0005018667531249_b.jpg")?.alignment(.center).maxSize(CGSize.init(width: 100, height: 100))
             confer.text("连接啊啊啊啊啊")?.tapAction("http:wwww.baidu.com")
             confer.text("连接啊啊啊啊啊")?.link(NSURL.init(string: "http:www.baidu.coccc.com")!)
             
