@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 // MARK: - NSAttributedString 扩展
-extension NSAttributedString {
+public extension NSAttributedString {
     /// 富文本 归纳
     static func rz_colorfulConfer(confer:ColorfulBlock) -> NSAttributedString? {
         let connferrer = RZColorfulConferrer.init()

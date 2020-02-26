@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RZShadowStyle: NSObject {
+public class RZShadowStyle: NSObject {
     var shadow = NSShadow.init()
     
     /// 阴影偏移量（范围）
@@ -32,13 +32,13 @@ class RZShadowStyle: NSObject {
         return self
     }
 }
-class RZTextShadowStyle : RZShadowStyle {
+public class RZTextShadowStyle : RZShadowStyle {
     weak var and : RZTextAttribute?
 }
 
-class RZColorfulConferrerShadowStyle : RZShadowStyle {
+public class RZColorfulConferrerShadowStyle : RZShadowStyle {
     weak var and : RZColorfulConferrer?
 }
-class RZImageShadowStyle : RZShadowStyle {
+public class RZImageShadowStyle : RZShadowStyle {
     weak var and : RZImageAttribute?
 }

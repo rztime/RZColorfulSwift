@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RZTextAttribute : NSObject {
+public class RZTextAttribute : NSObject {
     var text : String = ""
     private var attributeDict = NSMutableDictionary.init()
     
@@ -37,7 +37,7 @@ class RZTextAttribute : NSObject {
     }
 }
 // MARK 可使用的方法
-extension RZTextAttribute { 
+public extension RZTextAttribute { 
     /// 段落
     var paragraphStyle : RZTextParagraphStyle? {
         get {

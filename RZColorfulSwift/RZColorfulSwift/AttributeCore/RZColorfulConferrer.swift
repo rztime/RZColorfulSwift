@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RZColorfulConferrer: NSObject {
+public class RZColorfulConferrer: NSObject {
     private var texts = NSMutableArray.init()
     private var _paragraphStyle : RZColorfulConferrerParagraphStyle?
     private var _shadow : RZColorfulConferrerShadowStyle?
@@ -39,7 +39,7 @@ class RZColorfulConferrer: NSObject {
     }
 }
 // MARK 可使用的方法
-extension RZColorfulConferrer { 
+public extension RZColorfulConferrer { 
     /// 文字
     @discardableResult
     func text(_ text:String?) ->  RZTextAttribute?{

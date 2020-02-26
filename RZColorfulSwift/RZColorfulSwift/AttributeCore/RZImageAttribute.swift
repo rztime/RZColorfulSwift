@@ -8,13 +8,13 @@
 
 import UIKit
 
-enum RZImageAttachmentHorizontalAlign {
+public enum RZImageAttachmentHorizontalAlign {
     case bottom
     case center
     case top
 }
 
-class RZImageAttribute: NSObject{
+public class RZImageAttribute: NSObject{
     var image: UIImage?  // 图片
     
     let imageAttchment = NSTextAttachment.init()
@@ -50,7 +50,7 @@ class RZImageAttribute: NSObject{
 }
 
 // MARK 可使用的方法
-extension RZImageAttribute {
+public extension RZImageAttribute {
      
     // 设置段落样式
     var paragraphStyle : RZImageParagraphStyle? {

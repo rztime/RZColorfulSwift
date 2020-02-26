@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "RZColorfulSwift"
-  s.version      = "0.1.0"
+  s.version      = "0.1.1"
   s.summary      = "NSAttributedString富文本的快捷设置方法集合,以及UITextView、UITextField、UILabel富文本简单优雅的使用"
   s.description  = <<-DESC
   富文本方法集合，使用链式的方法快速简单的使用富文本NSAttributedString的功能

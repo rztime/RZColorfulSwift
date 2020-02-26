@@ -8,14 +8,14 @@
 
 import Foundation
 
-enum RZConferInsertPosition {
+public enum RZConferInsertPosition {
     case Default
     case Header
     case End
     case Cursor
 }
 
-typealias ColorfulBlock = ((_ confer: RZColorfulConferrer) -> Void)
+public typealias ColorfulBlock = ((_ confer: RZColorfulConferrer) -> Void)
 
 
 

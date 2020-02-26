@@ -10,7 +10,7 @@
 
 import UIKit
 
-class RZTapActionHelper: NSObject , UITextViewDelegate {
+public class RZTapActionHelper: NSObject , UITextViewDelegate {
     weak var rzTextView:UITextView? {
         didSet {
             self.tagert = self.rzTextView?.delegate
@@ -19,7 +19,7 @@ class RZTapActionHelper: NSObject , UITextViewDelegate {
     }
     weak var tagert : AnyObject? 
     
-    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+    public func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
         guard tagert == nil else {
             if tagert!.responds(to: #selector(textViewShouldBeginEditing)) {
                 return tagert!.textViewShouldBeginEditing(textView)
@@ -29,7 +29,7 @@ class RZTapActionHelper: NSObject , UITextViewDelegate {
         return true
     }
     
-    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
+    public func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
         guard tagert == nil else {
             if tagert!.responds(to: #selector(textViewShouldEndEditing)) {
                 return tagert!.textViewShouldEndEditing(textView)
@@ -39,7 +39,7 @@ class RZTapActionHelper: NSObject , UITextViewDelegate {
         return true
     }
     
-    func textViewDidBeginEditing(_ textView: UITextView) {
+    public func textViewDidBeginEditing(_ textView: UITextView) {
         guard tagert == nil else {
             if tagert!.responds(to: #selector(textViewDidBeginEditing)) {
                 tagert!.textViewDidBeginEditing(textView)
@@ -48,7 +48,7 @@ class RZTapActionHelper: NSObject , UITextViewDelegate {
         }
     }
     
-    func textViewDidEndEditing(_ textView: UITextView) {
+    public func textViewDidEndEditing(_ textView: UITextView) {
         guard tagert == nil else {
             if tagert!.responds(to: #selector(textViewDidBeginEditing)) {
                 tagert!.textViewDidBeginEditing(textView)
@@ -57,7 +57,7 @@ class RZTapActionHelper: NSObject , UITextViewDelegate {
         }
     }
     
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+    public func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         guard tagert == nil else {
             if tagert!.responds(to: #selector(textView(_:shouldChangeTextIn:replacementText:))) {
                 return tagert!.textView(textView, shouldChangeTextIn: range, replacementText: text)
@@ -67,7 +67,7 @@ class RZTapActionHelper: NSObject , UITextViewDelegate {
         return true
     }
     
-    func textViewDidChange(_ textView: UITextView) {
+    public func textViewDidChange(_ textView: UITextView) {
         guard tagert == nil else {
             if tagert!.responds(to: #selector(textViewDidChange)) {
                 tagert!.textViewDidChange(textView)
@@ -76,7 +76,7 @@ class RZTapActionHelper: NSObject , UITextViewDelegate {
         }
     }
     
-    func textViewDidChangeSelection(_ textView: UITextView) {
+    public func textViewDidChangeSelection(_ textView: UITextView) {
         guard tagert == nil else {
             if tagert!.responds(to: #selector(textViewDidChangeSelection)) {
                 tagert!.textViewDidChangeSelection(textView)
@@ -86,7 +86,7 @@ class RZTapActionHelper: NSObject , UITextViewDelegate {
     }
     
     @available(iOS 10.0, *)
-    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+    public func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
         let tapObj = URL.absoluteString
         let res1 = self.didTapActionWithId(tapObj: tapObj, textView: textView)
         var res2 = true 
@@ -100,7 +100,7 @@ class RZTapActionHelper: NSObject , UITextViewDelegate {
     }
     
     @available(iOS 10.0, *)
-    func textView(_ textView: UITextView, shouldInteractWith textAttachment: NSTextAttachment, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+    public func textView(_ textView: UITextView, shouldInteractWith textAttachment: NSTextAttachment, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
         guard tagert == nil else {
             if tagert!.responds(to: #selector(textView(_:shouldInteractWith:in:interaction:)as (UITextView, NSTextAttachment, NSRange, UITextItemInteraction) -> Bool)){
                 return tagert!.textView(textView, shouldInteractWith: textAttachment, in: characterRange, interaction: interaction)
@@ -110,7 +110,7 @@ class RZTapActionHelper: NSObject , UITextViewDelegate {
         return true
     }
     @available(iOS, introduced: 7.0, deprecated: 10.0)
-    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
+    public func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
         let tapObj = URL.absoluteString
         let res1 = self.didTapActionWithId(tapObj: tapObj, textView: textView)
         var res2 = true
@@ -123,7 +123,7 @@ class RZTapActionHelper: NSObject , UITextViewDelegate {
         return res1 && res2
     }
     @available(iOS, introduced: 7.0, deprecated: 10.0)
-    func textView(_ textView: UITextView, shouldInteractWith textAttachment: NSTextAttachment, in characterRange: NSRange) -> Bool {
+    public func textView(_ textView: UITextView, shouldInteractWith textAttachment: NSTextAttachment, in characterRange: NSRange) -> Bool {
         guard tagert == nil else {
             if tagert!.responds(to: #selector(textView(_:shouldInteractWith:in:)as (UITextView, NSTextAttachment, NSRange) -> Bool)){
                 return tagert!.textView(textView, shouldInteractWith: textAttachment, in: characterRange)

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RZParagraphStyle: NSObject {
+public class RZParagraphStyle: NSObject {
     var paragraph = NSMutableParagraphStyle.init()
     
     /// 段落行距
@@ -121,14 +121,14 @@ class RZParagraphStyle: NSObject {
     } 
 }
 
-class RZTextParagraphStyle : RZParagraphStyle {
+public class RZTextParagraphStyle : RZParagraphStyle {
     weak var and : RZTextAttribute?
 }
 
-class RZImageParagraphStyle : RZParagraphStyle {
+public class RZImageParagraphStyle : RZParagraphStyle {
     weak var and : RZImageAttribute?
 }
 
-class RZColorfulConferrerParagraphStyle : RZParagraphStyle {
+public class RZColorfulConferrerParagraphStyle : RZParagraphStyle {
     weak var and : RZColorfulConferrer?
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RZHtmlAttribute: NSObject {
+public class RZHtmlAttribute: NSObject {
     var htmlCode : NSAttributedString?
     
     func package() -> NSAttributedString? {

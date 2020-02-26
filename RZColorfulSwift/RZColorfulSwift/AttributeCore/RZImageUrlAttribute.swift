@@ -8,12 +8,12 @@
 
 import UIKit
 
-enum RZImagePosition: String {
+public enum RZImagePosition: String {
     case left   = "text-align: left;"
     case center = "text-align: center;"
     case right  = "text-align: right;"
 }
-class RZImageUrlAttribute: NSObject {
+public class RZImageUrlAttribute: NSObject {
     var imageByUrl : String?
     
     private var maxSize : CGSize?
@@ -33,7 +33,7 @@ class RZImageUrlAttribute: NSObject {
     
 }
 // MARK 可使用的方法
-extension RZImageUrlAttribute {
+public extension RZImageUrlAttribute {
     /// 最大尺寸 默认宽为（屏幕宽-10），
     /// 高为0时，高度自适应
     @discardableResult

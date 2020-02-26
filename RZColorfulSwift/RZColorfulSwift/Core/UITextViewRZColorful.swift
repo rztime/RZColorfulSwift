@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 // MARK: - 对TextView的富文本的支持
-extension UITextView {
+public  extension UITextView {
     /// 设置富文本 （原内容将被清空）
     func rz_colorfulConfer(confer:ColorfulBlock?) -> Void {
         self.attributedText = nil;
@@ -70,7 +70,7 @@ extension UITextView {
 }
 
 // 添加的辅助属性，非主动使用方法
-extension UITextView {
+public extension UITextView {
     struct RZPropertyKey {
         static let rzHelperKey = UnsafeRawPointer.init(bitPattern: "rzHelperKey".hashValue)
         static let rzDidTapTextViewKey = UnsafeRawPointer.init(bitPattern: "rzDidTapTextViewKey".hashValue)

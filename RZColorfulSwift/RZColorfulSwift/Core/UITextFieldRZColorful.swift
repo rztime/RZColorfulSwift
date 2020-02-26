@@ -1,5 +1,5 @@
 //
-//  UILabel+RZColorful.swift
+//  UITextField+RZColorful.swift
 //  RZColorfulSwift
 //
 //  Created by ruozui on 2020/2/26.
@@ -9,9 +9,8 @@
 import Foundation
 import UIKit
 
-// MARK: - 对Label的富文本支持
-extension UILabel {
-    
+// MARK: - 对TextField的富文本支持
+public extension UITextField { 
     /// 设置富文本 （原内容将被清空）
     func rz_colorfulConfer(confer:ColorfulBlock?) -> Void {
         self.attributedText = nil;
@@ -61,7 +60,26 @@ extension UILabel {
     }
     // 光标的位置
     func getCursorLocation() -> Int {
-        return (self.attributedText?.length)!
+        return self.rz_selectedRange().location
+    }
+    
+    func rz_selectedRange() -> NSRange {
+        let beginning = self.beginningOfDocument;
+        let selectedRange = self.selectedTextRange;
+        let selectionStart = selectedRange!.start;
+        let selectionEnd = selectedRange!.end;
+        
+        let location = self.offset(from: beginning, to: selectionStart)
+        let length = self.offset(from: selectionStart, to: selectionEnd)
+        
+        return NSRange.init(location: location, length: length)
+    }
+    
+    func rz_setSelectedRange(range: NSRange) -> Void {
+        let beginning = self.beginningOfDocument;
+        let startPosition = self.position(from: beginning, offset: range.location)!
+        let endPosition = self.position(from: beginning, offset: range.location + range.length)!
+        let selectionRange = self.textRange(from: startPosition, to: endPosition)
+        self.selectedTextRange = selectionRange
     }
 }
-
