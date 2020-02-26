@@ -8,19 +8,20 @@
 
 import UIKit
 
-public enum RZImagePosition: String {
+enum RZImagePosition: String {
     case left   = "text-align: left;"
     case center = "text-align: center;"
     case right  = "text-align: right;"
 }
-
-public class RZImageUrlAttribute: NSObject {
+class RZImageUrlAttribute: NSObject {
     var imageByUrl : String?
     
     private var maxSize : CGSize?
     private var size : CGSize?
     
     private var attributeDict = NSMutableDictionary.init()
+    
+    private var alignment : RZImagePosition?
     
     func package() -> NSAttributedString? {
         if imageByUrl == nil || imageByUrl?.count == 0 {
@@ -30,30 +31,32 @@ public class RZImageUrlAttribute: NSObject {
         return attr
     }
     
+}
+// MARK 可使用的方法
+extension RZImageUrlAttribute {
     /// 最大尺寸 默认宽为（屏幕宽-10），
     /// 高为0时，高度自适应
     @discardableResult
-    public func maxSize(_ size: CGSize?) -> Self {
+    func maxSize(_ size: CGSize?) -> Self {
         self.maxSize = size
         return self
     }
     
     /// 固定尺寸 宽高为0时，自适应
     @discardableResult
-    public func size(_ size: CGSize?) -> Self {
+    func size(_ size: CGSize?) -> Self {
         self.size = size
         return self
     }
     
-    private var alignment : RZImagePosition?
     /// 对齐方式 需单独一行时，设置有效
     @discardableResult
-    public func alignment(_ alignment: RZImagePosition) -> Self {
+    func alignment(_ alignment: RZImagePosition) -> Self {
         self.alignment = alignment
         return self
     }
     
-    public func toHtmlString() -> String? {
+    func toHtmlString() -> String? {
         if self.imageByUrl == nil || self.imageByUrl?.count == 0 {
             return nil
         }
@@ -80,16 +83,13 @@ public class RZImageUrlAttribute: NSObject {
                 height = "height:\(size!.height)px;"
             }
         }
-        
         var html : String?
         if self.alignment != nil {
-            alig = self.alignment!.rawValue;
-            
+            alig = self.alignment!.rawValue; 
             html = "<div style='\(alig);height: auto;width:100%;'> <img style='\(maxWidth)\(maxHeight)\(width)\(height);'  src='\(imageByUrl!)'> </div>"
         } else {
             html = "<img style='\(maxWidth)\(maxHeight)\(width)\(height)'  src='\(imageByUrl!)'>"
         }
-        
         return html
     }
 }

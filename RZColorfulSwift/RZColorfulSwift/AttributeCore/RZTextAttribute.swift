@@ -8,13 +8,38 @@
 
 import UIKit
 
-public class RZTextAttribute : NSObject {
-    public var text : String = ""
+class RZTextAttribute : NSObject {
+    var text : String = ""
     private var attributeDict = NSMutableDictionary.init()
     
     private var _paragraphStyle : RZTextParagraphStyle?
+    private var _shadow : RZTextShadowStyle?
+    
+    func package(_ para: NSMutableParagraphStyle?, _ shadow: NSShadow?) -> NSAttributedString? {
+        if text.count == 0 {
+            return nil;
+        }
+        if _paragraphStyle != nil {
+            attributeDict.addEntries(from: [NSAttributedString.Key.paragraphStyle: _paragraphStyle!.paragraph])
+        } else if para != nil {
+            attributeDict.addEntries(from: [NSAttributedString.Key.paragraphStyle: para!])
+        }
+        
+        if _shadow != nil {
+            attributeDict.addEntries(from: [NSAttributedString.Key.shadow : _shadow!.shadow])
+        } else if shadow != nil {
+            attributeDict.addEntries(from: [NSAttributedString.Key.shadow : shadow!])
+        }
+        
+        let attr =  NSAttributedString.init(string: text, attributes: attributeDict as? [NSAttributedString.Key : Any]);
+        attributeDict.removeAllObjects()
+        return attr
+    }
+}
+// MARK 可使用的方法
+extension RZTextAttribute { 
     /// 段落
-    public var paragraphStyle : RZTextParagraphStyle? {
+    var paragraphStyle : RZTextParagraphStyle? {
         get {
             if _paragraphStyle == nil {
                 _paragraphStyle = RZTextParagraphStyle.init()
@@ -23,10 +48,9 @@ public class RZTextAttribute : NSObject {
             return _paragraphStyle
         }
     }
-    
-    private var _shadow : RZTextShadowStyle?
+     
     /// 阴影
-    public var shadow : RZTextShadowStyle? {
+    var shadow : RZTextShadowStyle? {
         get {
             if _shadow == nil {
                 _shadow = RZTextShadowStyle.init()
@@ -36,59 +60,38 @@ public class RZTextAttribute : NSObject {
         }
     }
     
-    func package(_ para: NSMutableParagraphStyle?, _ shadow: NSShadow?) -> NSAttributedString? {
-        if text.count == 0 {
-            return nil;
-        }
-        if _paragraphStyle != nil {
-            attributeDict.addEntries(from: [NSAttributedStringKey.paragraphStyle: _paragraphStyle!.paragraph])
-        } else if para != nil {
-            attributeDict.addEntries(from: [NSAttributedStringKey.paragraphStyle: para!])
-        }
-        
-        if _shadow != nil {
-            attributeDict.addEntries(from: [NSAttributedStringKey.shadow : _shadow!.shadow])
-        } else if shadow != nil {
-            attributeDict.addEntries(from: [NSAttributedStringKey.shadow : shadow!])
-        }
-        
-        let attr =  NSAttributedString.init(string: text, attributes: attributeDict as? [NSAttributedStringKey : Any]);
-        attributeDict.removeAllObjects()
-        return attr
-    }
-    
     /// 字体
     @discardableResult
-    public func font(_ font: UIFont) -> Self{
-        attributeDict.addEntries(from: [NSAttributedStringKey.font: font])
+    func font(_ font: UIFont) -> Self{
+        attributeDict.addEntries(from: [NSAttributedString.Key.font: font])
         return self;
     }
     
     /// 字体颜色
     @discardableResult
-    public func textColor(_ color: UIColor) -> Self{
-        attributeDict.addEntries(from: [NSAttributedStringKey.foregroundColor: color])
+    func textColor(_ color: UIColor) -> Self{
+        attributeDict.addEntries(from: [NSAttributedString.Key.foregroundColor: color])
         return self;
     }
     
     /// 字体所在区域背景颜色
     @discardableResult
-    public func backgroundColor(_ color: UIColor) -> Self{
-        attributeDict.addEntries(from: [NSAttributedStringKey.backgroundColor: color])
+    func backgroundColor(_ color: UIColor) -> Self{
+        attributeDict.addEntries(from: [NSAttributedString.Key.backgroundColor: color])
         return self;
     }
     
     /// 设置连体字，value = 0,没有连体， =1，有连体
     @discardableResult
-    public func ligature(_ ligature: NSNumber) -> Self{
-        attributeDict.addEntries(from: [NSAttributedStringKey.ligature: ligature])
+    func ligature(_ ligature: NSNumber) -> Self{
+        attributeDict.addEntries(from: [NSAttributedString.Key.ligature: ligature])
         return self;
     }
     
     /// 字间距 >0 加宽  < 0减小间距
     @discardableResult
-    public func kern(_ kern: NSNumber) -> Self{
-        attributeDict.addEntries(from: [NSAttributedStringKey.kern: kern])
+    func kern(_ kern: NSNumber) -> Self{
+        attributeDict.addEntries(from: [NSAttributedString.Key.kern: kern])
         return self;
     }
     
@@ -98,8 +101,8 @@ public class RZTextAttribute : NSObject {
      取值为 9 - 15时，效果为双实线，取值越大，双实线越粗。
      */
     @discardableResult
-    public func strikethroughStyle(_ strikethroughStyle: NSNumber) -> Self{
-        attributeDict.addEntries(from: [NSAttributedStringKey.strikethroughStyle: strikethroughStyle])
+    func strikethroughStyle(_ strikethroughStyle: NSNumber) -> Self{
+        attributeDict.addEntries(from: [NSAttributedString.Key.strikethroughStyle: strikethroughStyle])
         return self;
     }
     
@@ -109,64 +112,70 @@ public class RZTextAttribute : NSObject {
      取值为 9 - 15时，效果为双实线，取值越大，双实线越粗。
      */
     @discardableResult
-    public func underlineStyle(_ underlineStyle: NSNumber) -> Self{
-        attributeDict.addEntries(from: [NSAttributedStringKey.underlineStyle: underlineStyle])
+    func underlineStyle(_ underlineStyle: NSNumber) -> Self{
+        attributeDict.addEntries(from: [NSAttributedString.Key.underlineStyle: underlineStyle])
         return self;
     }
     
     /// 描边的颜色
     @discardableResult
-    public func strokeColor(_ strokeColor: UIColor) -> Self{
-        attributeDict.addEntries(from: [NSAttributedStringKey.strokeColor: strokeColor])
+    func strokeColor(_ strokeColor: UIColor) -> Self{
+        attributeDict.addEntries(from: [NSAttributedString.Key.strokeColor: strokeColor])
         return self;
     }
     
     /// 描边的笔画宽度 为3时，空心  负值填充效果，正值中空效果
     @discardableResult
-    public func strokeWidth(_ strokeWidth: NSNumber) -> Self{
-        attributeDict.addEntries(from: [NSAttributedStringKey.strokeWidth: strokeWidth])
+    func strokeWidth(_ strokeWidth: NSNumber) -> Self{
+        attributeDict.addEntries(from: [NSAttributedString.Key.strokeWidth: strokeWidth])
         return self;
     }
     
     /// 给文本添加链接，并且可点击跳转浏览器打开  仅UITextView点击有效
     @discardableResult
-    public func link(_ link: NSURL) -> Self{
-        attributeDict.addEntries(from: [NSAttributedStringKey.link: link])
+    func link(_ link: NSURL) -> Self{
+        attributeDict.addEntries(from: [NSAttributedString.Key.link: link])
+        return self;
+    }
+    /// 给文本添加点击事件的id
+    @discardableResult
+    func tapAction(_ link: String) -> Self{
+        attributeDict.addEntries(from: [NSAttributedString.Key.link: NSURL.init(string: link) as Any])
         return self;
     }
     
     /// 基准线偏移值
     @discardableResult
-    public func baselineOffset(_ baselineOffset: NSNumber) -> Self{
-        attributeDict.addEntries(from: [NSAttributedStringKey.baselineOffset: baselineOffset])
+    func baselineOffset(_ baselineOffset: NSNumber) -> Self{
+        attributeDict.addEntries(from: [NSAttributedString.Key.baselineOffset: baselineOffset])
         return self;
     }
     
     /// 下划线颜色
     @discardableResult
-    public func underlineColor(_ underlineColor: UIColor) -> Self{
-        attributeDict.addEntries(from: [NSAttributedStringKey.underlineColor: underlineColor])
+    func underlineColor(_ underlineColor: UIColor) -> Self{
+        attributeDict.addEntries(from: [NSAttributedString.Key.underlineColor: underlineColor])
         return self;
     }
     
     /// 删除线颜色
     @discardableResult
-    public func strikethroughColor(_ strikethroughColor: UIColor) -> Self{
-        attributeDict.addEntries(from: [NSAttributedStringKey.strikethroughColor: strikethroughColor])
+    func strikethroughColor(_ strikethroughColor: UIColor) -> Self{
+        attributeDict.addEntries(from: [NSAttributedString.Key.strikethroughColor: strikethroughColor])
         return self;
     }
     
     /// 倾斜
     @discardableResult
-    public func obliqueness(_ obliqueness: NSNumber) -> Self{
-        attributeDict.addEntries(from: [NSAttributedStringKey.obliqueness: obliqueness])
+    func obliqueness(_ obliqueness: NSNumber) -> Self{
+        attributeDict.addEntries(from: [NSAttributedString.Key.obliqueness: obliqueness])
         return self;
     }
     
     /// 扩张，即拉伸文字 >0 拉伸 <0压缩
     @discardableResult
-    public func expansion(_ expansion: NSNumber) -> Self{
-        attributeDict.addEntries(from: [NSAttributedStringKey.expansion: expansion])
+    func expansion(_ expansion: NSNumber) -> Self{
+        attributeDict.addEntries(from: [NSAttributedString.Key.expansion: expansion])
         return self;
     }
     
@@ -174,15 +183,15 @@ public class RZTextAttribute : NSObject {
     /// 书写方向
     /// - Parameter writingDirection: NSWritingDirection and NSWritingDirectionFormatType
     @discardableResult
-    public func writingDirection(_ writingDirection: [NSNumber]) -> Self{
-        attributeDict.addEntries(from: [NSAttributedStringKey.writingDirection: writingDirection])
+    func writingDirection(_ writingDirection: [NSNumber]) -> Self{
+        attributeDict.addEntries(from: [NSAttributedString.Key.writingDirection: writingDirection])
         return self;
     }
     
     /// 横竖排版 0：横版 1：竖版
     @discardableResult
-    public func verticalGlyphForm(_ verticalGlyphForm: NSNumber) -> Self{
-        attributeDict.addEntries(from: [NSAttributedStringKey.verticalGlyphForm: verticalGlyphForm])
+    func verticalGlyphForm(_ verticalGlyphForm: NSNumber) -> Self{
+        attributeDict.addEntries(from: [NSAttributedString.Key.verticalGlyphForm: verticalGlyphForm])
         return self;
     }
 }

@@ -8,34 +8,37 @@
 
 import UIKit
 
-public class RZShadowStyle: NSObject {
+class RZShadowStyle: NSObject {
     var shadow = NSShadow.init()
     
     /// 阴影偏移量（范围）
     @discardableResult
-    public func shadowOffset(_ shadowOffset:CGSize) -> Self {
+    func shadowOffset(_ shadowOffset:CGSize) -> Self {
         shadow.shadowOffset = shadowOffset
         return self
     }
     
     /// 模糊 值越大，越模糊
     @discardableResult
-    public func shadowBlurRadius(_ shadowBlurRadius:CGFloat) -> Self {
+    func shadowBlurRadius(_ shadowBlurRadius:CGFloat) -> Self {
         shadow.shadowBlurRadius = shadowBlurRadius
         return self
     }
     
     /// 阴影颜色
     @discardableResult
-    public func shadowColor(_ shadowColor:UIColor) -> Self {
+    func shadowColor(_ shadowColor:UIColor) -> Self {
         shadow.shadowColor = shadowColor
         return self
     }
 }
-public class RZTextShadowStyle : RZShadowStyle {
-    public weak var and : RZTextAttribute?
+class RZTextShadowStyle : RZShadowStyle {
+    weak var and : RZTextAttribute?
 }
 
-public class RZColorfulConferrerShadowStyle : RZShadowStyle {
-    public weak var and : RZColorfulConferrer?
+class RZColorfulConferrerShadowStyle : RZShadowStyle {
+    weak var and : RZColorfulConferrer?
+}
+class RZImageShadowStyle : RZShadowStyle {
+    weak var and : RZImageAttribute?
 }

@@ -21,14 +21,14 @@ class TestViewController: UIViewController {
         self.view.backgroundColor = UIColor.white
         
         self.title = "Results"
-
+        
         let text = UITextView.init(frame: CGRect.init(x: 0, y: 10, width: self.view.bounds.size.width, height: 450))
         scroview.addSubview(text)
         scroview.contentSize = CGSize.init(width: 0, height: 1000)
         text.isEditable = false
         text.rz_colorfulConfer { (confer) in
             confer.paragraphStyle?.lineSpacing(10).paragraphSpacingBefore(15)
-            
+            confer.htmlString("<p>测试文本</p>")
             confer.image(UIImage.init(named: "indexMore"))?.bounds(CGRect.init(x: 0, y: 0, width: 20, height: 20))
             confer.text("  姓名 : ")?.font(UIFont.systemFont(ofSize: 15)).textColor(.gray)
             confer.text("rztime")?.font(UIFont.systemFont(ofSize: 15)).textColor(.black)
@@ -39,7 +39,17 @@ class TestViewController: UIViewController {
             
             confer.text("\n\n\n\n")
             confer.imageByUrl("http://pic28.photophoto.cn/20130830/0005018667531249_b.jpg")?.alignment(.center).maxSize(CGSize.init(width: 100, height: 100))
+            confer.text("连接啊啊啊啊啊")?.tapAction("http:wwww.baidu.com")
+            confer.text("连接啊啊啊啊啊")?.link(NSURL.init(string: "http:www.baidu.coccc.com")!)
             
+            confer.text("\n")
+            confer.image(UIImage.init(named: "indexMore"))?.size(CGSize.init(width: 50, height: 50), align: .bottom, font: UIFont.systemFont(ofSize: 15)).yOffset(-10).tapAction("xkkkk.com")
+            confer.text("  图片居中对齐 : ")?.font(UIFont.systemFont(ofSize: 15)).textColor(.gray)
+        }
+        text.delegate = self;
+        text.rzDidTapTextView { (tabObj, textview) -> Bool in
+            print("text:\(tabObj)")
+            return false
         }
     }
 
@@ -63,4 +73,17 @@ class TestViewController: UIViewController {
         print("testVc 销毁")
     }
 
+}
+
+extension TestViewController : UITextViewDelegate {
+    @available(iOS 10.0, *)
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+        print("url:\(URL)")
+        return false 
+    }
+    
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
+        print("url:\(URL)")
+        return false
+    }
 }

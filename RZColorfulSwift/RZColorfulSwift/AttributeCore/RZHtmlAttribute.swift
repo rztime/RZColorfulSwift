@@ -7,23 +7,8 @@
 //
 
 import UIKit
-// MARK: - NSAttributedString 扩展
-public extension NSAttributedString {
-    public static func htmlString(_ html: String?) ->NSAttributedString? {
-        if html?.count == 0 || html == nil {
-            return nil;
-        }
-        let data = html!.data(using: String.Encoding.unicode)
-        do {
-            return try NSAttributedString.init(data: data!, options: [NSAttributedString.DocumentReadingOptionKey.documentType : NSAttributedString.DocumentType.html], documentAttributes: nil)
-        } catch let error as NSError {
-            print("html转换失败:\(error.localizedDescription)")
-        }
-        return nil
-    }
-}
 
-public class RZHtmlAttribute: NSObject {
+class RZHtmlAttribute: NSObject {
     var htmlCode : NSAttributedString?
     
     func package() -> NSAttributedString? {
@@ -35,7 +20,7 @@ public class RZHtmlAttribute: NSObject {
     
     // 富文本（如网页源码）
     @discardableResult
-    public func htmlText(_ htmlText: String?) -> Self? {
+    func htmlText(_ htmlText: String?) -> Self? {
         if htmlText?.count == 0 || htmlText == nil {
             return nil;
         }
