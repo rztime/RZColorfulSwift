@@ -11,7 +11,7 @@ import UIKit
 public class RZHtmlAttribute: NSObject {
     var htmlCode : NSAttributedString?
     
-    func package() -> NSAttributedString? {
+    public func package() -> NSAttributedString? {
         if htmlCode == nil {
             return nil;
         }
@@ -20,7 +20,7 @@ public class RZHtmlAttribute: NSObject {
     
     // 富文本（如网页源码）
     @discardableResult
-    func htmlText(_ htmlText: String?) -> Self? {
+    public func htmlText(_ htmlText: String?) -> Self? {
         if htmlText?.count == 0 || htmlText == nil {
             return nil;
         }

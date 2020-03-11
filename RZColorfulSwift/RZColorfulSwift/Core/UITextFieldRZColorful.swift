@@ -12,13 +12,13 @@ import UIKit
 // MARK: - 对TextField的富文本支持
 public extension UITextField { 
     /// 设置富文本 （原内容将被清空）
-    func rz_colorfulConfer(confer:ColorfulBlock?) -> Void {
+    public func rz_colorfulConfer(confer:ColorfulBlock?) -> Void {
         self.attributedText = nil;
         self.rz_colorfulConferInsetToLocation(0, confer)
     }
     
     /// 在指定位置插入富文本
-    func rz_colorfulConferInsetTo(position: RZConferInsertPosition, _ append:ColorfulBlock?) -> Void {
+    public func rz_colorfulConferInsetTo(position: RZConferInsertPosition, _ append:ColorfulBlock?) -> Void {
         var location = 0;
         switch position {
         case .Default, .Cursor :
@@ -32,7 +32,7 @@ public extension UITextField {
     }
     
     /// 在指定位置处加入富文本
-    func rz_colorfulConferInsetToLocation(_ location:Int, _ confer:ColorfulBlock?) -> Void {
+    public func rz_colorfulConferInsetToLocation(_ location:Int, _ confer:ColorfulBlock?) -> Void {
         if confer == nil {
             return ;
         }
@@ -55,15 +55,15 @@ public extension UITextField {
     }
     
     // 尾部的位置
-    func getEndLocation() -> Int {
+    public func getEndLocation() -> Int {
         return (self.attributedText?.length)!
     }
     // 光标的位置
-    func getCursorLocation() -> Int {
+    public func getCursorLocation() -> Int {
         return self.rz_selectedRange().location
     }
     
-    func rz_selectedRange() -> NSRange {
+    public func rz_selectedRange() -> NSRange {
         let beginning = self.beginningOfDocument;
         let selectedRange = self.selectedTextRange;
         let selectionStart = selectedRange!.start;
@@ -75,7 +75,7 @@ public extension UITextField {
         return NSRange.init(location: location, length: length)
     }
     
-    func rz_setSelectedRange(range: NSRange) -> Void {
+    public func rz_setSelectedRange(range: NSRange) -> Void {
         let beginning = self.beginningOfDocument;
         let startPosition = self.position(from: beginning, offset: range.location)!
         let endPosition = self.position(from: beginning, offset: range.location + range.length)!

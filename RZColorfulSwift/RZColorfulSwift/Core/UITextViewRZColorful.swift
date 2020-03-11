@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 // MARK: - 对TextView的富文本的支持
-public  extension UITextView {
+public extension UITextView {
     /// 设置富文本 （原内容将被清空）
     func rz_colorfulConfer(confer:ColorfulBlock?) -> Void {
         self.attributedText = nil;
