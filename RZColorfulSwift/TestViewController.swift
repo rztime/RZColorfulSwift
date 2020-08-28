@@ -21,14 +21,14 @@ class TestViewController: UIViewController {
         self.view.backgroundColor = UIColor.white
         
         self.title = "Results"
-        
+            
         let text = UITextView.init(frame: CGRect.init(x: 0, y: 10, width: self.view.bounds.size.width, height: 450))
         scroview.addSubview(text)
         scroview.contentSize = CGSize.init(width: 0, height: 1000)
         text.isEditable = false
         text.rz_colorfulConfer { (confer) in
-            confer.paragraphStyle?.lineSpacing(10).paragraphSpacingBefore(15)
-//            confer.htmlString("<p>测试文本</p>")
+//            confer.paragraphStyle?.lineSpacing(10).paragraphSpacingBefore(15).alignment(.center).and?.shadow?.shadowColor(.black).shadowOffset(.init(width: 3, height: 3)).shadowBlurRadius(3)
+            confer.htmlString("<p>测试文本</p><p>测试文本</p>")?.font(.systemFont(ofSize: 20)).textColor(.red)
             confer.image(UIImage.init(named: "indexMore"))?.bounds(CGRect.init(x: 0, y: 0, width: 20, height: 20))
             confer.text("  姓名 : ")?.font(UIFont.systemFont(ofSize: 15)).textColor(.gray)
             confer.text("rztime")?.font(UIFont.systemFont(ofSize: 15)).textColor(.black)
@@ -38,12 +38,14 @@ class TestViewController: UIViewController {
             confer.text("成都软件园")?.font(UIFont.systemFont(ofSize: 11)).textColor(.black)
             
             confer.text("\n\n\n\n")
-        confer.imageByUrl("http://pic28.photophoto.cn/20130830/0005018667531249_b.jpg")?.alignment(.center).maxSize(CGSize.init(width: 100, height: 100))
-            confer.text("连接啊啊啊啊啊")?.tapAction("http:wwww.baidu.com")
-            confer.text("连接啊啊啊啊啊")?.link(NSURL.init(string: "http:www.baidu.coccc.com")!)
+//            confer.imageByUrl("http://pic28.photophoto.cn/20130830/0005018667531249_b.jpg")?.paragraphStyle?.alignment(.center).and?.maxSize(CGSize.init(width: 100, height: 100)).size(.init(width: 130, height: 130)).shadow?.shadowColor(.black).shadowOffset(.init(width: 3, height: 3)).shadowBlurRadius(3)
+            confer.imageByUrl("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1598590651104&di=58cd60b9b2754f3d5048fdf4bc74a081&imgtype=0&src=http%3A%2F%2Fa1.att.hudong.com%2F05%2F00%2F01300000194285122188000535877.jpg")?.alignment(.right).size(.init(width: 0, height: 100), align: .center)
+//            confer.imageByUrl("http://pic28.photophoto.cn/20130830/0005018667531249_b.jpg")?.alignment(.center).maxSize(CGSize.init(width: 100, height: 100)).size(.init(width: 130, height: 130))
+            confer.text("连接啊啊啊啊啊111")?.tapAction("http:wwww.baidu.com").font(.systemFont(ofSize: 18)).underlineStyle(.single).underlineColor(.red)
+            confer.text("222连接啊啊啊啊啊")?.link(NSURL.init(string: "http:www.baidu.coccc.com")!).writingDirection(.RLO)
             
             confer.text("\n")
-            confer.image(UIImage.init(named: "indexMore"))?.size(CGSize.init(width: 50, height: 50), align: .bottom, font: UIFont.systemFont(ofSize: 15)).yOffset(-10).tapAction("xkkkk.com")
+            confer.image(UIImage.init(named: "indexMore"))?.size(CGSize.init(width: 50, height: 50), align: .center, font: UIFont.systemFont(ofSize: 15)).tapAction("xkkkk.com")
             confer.text("  图片居中对齐 : ")?.font(UIFont.systemFont(ofSize: 15)).textColor(.gray)
         }
         text.delegate = self;
@@ -57,22 +59,6 @@ class TestViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
-    deinit {
-        print("testVc 销毁")
-    }
-
 }
 
 extension TestViewController : UITextViewDelegate {

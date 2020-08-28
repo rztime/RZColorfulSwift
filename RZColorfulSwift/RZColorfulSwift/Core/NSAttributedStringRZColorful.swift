@@ -15,14 +15,13 @@ public extension NSAttributedString {
     static func rz_colorfulConfer(confer:ColorfulBlock) -> NSAttributedString? {
         let connferrer = RZColorfulConferrer.init()
         confer(connferrer)
-        let attr = connferrer.confer();
-        return attr
+        return connferrer.confer()
     }
     
     func attributedStringByAppend(attributedString : NSAttributedString) -> NSAttributedString {
         let attr = NSMutableAttributedString.init(attributedString: self)
         attr.append(attributedString)
-        return attr.copy() as! NSAttributedString
+        return NSAttributedString.init(attributedString: attr)
     }
 
     /**
@@ -41,7 +40,7 @@ public extension NSAttributedString {
      @param height 固定高度
      */
     func sizeWithConditionHeight(height:Float) -> CGSize {
-        var size = self.sizeWithCondition(size: CGSize.init(width: CGFloat.greatestFiniteMagnitude, height:CGFloat(height) ))
+        var size = self.sizeWithCondition(size: CGSize.init(width: CGFloat.greatestFiniteMagnitude, height:CGFloat(height)))
         size.height = CGFloat(height)
         return size
     }
@@ -62,27 +61,24 @@ public extension NSAttributedString {
     }
     // 将html转换成 NSAttributedString
     static func htmlString(_ html: String?) ->NSAttributedString? {
-        if html?.count == 0 || html == nil {
-            return nil;
-        }
-        let data = html!.data(using: String.Encoding.unicode)
-        do {
-            return try NSAttributedString.init(data: data!, options: [NSAttributedString.DocumentReadingOptionKey.documentType : NSAttributedString.DocumentType.html], documentAttributes: nil)
-        } catch let error as NSError {
-            print("html转换失败:\(error.localizedDescription)")
+        guard let html = html, html.count > 0 else {return nil}
+        if let data = html.data(using: String.Encoding.unicode) {
+            do {
+                return try NSAttributedString.init(data: data, options: [NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
+            } catch let error as NSError {
+                print("html转换失败:\(error.localizedDescription)")
+            }
         }
         return nil
     }
     func rz_images() -> [UIImage] {
-        var arrays = [UIImage]()
+        var arrays: [UIImage] = []
         self.enumerateAttribute(NSAttributedString.Key.attachment, in: NSMakeRange(0, self.length), options: NSAttributedString.EnumerationOptions.longestEffectiveRangeNotRequired) { (value, range, stop) -> Void  in
-            let image = value as? NSTextAttachment
-            if image != nil {
-                if image?.image != nil {
-                    arrays.append(image!.image!)
-                } else if (image?.fileWrapper?.regularFileContents != nil) {
-                    let img = UIImage.init(data: image!.fileWrapper!.regularFileContents! )
-                    arrays.append(img!)
+            if let attach = value as? NSTextAttachment {
+                if let image = attach.image {
+                    arrays.append(image)
+                } else if let data = attach.fileWrapper?.regularFileContents, let image = UIImage.init(data: data) {
+                    arrays.append(image)
                 }
             }
         }
@@ -95,42 +91,41 @@ public extension NSAttributedString {
      @return HTML标签
      */
     func rz_codingToHtmlWithImagesURLSIfHad(urls:[String]?) -> String? {
-        let tempAttr = self.mutableCopy() as! NSMutableAttributedString
+        let tempAttr = NSMutableAttributedString.init(attributedString: self)
         var idx = 0
-        var tempPlaceHolders = [String]()
+        var tempPlaceHolders: [String] = []
         tempAttr.enumerateAttribute(NSAttributedString.Key.attachment, in: NSMakeRange(0, tempAttr.length), options: NSAttributedString.EnumerationOptions.reverse) { (value, range, stop) in
-            let image = value as? NSTextAttachment
-            if image != nil {
+            if let _ = value as? NSTextAttachment {
                 let placeHolder = "rz_attributed_image_placeHolder_index_\(idx)"
                 idx = idx + 1
                 tempAttr.replaceCharacters(in: range, with: placeHolder)
                 tempPlaceHolders.append(placeHolder)
             }
         }
-        var html = tempAttr.rz_codingToCompleteHtml()! as NSString
+        var html = tempAttr.rz_codingToCompleteHtml()
         var index = 0
         for placeHolder in tempPlaceHolders.enumerated().reversed() {
             if index < urls?.count ?? 0 {
                 let url = urls?[index] ?? ""
                 let img = "<img style=\"max-width:98%%;height:auto;\" src=\"\(url)\" alt=\"图片缺失\">"
-                html = html.replacingOccurrences(of: (placeHolder.element as String), with: img) as NSString
+                html = html?.replacingOccurrences(of: placeHolder.element, with: img)
             }
             index = index + 1
         }
-        return html as String
+        return html
     }
     
     /// 将富文本编码成html标签
     func rz_codingToCompleteHtml() -> String? {
-        let exportParams = [NSAttributedString.DocumentAttributeKey.documentType: NSAttributedString.DocumentType.html]
         do {
+            let exportParams = [NSAttributedString.DocumentAttributeKey.documentType: NSAttributedString.DocumentType.html]
             let htmlData = try self.data(from: NSMakeRange(0, self.length), documentAttributes: exportParams)
-            var htmlString = NSString.init(data: htmlData, encoding: String.Encoding.utf8.rawValue)
-            htmlString = htmlString?.replacingOccurrences(of: "pt;", with: "px;") as NSString?
-            htmlString = htmlString?.replacingOccurrences(of: "pt}", with: "px}") as NSString?
-            return htmlString as String?
+            var string = String.init(data: htmlData, encoding: String.Encoding.utf8)
+            string = string?.replacingOccurrences(of: "pt;", with: "px;")
+            string = string?.replacingOccurrences(of: "pt}", with: "px}")
+            return string
         } catch {
-            return ""
+            return nil
         }
     }
 }

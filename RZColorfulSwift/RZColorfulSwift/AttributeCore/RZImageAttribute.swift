@@ -13,37 +13,46 @@ public enum RZImageAttachmentHorizontalAlign {
     case center
     case top
 }
-
+public enum RZImagePosition: String {
+    case left   = "text-align: left;"
+    case center = "text-align: center;"
+    case right  = "text-align: right;"
+}
 public class RZImageAttribute: NSObject{
-    var image: UIImage?  // 图片
+    private let imageAttchment = NSTextAttachment.init()
+    private var attributeDict = NSMutableDictionary.init()  // 一些其他属性 
+    private var _url:NSURL?   // 添加url
+    private var _paragraphStyle : RZImageParagraphStyle?  // 样式
+    private var _shadow : RZImageShadowStyle?            // 阴影
+    private var yOffset: CGFloat?
     
-    let imageAttchment = NSTextAttachment.init()
-    var attributeDict = NSMutableDictionary.init()  // 一些其他属性
-    
-    var _url:NSURL?   // 添加url
-    
-    var _paragraphStyle : RZImageParagraphStyle?  // 样式
-    var _shadow : RZImageShadowStyle?            // 阴影
-    
-    func package(_ para: NSMutableParagraphStyle?, sha: NSShadow?) -> NSAttributedString? {
-        if image == nil {
-            return nil;
+    public init(_ image: UIImage? = nil, _ imageUrl: String? = nil) {
+        if let image = image {
+            self.imageAttchment.image = image
+            self.imageAttchment.bounds = .init(origin: .zero, size: image.size)
+        } else if let url = imageUrl, let u = URL.init(string: url) {
+            if let imageData = try? Data.init(contentsOf: u), let image = UIImage.init(data: imageData) {
+                self.imageAttchment.image = image
+                self.imageAttchment.bounds = .init(origin: .zero, size: image.size)
+            }
         }
-        self.imageAttchment.image = image;
+    }
+    
+    open func package(_ para: NSMutableParagraphStyle?, _ sha: NSShadow?) -> NSAttributedString? {
+        guard let _ = self.imageAttchment.image else { return nil }
+        if let y = yOffset {
+            let bounds = imageAttchment.bounds
+            imageAttchment.bounds = CGRect(x: bounds.origin.x, y: bounds.origin.y - y, width: bounds.size.width, height: bounds.size.height)
+        }
         let attr = NSMutableAttributedString.init(attributedString: NSAttributedString.init(attachment: imageAttchment))
-        
-        if _paragraphStyle != nil {
-            attr.addAttributes([NSAttributedString.Key.paragraphStyle: _paragraphStyle!.paragraph], range: NSRange.init(location: 0, length: attr.string.count))
-        } else if para != nil {
-            attr.addAttributes([NSAttributedString.Key.paragraphStyle: para!], range: NSRange.init(location: 0, length: attr.string.count))
+        if let pa = (_paragraphStyle?.paragraph ?? para) {
+            attr.addAttributes([NSAttributedString.Key.paragraphStyle: pa], range: NSRange.init(location: 0, length: attr.string.count))
         }
-        if _shadow != nil {
-            attr.addAttributes([NSAttributedString.Key.shadow: _shadow?.shadow as Any], range: NSRange.init(location: 0, length: attr.string.count))
-        } else if sha != nil{
-            attr.addAttributes([NSAttributedString.Key.shadow: sha as Any], range: NSRange.init(location: 0, length: attr.string.count))
+        if let shadow = (_shadow?.shadow ?? sha) {
+            attr.addAttributes([NSAttributedString.Key.shadow: shadow], range: NSRange.init(location: 0, length: attr.string.count))
         }
-        if _url != nil {
-            attr.addAttributes([NSAttributedString.Key.link: _url!], range: NSRange.init(location: 0, length: attr.string.count))
+        if let url = _url {
+            attr.addAttributes([NSAttributedString.Key.link: url], range: NSRange.init(location: 0, length: attr.string.count))
         }
         return attr
     }
@@ -51,56 +60,87 @@ public class RZImageAttribute: NSObject{
 
 // MARK 可使用的方法
 public extension RZImageAttribute {
-     
-    // 设置段落样式
+    // 设置段落样式，使用and连接之后可继续设置图片属性
     var paragraphStyle : RZImageParagraphStyle? {
         get {
             if _paragraphStyle == nil {
-                _paragraphStyle = RZImageParagraphStyle.init()
-                _paragraphStyle?.and = self
+                _paragraphStyle = RZImageParagraphStyle.init(self) 
             }
             return _paragraphStyle
         }
     }
-    // 设置阴影
+    // 设置阴影，使用and连接之后可继续设置图片属性
     var shadow : RZImageShadowStyle? {
         get {
             if _shadow == nil {
-                _shadow = RZImageShadowStyle.init()
-                _shadow?.and = self
+                _shadow = RZImageShadowStyle.init(self)
             }
             return _shadow
         }
     }
-     
+    /// 对齐方式 需单独一行时，设置有效
+    @discardableResult
+    @available(iOS, introduced: 7.0, deprecated: 7.0, message: "Use .paragraphStyle?.alignment instead")
+    func alignment(_ alignment: RZImagePosition) -> Self { 
+        switch alignment {
+            case .left:
+                self.paragraphStyle?.alignment(.left)
+            case .right:
+                self.paragraphStyle?.alignment(.right)
+            case .center:
+                self.paragraphStyle?.alignment(.center)
+        }
+        return self
+    }
     /// 图片大小和位置，y轴为正，图片上移
     @discardableResult
     func bounds(_ bounds: CGRect) -> Self {
         self.imageAttchment.bounds = bounds
         return self
     }
-    
-    /// 图片的size （大小） 与前后文本对齐的方式  font为前后文本的字体
+    /// 最大尺寸 默认宽为（屏幕宽-10），  其中一个为0时，自适应
+    /// 高为0时，高度自适应
     @discardableResult
-    func size(_ size: CGSize, align:RZImageAttachmentHorizontalAlign, font:UIFont) -> Self {
-        var y = 0.0;
+    func maxSize(_ size: CGSize, align:RZImageAttachmentHorizontalAlign = .bottom, font:UIFont = .systemFont(ofSize: 0)) -> Self {
+        var s : CGSize = imageAttchment.bounds.size
+        if size.width < s.width {
+            s.width = size.width
+        }
+        if size.height < s.height {
+            s.height = size.height
+        }
+        return self.size(s, align: align, font: font)
+    }
+    
+    /// 图片的size （大小） 与前后文本对齐的方式  font为前后文本的字体 ： 其中一个为0时，自适应
+    @discardableResult
+    func size(_ size: CGSize, align:RZImageAttachmentHorizontalAlign = .bottom, font:UIFont = .systemFont(ofSize: 0)) -> Self {
+        var size = size
+        if size.width == 0 && size.height == 0 {
+            size = imageAttchment.bounds.size
+        } else if size.width == 0 {
+            size.width = imageAttchment.bounds.size.width / imageAttchment.bounds.size.height * size.height
+        } else if size.height == 0 {
+            size.height = (imageAttchment.bounds.size.height * size.width) / imageAttchment.bounds.size.width
+        }
+        
+        var y: CGFloat = 0.0
         let fontHeight = font.ascender - font.descender;
         switch (align) {
         case .top:
-            y = Double(-(size.height - fontHeight) + font.descender);
+            y = -(size.height - fontHeight) + font.descender
         case .center:
-            y = Double(-(size.height - fontHeight)/2.0 + font.descender);
+            y = -(size.height - fontHeight)/2.0 + font.descender
         case .bottom:
-            y = Double(font.descender);
+            y = font.descender
         }
-        imageAttchment.bounds = CGRect(x: 0, y: CGFloat(y), width: size.width, height: size.height)
+        imageAttchment.bounds = CGRect(x: 0, y: y, width: size.width, height: size.height)
         return self
     }
     /// y轴偏移量，在某些情况下，在对齐之后需要做上下偏移时，用此方法，请在设置size之后或者bounds之后使用
     @discardableResult
-    func yOffset(_ yOffset: CGFloat) -> Self {
-        let bounds = imageAttchment.bounds;
-        imageAttchment.bounds = CGRect(x: bounds.origin.x, y: bounds.origin.y - yOffset, width: bounds.size.width, height: bounds.size.height)
+    func yOffset(_ yOffset: CGFloat?) -> Self {
+        self.yOffset = yOffset
         return self
     }
     

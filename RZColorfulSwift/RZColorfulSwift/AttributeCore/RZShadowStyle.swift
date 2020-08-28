@@ -33,12 +33,23 @@ public class RZShadowStyle: NSObject {
     }
 }
 public class RZTextShadowStyle : RZShadowStyle {
-    public weak var and : RZTextAttribute?
-}
-
+    init(_ target: RZTextAttribute?) {
+        and = target
+    }
+    // 连接，继续设置RZTextAttribute
+    public weak var and: RZTextAttribute?
+} 
 public class RZColorfulConferrerShadowStyle : RZShadowStyle {
-    public weak var and : RZColorfulConferrer?
+    init(_ target: RZColorfulConferrer?) {
+        and = target
+    }
+    // 连接，继续设置RZColorfulConferrer
+    public weak var and: RZColorfulConferrer?
 }
 public class RZImageShadowStyle : RZShadowStyle {
-    public weak var and : RZImageAttribute?
+    init(_ target: RZImageAttribute?) {
+        and = target
+    }
+    // 连接，继续设置RZImageAttribute
+    public weak var and: RZImageAttribute?
 }

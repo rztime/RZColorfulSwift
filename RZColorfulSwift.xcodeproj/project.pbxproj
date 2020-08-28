@@ -16,7 +16,6 @@
 		7604BBB820F3571A00063105 /* RZTextAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7604BBB720F3571A00063105 /* RZTextAttribute.swift */; };
 		7604BBBA20F358D600063105 /* RZImageAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7604BBB920F358D600063105 /* RZImageAttribute.swift */; };
 		7604BBBC20F35EB600063105 /* indexMore@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7604BBBB20F35EB500063105 /* indexMore@3x.png */; };
-		7604BBBE20F3679200063105 /* RZHtmlAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7604BBBD20F3679200063105 /* RZHtmlAttribute.swift */; };
 		760B3B5820F5EDF600848299 /* RZParagraphStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760B3B5720F5EDF600848299 /* RZParagraphStyle.swift */; };
 		763F8727240515D700781968 /* RZTapActionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763F8726240515D700781968 /* RZTapActionHelper.swift */; };
 		765173AE24060CD400D2F11D /* UILabelRZColorful.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765173AD24060CD400D2F11D /* UILabelRZColorful.swift */; };
@@ -25,7 +24,6 @@
 		765173B424060E4000D2F11D /* NSAttributedStringRZColorful.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765173B324060E4000D2F11D /* NSAttributedStringRZColorful.swift */; };
 		7699C9732122B77300C5CF6E /* RZColorful.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7699C9722122B77300C5CF6E /* RZColorful.swift */; };
 		769F5F7920F728E700E86E04 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769F5F7820F728E700E86E04 /* TestViewController.swift */; };
-		769F5F7B20F7317700E86E04 /* RZImageUrlAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769F5F7A20F7317700E86E04 /* RZImageUrlAttribute.swift */; };
 		769F5F7D20F74A5400E86E04 /* RZShadowStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769F5F7C20F74A5400E86E04 /* RZShadowStyle.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,7 +39,6 @@
 		7604BBB720F3571A00063105 /* RZTextAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZTextAttribute.swift; sourceTree = "<group>"; };
 		7604BBB920F358D600063105 /* RZImageAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZImageAttribute.swift; sourceTree = "<group>"; };
 		7604BBBB20F35EB500063105 /* indexMore@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "indexMore@3x.png"; sourceTree = "<group>"; };
-		7604BBBD20F3679200063105 /* RZHtmlAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZHtmlAttribute.swift; sourceTree = "<group>"; };
 		760B3B5720F5EDF600848299 /* RZParagraphStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZParagraphStyle.swift; sourceTree = "<group>"; };
 		763F8726240515D700781968 /* RZTapActionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZTapActionHelper.swift; sourceTree = "<group>"; };
 		765173AD24060CD400D2F11D /* UILabelRZColorful.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelRZColorful.swift; sourceTree = "<group>"; };
@@ -50,7 +47,6 @@
 		765173B324060E4000D2F11D /* NSAttributedStringRZColorful.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSAttributedStringRZColorful.swift; sourceTree = "<group>"; };
 		7699C9722122B77300C5CF6E /* RZColorful.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZColorful.swift; sourceTree = "<group>"; };
 		769F5F7820F728E700E86E04 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
-		769F5F7A20F7317700E86E04 /* RZImageUrlAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZImageUrlAttribute.swift; sourceTree = "<group>"; };
 		769F5F7C20F74A5400E86E04 /* RZShadowStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZShadowStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -112,8 +108,6 @@
 				7604BBB520F33A0400063105 /* RZColorfulConferrer.swift */,
 				7604BBB720F3571A00063105 /* RZTextAttribute.swift */,
 				7604BBB920F358D600063105 /* RZImageAttribute.swift */,
-				769F5F7A20F7317700E86E04 /* RZImageUrlAttribute.swift */,
-				7604BBBD20F3679200063105 /* RZHtmlAttribute.swift */,
 				760B3B5720F5EDF600848299 /* RZParagraphStyle.swift */,
 				769F5F7C20F74A5400E86E04 /* RZShadowStyle.swift */,
 			);
@@ -210,11 +204,9 @@
 				765173B224060DA200D2F11D /* UITextViewRZColorful.swift in Sources */,
 				765173B024060D7200D2F11D /* UITextFieldRZColorful.swift in Sources */,
 				765173B424060E4000D2F11D /* NSAttributedStringRZColorful.swift in Sources */,
-				7604BBBE20F3679200063105 /* RZHtmlAttribute.swift in Sources */,
 				769F5F7D20F74A5400E86E04 /* RZShadowStyle.swift in Sources */,
 				7604BBBA20F358D600063105 /* RZImageAttribute.swift in Sources */,
 				7604BBA120F3011E00063105 /* ViewController.swift in Sources */,
-				769F5F7B20F7317700E86E04 /* RZImageUrlAttribute.swift in Sources */,
 				760B3B5820F5EDF600848299 /* RZParagraphStyle.swift in Sources */,
 				7699C9732122B77300C5CF6E /* RZColorful.swift in Sources */,
 				7604BB9F20F3011E00063105 /* AppDelegate.swift in Sources */,

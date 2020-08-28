@@ -11,136 +11,71 @@
 import UIKit
 
 public class RZTapActionHelper: NSObject , UITextViewDelegate {
-    weak var rzTextView:UITextView? {
-        didSet {
-            self.tagert = self.rzTextView?.delegate
-            self.rzTextView?.delegate = self
-        }
-    }
-    weak var tagert : AnyObject? 
+    private weak var rzTextView:UITextView?
+    private weak var tagert : UITextViewDelegate?
     
+    public init(_ target:UITextView?) {
+        super.init()
+        self.rzTextView = target
+        self.tagert = target?.delegate
+        target?.delegate = self
+    }
+      
     public func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
-        guard tagert == nil else {
-            if tagert!.responds(to: #selector(textViewShouldBeginEditing)) {
-                return tagert!.textViewShouldBeginEditing(textView)
-            }
-            return true
-        }
-        return true
+        return (tagert?.textViewShouldBeginEditing?(textView)) ?? true
     }
     
     public func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
-        guard tagert == nil else {
-            if tagert!.responds(to: #selector(textViewShouldEndEditing)) {
-                return tagert!.textViewShouldEndEditing(textView)
-            }
-            return true
-        }
-        return true
+        return (tagert?.textViewShouldEndEditing?(textView)) ?? true
     }
     
     public func textViewDidBeginEditing(_ textView: UITextView) {
-        guard tagert == nil else {
-            if tagert!.responds(to: #selector(textViewDidBeginEditing)) {
-                tagert!.textViewDidBeginEditing(textView)
-            }
-            return
-        }
+        tagert?.textViewDidBeginEditing?(textView)
     }
     
     public func textViewDidEndEditing(_ textView: UITextView) {
-        guard tagert == nil else {
-            if tagert!.responds(to: #selector(textViewDidBeginEditing)) {
-                tagert!.textViewDidBeginEditing(textView)
-            }
-            return
-        }
+        tagert?.textViewDidBeginEditing?(textView)
     }
     
     public func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        guard tagert == nil else {
-            if tagert!.responds(to: #selector(textView(_:shouldChangeTextIn:replacementText:))) {
-                return tagert!.textView(textView, shouldChangeTextIn: range, replacementText: text)
-            }
-            return true
-        }
-        return true
+        return (tagert?.textView?(textView, shouldChangeTextIn: range, replacementText: text)) ?? true
     }
     
     public func textViewDidChange(_ textView: UITextView) {
-        guard tagert == nil else {
-            if tagert!.responds(to: #selector(textViewDidChange)) {
-                tagert!.textViewDidChange(textView)
-            }
-            return
-        }
+        tagert?.textViewDidChange?(textView)
     }
     
     public func textViewDidChangeSelection(_ textView: UITextView) {
-        guard tagert == nil else {
-            if tagert!.responds(to: #selector(textViewDidChangeSelection)) {
-                tagert!.textViewDidChangeSelection(textView)
-            }
-            return
-        }
+        tagert?.textViewDidChangeSelection?(textView)
     }
     
     @available(iOS 10.0, *)
     public func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
         let tapObj = URL.absoluteString
         let res1 = self.didTapActionWithId(tapObj: tapObj, textView: textView)
-        var res2 = true 
-        guard tagert == nil else {
-            if tagert!.responds(to: (#selector(textView(_:shouldInteractWith:in:interaction:) as (UITextView, URL, NSRange, UITextItemInteraction) -> Bool))){
-                res2 = tagert!.textView(textView, shouldInteractWith: URL, in: characterRange, interaction: interaction)
-            }
-            return res1 && res2
-        }
+        let res2 = (tagert?.textView?(textView, shouldInteractWith: URL, in: characterRange, interaction: interaction)) ?? true
         return res1 && res2
     }
     
     @available(iOS 10.0, *)
     public func textView(_ textView: UITextView, shouldInteractWith textAttachment: NSTextAttachment, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
-        guard tagert == nil else {
-            if tagert!.responds(to: #selector(textView(_:shouldInteractWith:in:interaction:)as (UITextView, NSTextAttachment, NSRange, UITextItemInteraction) -> Bool)){
-                return tagert!.textView(textView, shouldInteractWith: textAttachment, in: characterRange, interaction: interaction)
-            }
-            return true
-        }
-        return true
+        return (tagert?.textView?(textView, shouldInteractWith: textAttachment, in: characterRange, interaction: interaction)) ?? true
     }
     @available(iOS, introduced: 7.0, deprecated: 10.0)
     public func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
         let tapObj = URL.absoluteString
         let res1 = self.didTapActionWithId(tapObj: tapObj, textView: textView)
-        var res2 = true
-        guard tagert == nil else {
-            if tagert!.responds(to: (#selector(textView(_:shouldInteractWith:in:) as (UITextView, URL, NSRange) -> Bool))){
-                res2 = tagert!.textView(textView, shouldInteractWith: URL, in: characterRange)
-            }
-            return res1 && res2
-        }
+        let res2 = (tagert?.textView?(textView, shouldInteractWith: URL, in: characterRange)) ?? true
         return res1 && res2
     }
     @available(iOS, introduced: 7.0, deprecated: 10.0)
     public func textView(_ textView: UITextView, shouldInteractWith textAttachment: NSTextAttachment, in characterRange: NSRange) -> Bool {
-        guard tagert == nil else {
-            if tagert!.responds(to: #selector(textView(_:shouldInteractWith:in:)as (UITextView, NSTextAttachment, NSRange) -> Bool)){
-                return tagert!.textView(textView, shouldInteractWith: textAttachment, in: characterRange)
-            }
-            return true
-        }
-        return true
+        return (tagert?.textView?(textView, shouldInteractWith: textAttachment, in: characterRange)) ?? true
     }
-    
-    func didTapActionWithId(tapObj:String?, textView:UITextView) -> Bool {
-        if textView.rzDidTapTextView != nil {
-            return textView.rzDidTapTextView!(tapObj ?? "", textView)
-        }
-        return true
+    private func didTapActionWithId(tapObj:String?, textView:UITextView) -> Bool {
+        return (textView.rzDidTapTextView?(tapObj ?? "", textView)) ?? true
     }
-    
-    deinit {
-        rzTextView?.delegate = tagert as? UITextViewDelegate
+    deinit { 
+        rzTextView?.delegate = tagert
     }
 }

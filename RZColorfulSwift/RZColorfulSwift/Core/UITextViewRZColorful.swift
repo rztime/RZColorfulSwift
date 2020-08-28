@@ -13,7 +13,7 @@ import UIKit
 public extension UITextView {
     /// 设置富文本 （原内容将被清空）
     func rz_colorfulConfer(confer:ColorfulBlock?) -> Void {
-        self.attributedText = nil;
+        self.attributedText = nil
         self.rz_colorfulConferInsetToLocation(0, confer)
     }
     
@@ -33,29 +33,18 @@ public extension UITextView {
     
     /// 在指定位置处加入富文本
     func rz_colorfulConferInsetToLocation(_ location:Int, _ confer:ColorfulBlock?) -> Void {
-        if confer == nil {
-            return ;
-        }
-        var loc = location;
-        if loc < 0 {
-            loc = 0;
-        }
-        
-        let conferrerColorful = NSAttributedString.rz_colorfulConfer(confer: confer!)
-        if conferrerColorful?.length == 0 || conferrerColorful == nil {
-            return ;
-        }
-        var originAttr = self.attributedText
-        if  originAttr == nil{
-            originAttr = NSAttributedString.init()
-        }
-        let attr = NSMutableAttributedString.init(attributedString:originAttr!)
-        attr.insert(conferrerColorful!, at: loc)
-        self.attributedText = attr;
+        guard let confer = confer else { return }
+        guard let conferrerColorful = NSAttributedString.rz_colorfulConfer(confer: confer), conferrerColorful.length > 0 else { return }
+        let originAttr = self.attributedText ?? NSAttributedString.init()
+        let attr = NSMutableAttributedString.init(attributedString:originAttr)
+        var loc = max(location, 0)
+        loc = min(location, attr.length)
+        attr.insert(conferrerColorful, at: loc)
+        self.attributedText = attr
     }
     // 尾部的位置
     func getEndLocation() -> Int {
-        return (self.attributedText?.length)!
+        return self.attributedText?.length ?? 0
     }
     // 光标的位置
     func getCursorLocation() -> Int {
@@ -92,9 +81,7 @@ public extension UITextView {
     var rzDidTapTextView : RZDidTapTextView? {
         set {
             objc_setAssociatedObject(self, UITextView.RZPropertyKey.rzDidTapTextViewKey!, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_COPY_NONATOMIC)
-            let rzHelper = RZTapActionHelper.init()
-            rzHelper.rzTextView = self
-            self.rzHelper = rzHelper
+            self.rzHelper = RZTapActionHelper.init(self)
         }
         get {
             if let rzdtv = objc_getAssociatedObject(self, UITextView.RZPropertyKey.rzDidTapTextViewKey!) as? RZDidTapTextView {

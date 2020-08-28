@@ -122,13 +122,25 @@ public class RZParagraphStyle: NSObject {
 }
 
 public class RZTextParagraphStyle : RZParagraphStyle {
+    init(_ target: RZTextAttribute?) {
+        and = target
+    }
+    /// 连接，继续设置RZTextAttribute
     public weak var and : RZTextAttribute?
 }
 
 public class RZImageParagraphStyle : RZParagraphStyle {
+    init(_ target: RZImageAttribute?) {
+        and = target
+    }
+    /// 连接，继续设置RZImageAttribute
     public weak var and : RZImageAttribute?
 }
 
 public class RZColorfulConferrerParagraphStyle : RZParagraphStyle {
+    init(_ target: RZColorfulConferrer?) {
+        and = target
+    }
+    /// 连接，继续设置RZColorfulConferrer 
     public weak var and : RZColorfulConferrer?
 }
