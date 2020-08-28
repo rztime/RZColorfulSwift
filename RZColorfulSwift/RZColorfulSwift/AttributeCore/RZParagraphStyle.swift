@@ -8,9 +8,14 @@
 
 import UIKit
 
-public class RZParagraphStyle: NSObject {
+public class RZParagraphStyle<T: AnyObject> {
     var paragraph = NSMutableParagraphStyle.init()
     
+    init(_ target: T?) {
+        and = target
+    }
+    /// 连接词
+    weak var and: T?
     /// 段落行距
     @discardableResult
     public func lineSpacing(_ lineSpacing:CGFloat) -> Self {
@@ -119,28 +124,4 @@ public class RZParagraphStyle: NSObject {
         }
         return self
     } 
-}
-
-public class RZTextParagraphStyle : RZParagraphStyle {
-    init(_ target: RZTextAttribute?) {
-        and = target
-    }
-    /// 连接，继续设置RZTextAttribute
-    public weak var and : RZTextAttribute?
-}
-
-public class RZImageParagraphStyle : RZParagraphStyle {
-    init(_ target: RZImageAttribute?) {
-        and = target
-    }
-    /// 连接，继续设置RZImageAttribute
-    public weak var and : RZImageAttribute?
-}
-
-public class RZColorfulConferrerParagraphStyle : RZParagraphStyle {
-    init(_ target: RZColorfulConferrer?) {
-        and = target
-    }
-    /// 连接，继续设置RZColorfulConferrer 
-    public weak var and : RZColorfulConferrer?
 }

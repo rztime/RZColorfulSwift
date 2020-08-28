@@ -18,12 +18,12 @@ public enum RZImagePosition: String {
     case center = "text-align: center;"
     case right  = "text-align: right;"
 }
-public class RZImageAttribute: NSObject{
+public class RZImageAttribute {
     private let imageAttchment = NSTextAttachment.init()
     private var attributeDict = NSMutableDictionary.init()  // 一些其他属性 
     private var _url:NSURL?   // 添加url
-    private var _paragraphStyle : RZImageParagraphStyle?  // 样式
-    private var _shadow : RZImageShadowStyle?            // 阴影
+    private var _paragraphStyle : RZParagraphStyle<RZImageAttribute>?  // 样式
+    private var _shadow : RZShadowStyle<RZImageAttribute>?            // 阴影
     private var yOffset: CGFloat?
     
     public init(_ image: UIImage? = nil, _ imageUrl: String? = nil) {
@@ -45,10 +45,10 @@ public class RZImageAttribute: NSObject{
             imageAttchment.bounds = CGRect(x: bounds.origin.x, y: bounds.origin.y - y, width: bounds.size.width, height: bounds.size.height)
         }
         let attr = NSMutableAttributedString.init(attributedString: NSAttributedString.init(attachment: imageAttchment))
-        if let pa = (_paragraphStyle?.paragraph ?? para) {
+        if let pa = (_paragraphStyle?.paragraph ?? para)?.copy() {
             attr.addAttributes([NSAttributedString.Key.paragraphStyle: pa], range: NSRange.init(location: 0, length: attr.string.count))
         }
-        if let shadow = (_shadow?.shadow ?? sha) {
+        if let shadow = (_shadow?.shadow ?? sha)?.copy() {
             attr.addAttributes([NSAttributedString.Key.shadow: shadow], range: NSRange.init(location: 0, length: attr.string.count))
         }
         if let url = _url {
@@ -61,19 +61,19 @@ public class RZImageAttribute: NSObject{
 // MARK 可使用的方法
 public extension RZImageAttribute {
     // 设置段落样式，使用and连接之后可继续设置图片属性
-    var paragraphStyle : RZImageParagraphStyle? {
+    var paragraphStyle : RZParagraphStyle<RZImageAttribute>? {
         get {
             if _paragraphStyle == nil {
-                _paragraphStyle = RZImageParagraphStyle.init(self) 
+                _paragraphStyle = RZParagraphStyle<RZImageAttribute>.init(self)
             }
             return _paragraphStyle
         }
     }
     // 设置阴影，使用and连接之后可继续设置图片属性
-    var shadow : RZImageShadowStyle? {
+    var shadow : RZShadowStyle<RZImageAttribute>? {
         get {
             if _shadow == nil {
-                _shadow = RZImageShadowStyle.init(self)
+                _shadow = RZShadowStyle.init(self)
             }
             return _shadow
         }

@@ -8,10 +8,10 @@
 
 import UIKit
 
-public class RZColorfulConferrer: NSObject {
+public class RZColorfulConferrer {
     private var texts = NSMutableArray.init()
-    private var _paragraphStyle : RZColorfulConferrerParagraphStyle?
-    private var _shadow : RZColorfulConferrerShadowStyle?
+    private var _paragraphStyle: RZParagraphStyle<RZColorfulConferrer>?
+    private var _shadow: RZShadowStyle<RZColorfulConferrer>?
     
     func confer() -> NSAttributedString? {
         let text = NSMutableAttributedString.init()
@@ -64,19 +64,19 @@ public extension RZColorfulConferrer {
     }
 
     /// 段落
-    var paragraphStyle : RZColorfulConferrerParagraphStyle? {
+    var paragraphStyle: RZParagraphStyle<RZColorfulConferrer>? {
         get {
             if _paragraphStyle == nil {
-                _paragraphStyle = RZColorfulConferrerParagraphStyle.init(self) 
+                _paragraphStyle = RZParagraphStyle<RZColorfulConferrer>.init(self)
             }
             return _paragraphStyle
         }
     }
     /// 阴影
-    var shadow : RZColorfulConferrerShadowStyle? {
+    var shadow : RZShadowStyle<RZColorfulConferrer>? {
         get {
             if _shadow == nil {
-                _shadow = RZColorfulConferrerShadowStyle.init(self) 
+                _shadow = RZShadowStyle<RZColorfulConferrer>.init(self)
             }
             return _shadow
         }
