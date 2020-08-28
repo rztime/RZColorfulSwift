@@ -7,16 +7,19 @@
 //
 
 import UIKit
-// 书写方向
+
+public protocol RZAttributePackage {
+    func package(_ para: NSMutableParagraphStyle?, _ sha: NSShadow?) -> NSAttributedString?
+}
 
 public class RZTextAttribute {
+    // 书写方向
     public enum RZWriteDirection {
         case LRE
         case LRO
         case RLE
         case RLO
     }
-    
     private var text : String?
     private var attributedText: NSAttributedString?
     private var attributeDict: [NSAttributedString.Key : Any] = [:]
@@ -24,13 +27,13 @@ public class RZTextAttribute {
     private var _paragraphStyle : RZParagraphStyle<RZTextAttribute>?
     private var _shadow : RZShadowStyle<RZTextAttribute>?
     
-    init(_ text: String?) {
+    init(_ text: String? = nil, attributedText:NSAttributedString? = nil) {
         self.text = text
-    }
-    init(_ attributedText:NSAttributedString?) {
         self.attributedText = attributedText
     } 
-    func package(_ para: NSMutableParagraphStyle?, _ sha: NSShadow?) -> NSAttributedString? {
+}
+extension RZTextAttribute: RZAttributePackage {
+    public func package(_ para: NSMutableParagraphStyle?, _ sha: NSShadow?) -> NSAttributedString? {
         var attr: NSMutableAttributedString?
         if let text = self.text {
             attr = .init(string: text)
@@ -48,8 +51,15 @@ public class RZTextAttribute {
         attributeDict.removeAll()
         return attr
     }
-    deinit {
-        print("text")
+    public func package(_ attr:NSMutableAttributedString?) {
+        if let p = (_paragraphStyle?.paragraph)?.copy() {
+            attributeDict[.paragraphStyle] = p
+        }
+        if let sha = (_shadow?.shadow)?.copy() {
+            attributeDict[.shadow] = sha
+        }
+        attr?.addAttributes(attributeDict, range: .init(location: 0, length: attr?.length ?? 0))
+        attributeDict.removeAll()
     }
 }
 // MARK 可使用的方法
@@ -58,7 +68,7 @@ public extension RZTextAttribute {
     var paragraphStyle: RZParagraphStyle<RZTextAttribute>? {
         get {
             if _paragraphStyle == nil {
-                _paragraphStyle = RZParagraphStyle<RZTextAttribute>.init(self)
+                _paragraphStyle = RZParagraphStyle.init(self)
             }
             return _paragraphStyle
         }
@@ -67,7 +77,7 @@ public extension RZTextAttribute {
     var shadow: RZShadowStyle<RZTextAttribute>? {
         get {
             if _shadow == nil {
-                _shadow = RZShadowStyle<RZTextAttribute>.init(self)
+                _shadow = RZShadowStyle.init(self)
             }
             return _shadow
         }

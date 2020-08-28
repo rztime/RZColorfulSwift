@@ -16,7 +16,7 @@ public enum RZConferInsertPosition {
 }
 
 public typealias ColorfulBlock = ((_ confer: RZColorfulConferrer) -> Void)
-
+public typealias ColorfulAttrBlock = ((_ attr: RZTextAttribute) -> Void)
 
 
 

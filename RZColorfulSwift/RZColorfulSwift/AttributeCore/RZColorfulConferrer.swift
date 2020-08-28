@@ -15,10 +15,8 @@ public class RZColorfulConferrer {
     
     func confer() -> NSAttributedString? {
         let text = NSMutableAttributedString.init()
-        texts .forEach { (t) in
-            if let t = t as? RZTextAttribute, let tt = t.package(_paragraphStyle?.paragraph, _shadow?.shadow) {
-                text.append(tt)
-            } else if let t = t as? RZImageAttribute, let tt = t.package(_paragraphStyle?.paragraph, _shadow?.shadow) {
+        texts.forEach { (t) in
+            if let t = t as? RZAttributePackage, let tt = t.package(_paragraphStyle?.paragraph, _shadow?.shadow) {
                 text.append(tt)
             }
         }
@@ -41,7 +39,7 @@ public extension RZColorfulConferrer {
     func htmlString(_ htmlString:String?) -> RZTextAttribute? {
         guard let htmlString = htmlString, htmlString.count > 0 else { return nil }
         let attr = NSAttributedString.htmlString(htmlString)
-        let attribute = RZTextAttribute.init(attr)
+        let attribute = RZTextAttribute.init(attributedText: attr)
         self.texts.add(attribute)
         return attribute;
     }
@@ -57,10 +55,10 @@ public extension RZColorfulConferrer {
     /// url图片 可以设置size，maxSize
     @discardableResult
     func imageByUrl(_ imageUrl:String?) -> RZImageAttribute? {
-        guard let imageUrl = imageUrl, imageUrl.count > 0 else { return nil }
-        let attribute = RZImageAttribute.init(nil, imageUrl)
-        self.texts.add(attribute)
-        return attribute;
+        if let url = imageUrl, let u = URL.init(string: url), let imageData = try? Data.init(contentsOf: u), let image = UIImage.init(data: imageData) {
+            return self.image(image)
+        }
+        return nil
     }
 
     /// 段落

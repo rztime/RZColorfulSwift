@@ -21,11 +21,11 @@ public extension UITextView {
     func rz_colorfulConferInsetTo(position: RZConferInsertPosition, _ append:ColorfulBlock?) -> Void {
         var location = 0;
         switch position {
-        case .Default, .Cursor :
+        case .Default, .Cursor:
             location = self.getCursorLocation()
-        case .Header :
+        case .Header:
             location = 0
-        case .End :
+        case .End:
             location = self.getEndLocation()
         }
         self.rz_colorfulConferInsetToLocation(location, append)

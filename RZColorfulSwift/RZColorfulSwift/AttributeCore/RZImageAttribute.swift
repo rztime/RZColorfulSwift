@@ -26,19 +26,15 @@ public class RZImageAttribute {
     private var _shadow : RZShadowStyle<RZImageAttribute>?            // 阴影
     private var yOffset: CGFloat?
     
-    public init(_ image: UIImage? = nil, _ imageUrl: String? = nil) {
+    public init(_ image: UIImage? = nil) {
         if let image = image {
             self.imageAttchment.image = image
             self.imageAttchment.bounds = .init(origin: .zero, size: image.size)
-        } else if let url = imageUrl, let u = URL.init(string: url) {
-            if let imageData = try? Data.init(contentsOf: u), let image = UIImage.init(data: imageData) {
-                self.imageAttchment.image = image
-                self.imageAttchment.bounds = .init(origin: .zero, size: image.size)
-            }
         }
     }
-    
-    open func package(_ para: NSMutableParagraphStyle?, _ sha: NSShadow?) -> NSAttributedString? {
+}
+extension RZImageAttribute: RZAttributePackage {
+    public func package(_ para: NSMutableParagraphStyle?, _ sha: NSShadow?) -> NSAttributedString? {
         guard let _ = self.imageAttchment.image else { return nil }
         if let y = yOffset {
             let bounds = imageAttchment.bounds
@@ -64,7 +60,7 @@ public extension RZImageAttribute {
     var paragraphStyle : RZParagraphStyle<RZImageAttribute>? {
         get {
             if _paragraphStyle == nil {
-                _paragraphStyle = RZParagraphStyle<RZImageAttribute>.init(self)
+                _paragraphStyle = RZParagraphStyle.init(self)
             }
             return _paragraphStyle
         }
