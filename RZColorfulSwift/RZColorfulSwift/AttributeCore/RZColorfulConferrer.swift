@@ -13,7 +13,7 @@ public class RZColorfulConferrer {
     private var _paragraphStyle: RZParagraphStyle<RZColorfulConferrer>?
     private var _shadow: RZShadowStyle<RZColorfulConferrer>?
     
-    func confer() -> NSAttributedString? {
+    public func confer() -> NSAttributedString? {
         let text = NSMutableAttributedString.init()
         texts.forEach { (t) in
             if let t = t as? RZAttributePackage, let tt = t.package(_paragraphStyle?.paragraph, _shadow?.shadow) {
@@ -52,7 +52,7 @@ public extension RZColorfulConferrer {
         return attribute
     }
     
-    /// url图片 可以设置size，maxSize
+    /// url图片 可以设置size，maxSize （会直接下载图片，所以在主线程时会阻塞线程）
     @discardableResult
     func imageByUrl(_ imageUrl: String?) -> RZImageAttribute? {
         if let url = imageUrl, let u = URL.init(string: url), let imageData = try? Data.init(contentsOf: u), let image = UIImage.init(data: imageData) {

@@ -27,7 +27,7 @@ public class RZTextAttribute {
     private var _paragraphStyle : RZParagraphStyle<RZTextAttribute>?
     private var _shadow : RZShadowStyle<RZTextAttribute>?
     
-    init(_ text: String? = nil, attributedText:NSAttributedString? = nil) {
+    public init(_ text: String? = nil, attributedText:NSAttributedString? = nil) {
         self.text = text
         self.attributedText = attributedText
     } 

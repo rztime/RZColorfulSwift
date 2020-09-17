@@ -9,12 +9,12 @@
 import UIKit
 
 public struct RZShadowStyle<T: AnyObject> {
-    var shadow = NSShadow.init()
-    init(_ target: T?) {
+    public var shadow = NSShadow.init()
+    public init(_ target: T?) {
         and = target
     }
     /// 连接词
-    weak var and: T?
+    public weak var and: T?
     /// 阴影偏移量（范围）
     @discardableResult
     public func shadowOffset(_ shadowOffset: CGSize) -> Self {

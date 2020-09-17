@@ -56,7 +56,7 @@ extension RZImageAttribute: RZAttributePackage {
 
 // MARK 可使用的方法
 public extension RZImageAttribute {
-    // 设置段落样式，使用and连接之后可继续设置图片属性
+    /// 设置段落样式，使用and连接之后可继续设置图片属性
     var paragraphStyle : RZParagraphStyle<RZImageAttribute>? {
         get {
             if _paragraphStyle == nil {
@@ -65,7 +65,7 @@ public extension RZImageAttribute {
             return _paragraphStyle
         }
     }
-    // 设置阴影，使用and连接之后可继续设置图片属性
+    /// 设置阴影，使用and连接之后可继续设置图片属性
     var shadow : RZShadowStyle<RZImageAttribute>? {
         get {
             if _shadow == nil {

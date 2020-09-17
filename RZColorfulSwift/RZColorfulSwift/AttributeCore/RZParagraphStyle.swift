@@ -9,13 +9,13 @@
 import UIKit
 
 public class RZParagraphStyle<T: AnyObject> {
-    var paragraph = NSMutableParagraphStyle.init()
+    public var paragraph = NSMutableParagraphStyle.init()
     
-    init(_ target: T?) {
+    public init(_ target: T?) {
         and = target
     }
     /// 连接词
-    weak var and: T?
+    public weak var and: T?
     /// 段落行距
     @discardableResult
     public func lineSpacing(_ lineSpacing: CGFloat) -> Self {

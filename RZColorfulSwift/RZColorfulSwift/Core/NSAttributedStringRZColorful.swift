@@ -42,7 +42,7 @@ public extension NSMutableAttributedString {
 
 // MARK: - NSAttributedString 富文本与html之间的互换关联
 extension NSAttributedString {
-    // 将html转换成 NSAttributedString
+    /// 将html转换成 NSAttributedString
     static func htmlString(_ html: String?) ->NSAttributedString? {
         guard let html = html, html.count > 0 else {return nil}
         if let data = html.data(using: String.Encoding.unicode) {
