@@ -17,19 +17,19 @@ public struct RZShadowStyle<T: AnyObject> {
     weak var and: T?
     /// 阴影偏移量（范围）
     @discardableResult
-    public func shadowOffset(_ shadowOffset:CGSize) -> Self {
+    public func shadowOffset(_ shadowOffset: CGSize) -> Self {
         shadow.shadowOffset = shadowOffset
         return self
     } 
     /// 模糊 值越大，越模糊
     @discardableResult
-    public func shadowBlurRadius(_ shadowBlurRadius:CGFloat) -> Self {
+    public func shadowBlurRadius(_ shadowBlurRadius: CGFloat) -> Self {
         shadow.shadowBlurRadius = shadowBlurRadius
         return self
     }
     /// 阴影颜色
     @discardableResult
-    public func shadowColor(_ shadowColor:UIColor) -> Self {
+    public func shadowColor(_ shadowColor: UIColor) -> Self {
         shadow.shadowColor = shadowColor
         return self
     }

@@ -12,19 +12,19 @@ import UIKit
 // MARK: - NSAttributedString 设置富文本的属性
 public extension NSAttributedString {
     /// 富文本 归纳
-    static func rz_colorfulConfer(confer:ColorfulBlock) -> NSAttributedString? {
+    static func rz_colorfulConfer(confer: ColorfulBlock) -> NSAttributedString? {
         let connferrer = RZColorfulConferrer.init()
         confer(connferrer)
         return connferrer.confer()
     }
     /// 追加
-    func attributedStringByAppend(attributedString : NSAttributedString) -> NSAttributedString {
+    func attributedStringByAppend(attributedString: NSAttributedString) -> NSAttributedString {
         let attr = NSMutableAttributedString.init(attributedString: self)
         attr.append(attributedString)
         return NSAttributedString.init(attributedString: attr)
     }
     /// 给富文本添加属性
-    func rz_colorfulAttr(attr:ColorfulAttrBlock) -> NSAttributedString? {
+    func rz_colorfulAttr(attr: ColorfulAttrBlock) -> NSAttributedString? {
         let attrx = RZTextAttribute.init(attributedText: self)
         attr(attrx)
         return attrx.package(nil, nil)
@@ -33,7 +33,7 @@ public extension NSAttributedString {
 // MARK: - NSMutableAttributedString 直接添加富文本的属性
 public extension NSMutableAttributedString {
     /// 给富文本添加属性
-    func rz_colorfulAttrAppend(attr:ColorfulAttrBlock) {
+    func rz_colorfulAttrAppend(attr: ColorfulAttrBlock) {
         let attrx = RZTextAttribute.init(attributedText: self)
         attr(attrx)
         attrx.package(self)
@@ -73,7 +73,7 @@ extension NSAttributedString {
      @param urls 图片的url，url需要先获取图片，然后自行上传到服务器，最后按照【- rz_images】此方法得到的图片顺序排列url
      @return HTML标签
      */
-    func rz_codingToHtmlWithImagesURLSIfHad(urls:[String]?) -> String? {
+    func rz_codingToHtmlWithImagesURLSIfHad(urls: [String]?) -> String? {
         let tempAttr = NSMutableAttributedString.init(attributedString: self)
         var idx = 0
         var tempPlaceHolders: [String] = []
@@ -119,7 +119,7 @@ public extension NSAttributedString {
      固定宽度，计算高
      @param width 固定宽度
      */
-    func sizeWithConditionWidth(width:Float) -> CGSize {
+    func sizeWithConditionWidth(width: Float) -> CGSize {
         var size = self.sizeWithCondition(size: CGSize.init(width: CGFloat(width), height: CGFloat.greatestFiniteMagnitude))
         size.width = CGFloat(width)
         return size
@@ -128,8 +128,8 @@ public extension NSAttributedString {
      固定高度，计算宽
      @param height 固定高度
      */
-    func sizeWithConditionHeight(height:Float) -> CGSize {
-        var size = self.sizeWithCondition(size: CGSize.init(width: CGFloat.greatestFiniteMagnitude, height:CGFloat(height)))
+    func sizeWithConditionHeight(height: Float) -> CGSize {
+        var size = self.sizeWithCondition(size: CGSize.init(width: CGFloat.greatestFiniteMagnitude, height: CGFloat(height)))
         size.height = CGFloat(height)
         return size
     }
@@ -142,7 +142,7 @@ public extension NSAttributedString {
      定高时，计算得到宽度 （此时忽略高度）
      @return <#return value description#>
      */
-    func sizeWithCondition(size:CGSize) -> CGSize {
+    func sizeWithCondition(size: CGSize) -> CGSize {
         let rect = self.boundingRect(with: size, options: [NSStringDrawingOptions.usesLineFragmentOrigin, NSStringDrawingOptions.usesFontLeading], context: nil)
         return rect.size
     }

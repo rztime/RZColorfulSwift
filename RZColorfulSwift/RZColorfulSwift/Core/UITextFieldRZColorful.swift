@@ -12,13 +12,13 @@ import UIKit
 // MARK: - 对TextField的富文本支持
 public extension UITextField { 
     /// 设置富文本 （原内容将被清空）
-    func rz_colorfulConfer(confer:ColorfulBlock?) -> Void {
+    func rz_colorfulConfer(confer: ColorfulBlock?) -> Void {
         self.attributedText = nil
         self.rz_colorfulConferInsetToLocation(0, confer)
     }
     
     /// 在指定位置插入富文本
-    func rz_colorfulConferInsetTo(position: RZConferInsertPosition, _ append:ColorfulBlock?) -> Void {
+    func rz_colorfulConferInsetTo(position: RZConferInsertPosition, _ append: ColorfulBlock?) -> Void {
         var location = 0
         switch position {
         case .Default, .Cursor:
@@ -32,7 +32,7 @@ public extension UITextField {
     }
     
     /// 在指定位置处加入富文本
-    func rz_colorfulConferInsetToLocation(_ location:Int, _ confer:ColorfulBlock?) -> Void {
+    func rz_colorfulConferInsetToLocation(_ location: Int, _ confer: ColorfulBlock?) -> Void {
         guard let confer = confer else { return }
         guard let conferrerColorful = NSAttributedString.rz_colorfulConfer(confer: confer), conferrerColorful.length > 0 else { return }
         let originAttr = self.attributedText ?? NSAttributedString.init()

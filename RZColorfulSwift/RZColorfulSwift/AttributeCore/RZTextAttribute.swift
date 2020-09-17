@@ -51,7 +51,7 @@ extension RZTextAttribute: RZAttributePackage {
         attributeDict.removeAll()
         return attr
     }
-    public func package(_ attr:NSMutableAttributedString?) {
+    public func package(_ attr: NSMutableAttributedString?) {
         if let p = (_paragraphStyle?.paragraph)?.copy() {
             attributeDict[.paragraphStyle] = p
         }

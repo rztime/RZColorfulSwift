@@ -12,14 +12,14 @@ import UIKit
 // MARK: - 对TextView的富文本的支持
 public extension UITextView {
     /// 设置富文本 （原内容将被清空）
-    func rz_colorfulConfer(confer:ColorfulBlock?) -> Void {
+    func rz_colorfulConfer(confer: ColorfulBlock?) -> Void {
         self.attributedText = nil
         self.rz_colorfulConferInsetToLocation(0, confer)
     }
     
     /// 在指定位置插入富文本
-    func rz_colorfulConferInsetTo(position: RZConferInsertPosition, _ append:ColorfulBlock?) -> Void {
-        var location = 0;
+    func rz_colorfulConferInsetTo(position: RZConferInsertPosition, _ append: ColorfulBlock?) -> Void {
+        var location = 0
         switch position {
         case .Default, .Cursor:
             location = self.getCursorLocation()
@@ -32,11 +32,11 @@ public extension UITextView {
     }
     
     /// 在指定位置处加入富文本
-    func rz_colorfulConferInsetToLocation(_ location:Int, _ confer:ColorfulBlock?) -> Void {
+    func rz_colorfulConferInsetToLocation(_ location: Int, _ confer: ColorfulBlock?) -> Void {
         guard let confer = confer else { return }
         guard let conferrerColorful = NSAttributedString.rz_colorfulConfer(confer: confer), conferrerColorful.length > 0 else { return }
         let originAttr = self.attributedText ?? NSAttributedString.init()
-        let attr = NSMutableAttributedString.init(attributedString:originAttr)
+        let attr = NSMutableAttributedString.init(attributedString: originAttr)
         var loc = max(location, 0)
         loc = min(location, attr.length)
         attr.insert(conferrerColorful, at: loc)
@@ -53,7 +53,7 @@ public extension UITextView {
     
     // 给UItextView添加点击属性时，点击的事件的回调，
     // 默认 return false  （true时，将打开浏览器）
-    func rzDidTapTextView(rzdidTapTextView:@escaping RZDidTapTextView) {
+    func rzDidTapTextView(rzdidTapTextView: @escaping RZDidTapTextView) {
         self.rzDidTapTextView = rzdidTapTextView
     }
 }
@@ -65,7 +65,7 @@ public extension UITextView {
         static let rzDidTapTextViewKey = UnsafeRawPointer.init(bitPattern: "rzDidTapTextViewKey".hashValue)
     }
     
-    var rzHelper:RZTapActionHelper? {
+    var rzHelper: RZTapActionHelper? {
         set {
             objc_setAssociatedObject(self, UITextView.RZPropertyKey.rzHelperKey!, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
@@ -77,7 +77,7 @@ public extension UITextView {
         }
     }
     // 点击事件
-    typealias RZDidTapTextView = (_ tapObj:String, _ textView:UITextView) -> Bool
+    typealias RZDidTapTextView = (_ tapObj: String, _ textView: UITextView) -> Bool
     var rzDidTapTextView : RZDidTapTextView? {
         set {
             objc_setAssociatedObject(self, UITextView.RZPropertyKey.rzDidTapTextViewKey!, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_COPY_NONATOMIC)

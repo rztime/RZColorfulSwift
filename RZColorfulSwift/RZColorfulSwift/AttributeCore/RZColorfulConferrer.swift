@@ -28,7 +28,7 @@ public class RZColorfulConferrer {
 public extension RZColorfulConferrer { 
     /// 文字
     @discardableResult
-    func text(_ text:String?) ->  RZTextAttribute?{
+    func text(_ text: String?) ->  RZTextAttribute?{
         guard let text = text, text.count > 0 else { return nil }
         let attribute = RZTextAttribute.init(text)
         self.texts.add(attribute)
@@ -36,7 +36,7 @@ public extension RZColorfulConferrer {
     }
     /// 富文本（如网页源码）
     @discardableResult
-    func htmlString(_ htmlString:String?) -> RZTextAttribute? {
+    func htmlString(_ htmlString: String?) -> RZTextAttribute? {
         guard let htmlString = htmlString, htmlString.count > 0 else { return nil }
         let attr = NSAttributedString.htmlString(htmlString)
         let attribute = RZTextAttribute.init(attributedText: attr)
@@ -45,7 +45,7 @@ public extension RZColorfulConferrer {
     }
     /// 图片 可以设置bounds
     @discardableResult
-    func image(_ image:UIImage?) -> RZImageAttribute? {
+    func image(_ image: UIImage?) -> RZImageAttribute? {
         guard let image = image else { return nil }
         let attribute = RZImageAttribute.init(image)
         self.texts.add(attribute)
@@ -54,7 +54,7 @@ public extension RZColorfulConferrer {
     
     /// url图片 可以设置size，maxSize
     @discardableResult
-    func imageByUrl(_ imageUrl:String?) -> RZImageAttribute? {
+    func imageByUrl(_ imageUrl: String?) -> RZImageAttribute? {
         if let url = imageUrl, let u = URL.init(string: url), let imageData = try? Data.init(contentsOf: u), let image = UIImage.init(data: imageData) {
             return self.image(image)
         }
@@ -71,7 +71,7 @@ public extension RZColorfulConferrer {
         }
     }
     /// 阴影
-    var shadow : RZShadowStyle<RZColorfulConferrer>? {
+    var shadow: RZShadowStyle<RZColorfulConferrer>? {
         get {
             if _shadow == nil {
                 _shadow = RZShadowStyle<RZColorfulConferrer>.init(self)

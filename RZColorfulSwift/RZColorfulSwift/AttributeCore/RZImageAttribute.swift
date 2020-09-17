@@ -97,7 +97,7 @@ public extension RZImageAttribute {
     /// 最大尺寸 默认宽为（屏幕宽-10），  其中一个为0时，自适应
     /// 高为0时，高度自适应
     @discardableResult
-    func maxSize(_ size: CGSize, align:RZImageAttachmentHorizontalAlign = .bottom, font:UIFont = .systemFont(ofSize: 0)) -> Self {
+    func maxSize(_ size: CGSize, align: RZImageAttachmentHorizontalAlign = .bottom, font: UIFont = .systemFont(ofSize: 0)) -> Self {
         var s : CGSize = imageAttchment.bounds.size
         if size.width < s.width {
             s.width = size.width
@@ -110,7 +110,7 @@ public extension RZImageAttribute {
     
     /// 图片的size （大小） 与前后文本对齐的方式  font为前后文本的字体 ： 其中一个为0时，自适应
     @discardableResult
-    func size(_ size: CGSize, align:RZImageAttachmentHorizontalAlign = .bottom, font:UIFont = .systemFont(ofSize: 0)) -> Self {
+    func size(_ size: CGSize, align: RZImageAttachmentHorizontalAlign = .bottom, font: UIFont = .systemFont(ofSize: 0)) -> Self {
         var size = size
         if size.width == 0 && size.height == 0 {
             size = imageAttchment.bounds.size
@@ -148,7 +148,7 @@ public extension RZImageAttribute {
     }
     // 添加url
     @discardableResult
-    func tapAction(_ tapAction:String) -> Self {
+    func tapAction(_ tapAction: String) -> Self {
         self._url = NSURL.init(string: tapAction)
         return self
     }

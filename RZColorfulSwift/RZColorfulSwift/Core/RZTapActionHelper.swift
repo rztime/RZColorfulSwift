@@ -14,7 +14,7 @@ public class RZTapActionHelper: NSObject , UITextViewDelegate {
     private weak var rzTextView: UITextView?
     private weak var target: UITextViewDelegate?
     
-    public init(_ target:UITextView?) {
+    public init(_ target: UITextView?) {
         super.init()
         self.rzTextView = target
         self.target = target?.delegate
@@ -72,7 +72,7 @@ public class RZTapActionHelper: NSObject , UITextViewDelegate {
     public func textView(_ textView: UITextView, shouldInteractWith textAttachment: NSTextAttachment, in characterRange: NSRange) -> Bool {
         return (target?.textView?(textView, shouldInteractWith: textAttachment, in: characterRange)) ?? true
     }
-    private func didTapActionWithId(tapObj:String?, textView:UITextView) -> Bool {
+    private func didTapActionWithId(tapObj: String?, textView: UITextView) -> Bool {
         return (textView.rzDidTapTextView?(tapObj ?? "", textView)) ?? true
     }
     deinit { 

@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "RZColorfulSwift"
-  s.version      = "0.1.2"
+  s.version      = "0.1.3"
   s.summary      = "NSAttributedString富文本的快捷设置方法集合,以及UITextView、UITextField、UILabel富文本简单优雅的使用"
   s.description  = <<-DESC
   富文本方法集合，使用链式的方法快速简单的使用富文本NSAttributedString的功能
@@ -9,6 +9,7 @@ Pod::Spec.new do |s|
   s.license      = "LICENSE"
   s.author       = { "rztime" => "rztime@vip.qq.com" }
   
+  s.swift_versions = ['4.2', '5.0']
   s.platform     = :ios, "8.0"
 
   s.source       = { :git => "https://github.com/rztime/RZColorfulSwift.git", :tag => "#{s.version}" }
