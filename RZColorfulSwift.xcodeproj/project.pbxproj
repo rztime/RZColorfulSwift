@@ -25,6 +25,8 @@
 		7699C9732122B77300C5CF6E /* RZColorful.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7699C9722122B77300C5CF6E /* RZColorful.swift */; };
 		769F5F7920F728E700E86E04 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769F5F7820F728E700E86E04 /* TestViewController.swift */; };
 		769F5F7D20F74A5400E86E04 /* RZShadowStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769F5F7C20F74A5400E86E04 /* RZShadowStyle.swift */; };
+		B2D0C16C25134F3B00CD569B /* NSAttributedStringRZHtml.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D0C16B25134F3B00CD569B /* NSAttributedStringRZHtml.swift */; };
+		B2D0C16F25135F3900CD569B /* RZHtmlTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D0C16E25135F3900CD569B /* RZHtmlTransform.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +50,8 @@
 		7699C9722122B77300C5CF6E /* RZColorful.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZColorful.swift; sourceTree = "<group>"; };
 		769F5F7820F728E700E86E04 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		769F5F7C20F74A5400E86E04 /* RZShadowStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZShadowStyle.swift; sourceTree = "<group>"; };
+		B2D0C16B25134F3B00CD569B /* NSAttributedStringRZHtml.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSAttributedStringRZHtml.swift; sourceTree = "<group>"; };
+		B2D0C16E25135F3900CD569B /* RZHtmlTransform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RZHtmlTransform.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +127,8 @@
 				765173AF24060D7200D2F11D /* UITextFieldRZColorful.swift */,
 				765173B124060DA200D2F11D /* UITextViewRZColorful.swift */,
 				765173B324060E4000D2F11D /* NSAttributedStringRZColorful.swift */,
+				B2D0C16B25134F3B00CD569B /* NSAttributedStringRZHtml.swift */,
+				B2D0C16E25135F3900CD569B /* RZHtmlTransform.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -212,6 +218,8 @@
 				7604BB9F20F3011E00063105 /* AppDelegate.swift in Sources */,
 				765173AE24060CD400D2F11D /* UILabelRZColorful.swift in Sources */,
 				763F8727240515D700781968 /* RZTapActionHelper.swift in Sources */,
+				B2D0C16C25134F3B00CD569B /* NSAttributedStringRZHtml.swift in Sources */,
+				B2D0C16F25135F3900CD569B /* RZHtmlTransform.swift in Sources */,
 				769F5F7920F728E700E86E04 /* TestViewController.swift in Sources */,
 				7604BBB820F3571A00063105 /* RZTextAttribute.swift in Sources */,
 			);

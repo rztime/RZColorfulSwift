@@ -27,11 +27,11 @@ class TestViewController: UIViewController {
         scroview.contentSize = CGSize.init(width: 0, height: 1000)
 //        text.isEditable = false
         text.rz_colorfulConfer { (confer) in
-            confer.paragraphStyle?.lineSpacing(10).paragraphSpacingBefore(15).alignment(.left).and?.shadow?.shadowColor(.black).shadowOffset(.init(width: 3, height: 3)).shadowBlurRadius(3)
-            confer.paragraphStyle?.lineSpacing(20).and?.shadow?.shadowBlurRadius(3)
-            confer.text("测试\n")?.textColor(.red).font(.systemFont(ofSize: 18))
-            confer.htmlString("<p>测试文本</p><p>测试文本</p>")?.font(.systemFont(ofSize: 20)).textColor(.red)
-            confer.image(UIImage.init(named: "indexMore"))?.bounds(CGRect.init(x: 0, y: 0, width: 20, height: 20))
+//            confer.paragraphStyle?.lineSpacing(10).paragraphSpacingBefore(15).alignment(.left).and?.shadow?.shadowColor(.black).shadowOffset(.init(width: 3, height: 3)).shadowBlurRadius(3)
+//            confer.paragraphStyle?.lineSpacing(20).and?.shadow?.shadowBlurRadius(3)
+//            confer.text("测试\n")?.textColor(.red).font(.systemFont(ofSize: 18))
+//            confer.htmlString("<p>测试文本</p><p>测试文本</p>")?.font(.systemFont(ofSize: 20)).textColor(.red)
+//            confer.image(UIImage.init(named: "indexMore"))?.bounds(CGRect.init(x: 0, y: 0, width: 20, height: 20))
 //            confer.text("  姓名 : ")?.font(UIFont.systemFont(ofSize: 15)).textColor(.gray)
 //            confer.text("rztime")?.font(UIFont.systemFont(ofSize: 15)).textColor(.black).shadow?.shadowBlurRadius(4).shadowOffset(.init(width: 4, height: 4)).shadowColor(.red).and?.backgroundColor(.green)
 //
@@ -48,20 +48,30 @@ class TestViewController: UIViewController {
 //            confer.text("\n")
 //            confer.image(UIImage.init(named: "indexMore"))?.size(CGSize.init(width: 50, height: 50), align: .center, font: UIFont.systemFont(ofSize: 15)).tapAction("xkkkk.com")
 //            confer.text("  图片居中对齐 : ")?.font(UIFont.systemFont(ofSize: 15)).textColor(.gray)
+            confer.text("删除线 下划线")?.strikethroughStyle(.single).strikethroughColor(.black).textColor(.red).font(.systemFont(ofSize: 17)).underlineStyle(.single).underlineColor(.red)
+            confer.text("\n")
+            confer.text("斜体 扩展")?.obliqueness(1).textColor(.red).font(.systemFont(ofSize: 17)).expansion(1)
+            confer.text("\n")
+            confer.text("背景色")?.backgroundColor(.gray).textColor(.red).font(.systemFont(ofSize: 17))
+            confer.text("\n")
+            confer.text("描边")?.strokeWidth(1).strokeColor(.blue).textColor(.red).font(.systemFont(ofSize: 17))
+            confer.text("\n")
+            confer.text("下划线")?.textColor(.red).font(.systemFont(ofSize: 17)).underlineStyle(.single).underlineColor(.black)
+            confer.text("\n")
+            confer.text("删除线")?.strikethroughStyle(.single).strikethroughColor(.black).textColor(.red).font(.systemFont(ofSize: 17))
+            confer.text("\n")
+            confer.text("扩展")?.textColor(.red).font(.systemFont(ofSize: 17)).expansion(1)
+            confer.text("\n")
+            confer.text("斜体")?.obliqueness(1).textColor(.red).font(.systemFont(ofSize: 17))
+            confer.text("\n")
         }
-//        text.attributedText = text.attributedText.mutableCopy().rz_colorfulAttr(attr: { (att) in
-//            att.backgroundColor(.red).font(.systemFont(ofSize: 30)).tapAction("111111111").underlineColor(.blue).underlineStyle(.double)
-//        })
-        let att = NSMutableAttributedString.init(string: "1\n2")
-        att.rz_colorfulAttrAppend { (attr) in
-            attr.backgroundColor(.red).font(.systemFont(ofSize: 18)).paragraphStyle?.lineSpacing(50).and?.shadow?.shadowColor(.blue).shadowOffset(.init(width: 10, height: 10)).shadowBlurRadius(3).and?.textColor(.black)
-        }
-        text.attributedText = att
         text.delegate = self;
         text.rzDidTapTextView { (tabObj, textview) -> Bool in
             print("text:\(tabObj)")
             return false
-        } 
+        }
+        let tt = text.attributedText.rz_codingToCompleteHtmlByWeb()
+        print("\(tt ?? "")")
     }
 
     override func didReceiveMemoryWarning() {

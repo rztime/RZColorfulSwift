@@ -19,6 +19,30 @@ public class RZTextAttribute {
         case LRO
         case RLE
         case RLO
+        
+        func rawValue() -> Int {
+            var e: Int = 0
+            var o: Int = 0
+            if #available(iOS 9.0, *) {
+                e = NSWritingDirectionFormatType.embedding.rawValue
+                o = NSWritingDirectionFormatType.override.rawValue
+            } else {
+                e = NSTextWritingDirection.embedding.rawValue
+                o = NSTextWritingDirection.override.rawValue
+            }
+            var value: Int?
+            switch self {
+            case .LRE:
+                value = NSWritingDirection.leftToRight.rawValue | e
+            case .LRO:
+                value = NSWritingDirection.leftToRight.rawValue | o
+            case .RLE:
+                value = NSWritingDirection.rightToLeft.rawValue | e
+            case .RLO:
+                value = NSWritingDirection.rightToLeft.rawValue | o
+            }
+            return value ?? 0
+        }
     }
     private var text : String?
     private var attributedText: NSAttributedString?
@@ -211,27 +235,7 @@ public extension RZTextAttribute {
     /// - Parameter writingDirection: NSWritingDirection and NSWritingDirectionFormatType
     @discardableResult
     func writingDirection(_ writingDirection:RZTextAttribute.RZWriteDirection) -> Self {
-        var e: Int = 0
-        var o: Int = 0
-        if #available(iOS 9.0, *) {
-            e = NSWritingDirectionFormatType.embedding.rawValue
-            o = NSWritingDirectionFormatType.override.rawValue
-        } else {
-            e = NSTextWritingDirection.embedding.rawValue
-            o = NSTextWritingDirection.override.rawValue
-        }
-        var value: Any?
-        switch writingDirection {
-            case .LRE:
-                value = NSWritingDirection.leftToRight.rawValue | e
-            case .LRO:
-                value = NSWritingDirection.leftToRight.rawValue | o
-            case .RLE:
-                value = NSWritingDirection.rightToLeft.rawValue | e
-            case .RLO:
-                value = NSWritingDirection.rightToLeft.rawValue | o
-        }
-        attributeDict[.writingDirection] = [value]
+        attributeDict[.writingDirection] = [writingDirection.rawValue()]
         return self
     }
     /// 横竖排版 0：横版 1：竖版
