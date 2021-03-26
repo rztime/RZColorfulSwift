@@ -31,9 +31,12 @@ public extension RZColorfulSwiftProtocol {
     }
 }
 
-extension UILabel: RZColorfulSwiftProtocol { }
-extension UITextView: RZColorfulSwiftProtocol { }
-extension UITextField: RZColorfulSwiftProtocol { }
+extension UIView: RZColorfulSwiftProtocol { }
+//extension UILabel: RZColorfulSwiftProtocol { }
+//extension UITextView: RZColorfulSwiftProtocol { }
+//extension UITextField: RZColorfulSwiftProtocol { }
+//extension UIButton: RZColorfulSwiftProtocol { }
+
 extension NSAttributedString: RZColorfulSwiftProtocol { }
 extension UIColor: RZColorfulSwiftProtocol { }
 
