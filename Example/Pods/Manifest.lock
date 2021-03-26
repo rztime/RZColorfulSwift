@@ -1,0 +1,16 @@
+PODS:
+  - RZColorfulSwift (0.2.2)
+
+DEPENDENCIES:
+  - RZColorfulSwift (from `../`)
+
+EXTERNAL SOURCES:
+  RZColorfulSwift:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  RZColorfulSwift: 0a9c5a2d52d15286ee907b9ae8fe3097a21586ed
+
+PODFILE CHECKSUM: 0427a99dd820c0b123646f7248c7ac4cc2170994
+
+COCOAPODS: 1.10.1

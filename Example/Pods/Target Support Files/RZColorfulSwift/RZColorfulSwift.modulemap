@@ -1,0 +1,6 @@
+framework module RZColorfulSwift {
+  umbrella header "RZColorfulSwift-umbrella.h"
+
+  export *
+  module * { export * }
+}

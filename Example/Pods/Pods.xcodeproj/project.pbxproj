@@ -1,0 +1,836 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		08D7ADF6BB5B0907323FED68B156FD42 /* Pods-RZColorfulSwift_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B802786EBE366F07F56F7B5DF52193 /* Pods-RZColorfulSwift_Example-dummy.m */; };
+		14D7DAE6A33C86745FD80410218FE959 /* HtmlTransformRZ.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50E875FA88600C5C18ECD96582C04F6 /* HtmlTransformRZ.swift */; };
+		178AA24186A750AF9EE858A521F3CF4E /* TapActionHelperRZ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1005377D71EAE5FD93CF8AE600D3CD3B /* TapActionHelperRZ.swift */; };
+		18F7986FEDDEF87693FD29037CDADF10 /* ParagraphStyleRZ.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBA1872C85447F493DF341C38BF4C7D /* ParagraphStyleRZ.swift */; };
+		2B1457E54680098F43D453EDFB667FAB /* UITextViewRZColorful.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E892D7E1F0EC7ED926F5277BEE5B855 /* UITextViewRZColorful.swift */; };
+		4484150F5136B9C61852A7CBE6CDA00B /* NSAttributedStringRZHtml.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A544C14696D464DDB583EC909AA24A0 /* NSAttributedStringRZHtml.swift */; };
+		5653EFA7E6629766019988587EDB4D57 /* Pods-RZColorfulSwift_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 354D96C7833AC642BFCA6909F12D50E1 /* Pods-RZColorfulSwift_Tests-dummy.m */; };
+		5A854182CA82CC695A4BE90EA32669AA /* TextAttributeRZ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E04EBBB77AA95A7B93486DE34C341C /* TextAttributeRZ.swift */; };
+		5D972611112A65BEDB83741DE5439E28 /* ImageAttributeRZ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF7BF6629101B2D255CB8DA825229B0 /* ImageAttributeRZ.swift */; };
+		65D5277709137579B8311A955099BF68 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		75670C5B51B14441FB4F9F266E439EB8 /* RZColorfulSwift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7BC6B5AB014BA22F2D16159C349EBEB7 /* RZColorfulSwift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7995AA9CD7F116AAC75F2A4FB6CDEC8B /* Pods-RZColorfulSwift_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B2E3A64B34BE20925E78C42904318E1F /* Pods-RZColorfulSwift_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		844F7955C981F1437644CF821D597808 /* Pods-RZColorfulSwift_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B18F712F53E6AAB3331925A83563BFC /* Pods-RZColorfulSwift_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		973894CCA9F13BCF906CD67DEC9FCDEB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		A70C6C952510186B6BB9D2BF3215C0E1 /* NSAttributedStringRZColorful.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E1C7B37C43CB34C17A41931EC6C282 /* NSAttributedStringRZColorful.swift */; };
+		A71B2B821D98FB11BAEA75D94854889F /* RZColorfulSwift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D88F0CDDFBCC5EF5B7FECF821D05CE /* RZColorfulSwift-dummy.m */; };
+		AF8A000002D5018E1A999AEA3ABCE372 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		B27E4783893BCE7D776863F8A85E15E4 /* UITextFieldRZColorful.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFAC14F86E37F50F4574F786FC52A3A9 /* UITextFieldRZColorful.swift */; };
+		CF375BCBD17CBFCFDB902775F5849BD2 /* UILabelRZColorful.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615E0D423C3EB5D4A0620021F0F5B43D /* UILabelRZColorful.swift */; };
+		D118F7FC8A2631ED68381D6DF8850B6B /* RZColorfulSwiftBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F391DCF02BEE732C9B0B3033CC24B347 /* RZColorfulSwiftBase.swift */; };
+		D6570A77E57D20BB526994455A666427 /* ShadowStyleRZ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9E9F7A8D84ECA810421419DE402F4E /* ShadowStyleRZ.swift */; };
+		ED8673132236D4F7CE10627ACE217E30 /* ColorfulConferrerRZ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598E0792D52570F838A30BE4DDF7856C /* ColorfulConferrerRZ.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0B94F9263E04E93D52E40A70FF72603C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6B745EBB76CA025E22D5E000F28574F4;
+			remoteInfo = "Pods-RZColorfulSwift_Example";
+		};
+		D2B53F26F9EE09F2502EC15B9D249174 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 87C6E9B7582B17D114306D26755D8FFA;
+			remoteInfo = RZColorfulSwift;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		003D182FEF733CD9537CA3B3B3689545 /* Pods-RZColorfulSwift_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RZColorfulSwift_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		0E657B76159D34C7773B397576B34C0C /* Pods-RZColorfulSwift_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RZColorfulSwift_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		0E892D7E1F0EC7ED926F5277BEE5B855 /* UITextViewRZColorful.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UITextViewRZColorful.swift; sourceTree = "<group>"; };
+		1005377D71EAE5FD93CF8AE600D3CD3B /* TapActionHelperRZ.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TapActionHelperRZ.swift; sourceTree = "<group>"; };
+		26FB78756C4C29518DB80CB3B5418AD1 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		2D0F5F956F5A50928B0B821FB002881E /* Pods-RZColorfulSwift_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RZColorfulSwift_Example-frameworks.sh"; sourceTree = "<group>"; };
+		31D3423EDF8184853B0F33C7225B2C4A /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		354D96C7833AC642BFCA6909F12D50E1 /* Pods-RZColorfulSwift_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-RZColorfulSwift_Tests-dummy.m"; sourceTree = "<group>"; };
+		3B18F712F53E6AAB3331925A83563BFC /* Pods-RZColorfulSwift_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-RZColorfulSwift_Example-umbrella.h"; sourceTree = "<group>"; };
+		4A873B37E8D9991033D941A6FE82FAA4 /* RZColorfulSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RZColorfulSwift.release.xcconfig; sourceTree = "<group>"; };
+		56D6CC20356FC67DCF8DE226D4C7B2EC /* Pods-RZColorfulSwift_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-RZColorfulSwift_Example.modulemap"; sourceTree = "<group>"; };
+		58D88F0CDDFBCC5EF5B7FECF821D05CE /* RZColorfulSwift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "RZColorfulSwift-dummy.m"; sourceTree = "<group>"; };
+		598E0792D52570F838A30BE4DDF7856C /* ColorfulConferrerRZ.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ColorfulConferrerRZ.swift; sourceTree = "<group>"; };
+		61205FFB72B81BBB5F379D2C5C512710 /* Pods-RZColorfulSwift_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RZColorfulSwift_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		615E0D423C3EB5D4A0620021F0F5B43D /* UILabelRZColorful.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UILabelRZColorful.swift; sourceTree = "<group>"; };
+		6E80B4E49BE1CE3EB50F0EE52A078068 /* RZColorfulSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = RZColorfulSwift.framework; path = RZColorfulSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		77B301AD3AE649BBB72344076645DAA1 /* Pods-RZColorfulSwift_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RZColorfulSwift_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		78E04EBBB77AA95A7B93486DE34C341C /* TextAttributeRZ.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TextAttributeRZ.swift; sourceTree = "<group>"; };
+		7A544C14696D464DDB583EC909AA24A0 /* NSAttributedStringRZHtml.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NSAttributedStringRZHtml.swift; sourceTree = "<group>"; };
+		7B6EF64D005FA88A120C646A1B0A312B /* Pods-RZColorfulSwift_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-RZColorfulSwift_Tests.modulemap"; sourceTree = "<group>"; };
+		7BC6B5AB014BA22F2D16159C349EBEB7 /* RZColorfulSwift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RZColorfulSwift-umbrella.h"; sourceTree = "<group>"; };
+		82B4976644A6E1ECFB99BF712F8BD844 /* Pods-RZColorfulSwift_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RZColorfulSwift_Example-Info.plist"; sourceTree = "<group>"; };
+		88B41C51C46874B7E57CAEE7CEF06C05 /* RZColorfulSwift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = RZColorfulSwift.modulemap; sourceTree = "<group>"; };
+		8BF7BF6629101B2D255CB8DA825229B0 /* ImageAttributeRZ.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ImageAttributeRZ.swift; sourceTree = "<group>"; };
+		9A9E9F7A8D84ECA810421419DE402F4E /* ShadowStyleRZ.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ShadowStyleRZ.swift; sourceTree = "<group>"; };
+		9BBBF6D1E26D623AD6760F00D8E3A53C /* Pods-RZColorfulSwift_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-RZColorfulSwift_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A50E875FA88600C5C18ECD96582C04F6 /* HtmlTransformRZ.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HtmlTransformRZ.swift; sourceTree = "<group>"; };
+		AA30336A9E469586C9EF5217D56C6F09 /* RZColorfulSwift.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = RZColorfulSwift.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		B278B4A51F7FF83C89DCCA753039CE0C /* Pods-RZColorfulSwift_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RZColorfulSwift_Tests-Info.plist"; sourceTree = "<group>"; };
+		B2E3A64B34BE20925E78C42904318E1F /* Pods-RZColorfulSwift_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-RZColorfulSwift_Tests-umbrella.h"; sourceTree = "<group>"; };
+		BDBA1872C85447F493DF341C38BF4C7D /* ParagraphStyleRZ.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ParagraphStyleRZ.swift; sourceTree = "<group>"; };
+		C1476EBB651A43D169C4495C14FA3638 /* Pods_RZColorfulSwift_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_RZColorfulSwift_Tests.framework; path = "Pods-RZColorfulSwift_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C560C6EA28C78A8E5B8B81D0CA7C72FC /* Pods_RZColorfulSwift_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_RZColorfulSwift_Example.framework; path = "Pods-RZColorfulSwift_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CDDB7101DBD20682C8B3EDF954CF72F3 /* RZColorfulSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RZColorfulSwift.debug.xcconfig; sourceTree = "<group>"; };
+		D2B802786EBE366F07F56F7B5DF52193 /* Pods-RZColorfulSwift_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-RZColorfulSwift_Example-dummy.m"; sourceTree = "<group>"; };
+		D8BAB28B56C349F1BE573F462C4C4B23 /* Pods-RZColorfulSwift_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RZColorfulSwift_Example.release.xcconfig"; sourceTree = "<group>"; };
+		DEBF475AD74EA43F633199F8EA02BE62 /* Pods-RZColorfulSwift_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-RZColorfulSwift_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		DF0F8AB7C5A3A491942AB490E5E0A646 /* RZColorfulSwift-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "RZColorfulSwift-Info.plist"; sourceTree = "<group>"; };
+		DFAC14F86E37F50F4574F786FC52A3A9 /* UITextFieldRZColorful.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UITextFieldRZColorful.swift; sourceTree = "<group>"; };
+		E3E1C7B37C43CB34C17A41931EC6C282 /* NSAttributedStringRZColorful.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NSAttributedStringRZColorful.swift; sourceTree = "<group>"; };
+		E557EFAFEAC91211BEA4DE1042B9A8A4 /* RZColorfulSwift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RZColorfulSwift-prefix.pch"; sourceTree = "<group>"; };
+		F391DCF02BEE732C9B0B3033CC24B347 /* RZColorfulSwiftBase.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RZColorfulSwiftBase.swift; sourceTree = "<group>"; };
+		FCDFC0E1F4BE60EEC083FB6460E19684 /* Pods-RZColorfulSwift_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RZColorfulSwift_Tests.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5C78B490063D252193B48F98F293602A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				973894CCA9F13BCF906CD67DEC9FCDEB /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C05F58BA83209DE6C9B870665398B307 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				65D5277709137579B8311A955099BF68 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F8F61B42A1441BECCC7C68C7D808DD51 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF8A000002D5018E1A999AEA3ABCE372 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		000FD770372A1EB31910610FBC3F3A44 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				9A2A37827AC15DD6C386BF1DB7B0F6E4 /* Pods-RZColorfulSwift_Example */,
+				1393C4342A104DC64D55673AA0BFBC76 /* Pods-RZColorfulSwift_Tests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		1393C4342A104DC64D55673AA0BFBC76 /* Pods-RZColorfulSwift_Tests */ = {
+			isa = PBXGroup;
+			children = (
+				7B6EF64D005FA88A120C646A1B0A312B /* Pods-RZColorfulSwift_Tests.modulemap */,
+				DEBF475AD74EA43F633199F8EA02BE62 /* Pods-RZColorfulSwift_Tests-acknowledgements.markdown */,
+				003D182FEF733CD9537CA3B3B3689545 /* Pods-RZColorfulSwift_Tests-acknowledgements.plist */,
+				354D96C7833AC642BFCA6909F12D50E1 /* Pods-RZColorfulSwift_Tests-dummy.m */,
+				B278B4A51F7FF83C89DCCA753039CE0C /* Pods-RZColorfulSwift_Tests-Info.plist */,
+				B2E3A64B34BE20925E78C42904318E1F /* Pods-RZColorfulSwift_Tests-umbrella.h */,
+				77B301AD3AE649BBB72344076645DAA1 /* Pods-RZColorfulSwift_Tests.debug.xcconfig */,
+				FCDFC0E1F4BE60EEC083FB6460E19684 /* Pods-RZColorfulSwift_Tests.release.xcconfig */,
+			);
+			name = "Pods-RZColorfulSwift_Tests";
+			path = "Target Support Files/Pods-RZColorfulSwift_Tests";
+			sourceTree = "<group>";
+		};
+		1834703A70A19DC188D85FF58B5205A7 /* RZColorfulSwift */ = {
+			isa = PBXGroup;
+			children = (
+				1D0399015E883BACC2787F01AF165F1E /* AttributeCore */,
+				B7136150E2D582A8B1011DDA95B6DEC0 /* Core */,
+				1E26789B18A967EC2215BEF9FEA0B80F /* Pod */,
+				5120C89526CF4BB14A7B1FEC8FA80251 /* Support Files */,
+			);
+			name = RZColorfulSwift;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		1D0399015E883BACC2787F01AF165F1E /* AttributeCore */ = {
+			isa = PBXGroup;
+			children = (
+				598E0792D52570F838A30BE4DDF7856C /* ColorfulConferrerRZ.swift */,
+				8BF7BF6629101B2D255CB8DA825229B0 /* ImageAttributeRZ.swift */,
+				BDBA1872C85447F493DF341C38BF4C7D /* ParagraphStyleRZ.swift */,
+				9A9E9F7A8D84ECA810421419DE402F4E /* ShadowStyleRZ.swift */,
+				78E04EBBB77AA95A7B93486DE34C341C /* TextAttributeRZ.swift */,
+			);
+			name = AttributeCore;
+			path = RZColorfulSwift/Classes/AttributeCore;
+			sourceTree = "<group>";
+		};
+		1E26789B18A967EC2215BEF9FEA0B80F /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				26FB78756C4C29518DB80CB3B5418AD1 /* LICENSE */,
+				31D3423EDF8184853B0F33C7225B2C4A /* README.md */,
+				AA30336A9E469586C9EF5217D56C6F09 /* RZColorfulSwift.podspec */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
+		5120C89526CF4BB14A7B1FEC8FA80251 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				88B41C51C46874B7E57CAEE7CEF06C05 /* RZColorfulSwift.modulemap */,
+				58D88F0CDDFBCC5EF5B7FECF821D05CE /* RZColorfulSwift-dummy.m */,
+				DF0F8AB7C5A3A491942AB490E5E0A646 /* RZColorfulSwift-Info.plist */,
+				E557EFAFEAC91211BEA4DE1042B9A8A4 /* RZColorfulSwift-prefix.pch */,
+				7BC6B5AB014BA22F2D16159C349EBEB7 /* RZColorfulSwift-umbrella.h */,
+				CDDB7101DBD20682C8B3EDF954CF72F3 /* RZColorfulSwift.debug.xcconfig */,
+				4A873B37E8D9991033D941A6FE82FAA4 /* RZColorfulSwift.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/RZColorfulSwift";
+			sourceTree = "<group>";
+		};
+		578452D2E740E91742655AC8F1636D1F /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		63CA7C3B1F2E840C7812638DF6F5133A /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1834703A70A19DC188D85FF58B5205A7 /* RZColorfulSwift */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		912ECD7D3202C7FF0C3BAADE945250AC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C560C6EA28C78A8E5B8B81D0CA7C72FC /* Pods_RZColorfulSwift_Example.framework */,
+				C1476EBB651A43D169C4495C14FA3638 /* Pods_RZColorfulSwift_Tests.framework */,
+				6E80B4E49BE1CE3EB50F0EE52A078068 /* RZColorfulSwift.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A2A37827AC15DD6C386BF1DB7B0F6E4 /* Pods-RZColorfulSwift_Example */ = {
+			isa = PBXGroup;
+			children = (
+				56D6CC20356FC67DCF8DE226D4C7B2EC /* Pods-RZColorfulSwift_Example.modulemap */,
+				9BBBF6D1E26D623AD6760F00D8E3A53C /* Pods-RZColorfulSwift_Example-acknowledgements.markdown */,
+				61205FFB72B81BBB5F379D2C5C512710 /* Pods-RZColorfulSwift_Example-acknowledgements.plist */,
+				D2B802786EBE366F07F56F7B5DF52193 /* Pods-RZColorfulSwift_Example-dummy.m */,
+				2D0F5F956F5A50928B0B821FB002881E /* Pods-RZColorfulSwift_Example-frameworks.sh */,
+				82B4976644A6E1ECFB99BF712F8BD844 /* Pods-RZColorfulSwift_Example-Info.plist */,
+				3B18F712F53E6AAB3331925A83563BFC /* Pods-RZColorfulSwift_Example-umbrella.h */,
+				0E657B76159D34C7773B397576B34C0C /* Pods-RZColorfulSwift_Example.debug.xcconfig */,
+				D8BAB28B56C349F1BE573F462C4C4B23 /* Pods-RZColorfulSwift_Example.release.xcconfig */,
+			);
+			name = "Pods-RZColorfulSwift_Example";
+			path = "Target Support Files/Pods-RZColorfulSwift_Example";
+			sourceTree = "<group>";
+		};
+		B7136150E2D582A8B1011DDA95B6DEC0 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				A50E875FA88600C5C18ECD96582C04F6 /* HtmlTransformRZ.swift */,
+				E3E1C7B37C43CB34C17A41931EC6C282 /* NSAttributedStringRZColorful.swift */,
+				7A544C14696D464DDB583EC909AA24A0 /* NSAttributedStringRZHtml.swift */,
+				F391DCF02BEE732C9B0B3033CC24B347 /* RZColorfulSwiftBase.swift */,
+				1005377D71EAE5FD93CF8AE600D3CD3B /* TapActionHelperRZ.swift */,
+				615E0D423C3EB5D4A0620021F0F5B43D /* UILabelRZColorful.swift */,
+				DFAC14F86E37F50F4574F786FC52A3A9 /* UITextFieldRZColorful.swift */,
+				0E892D7E1F0EC7ED926F5277BEE5B855 /* UITextViewRZColorful.swift */,
+			);
+			name = Core;
+			path = RZColorfulSwift/Classes/Core;
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				63CA7C3B1F2E840C7812638DF6F5133A /* Development Pods */,
+				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
+				912ECD7D3202C7FF0C3BAADE945250AC /* Products */,
+				000FD770372A1EB31910610FBC3F3A44 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				578452D2E740E91742655AC8F1636D1F /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		16EFA6FB2776DFD87950F6768F6C2091 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7995AA9CD7F116AAC75F2A4FB6CDEC8B /* Pods-RZColorfulSwift_Tests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		24E18ACBC226724060623CF55A6E2C20 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				844F7955C981F1437644CF821D597808 /* Pods-RZColorfulSwift_Example-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		639F18EA5B20B5B6666A068B49C143E0 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				75670C5B51B14441FB4F9F266E439EB8 /* RZColorfulSwift-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		2257AC620190D56D4666714C1AF78B59 /* Pods-RZColorfulSwift_Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5DB2638D3C5B67641518253A6C7C0D5C /* Build configuration list for PBXNativeTarget "Pods-RZColorfulSwift_Tests" */;
+			buildPhases = (
+				16EFA6FB2776DFD87950F6768F6C2091 /* Headers */,
+				E9460A88AA57206CF2902144936681F6 /* Sources */,
+				C05F58BA83209DE6C9B870665398B307 /* Frameworks */,
+				429EAF2AF6EEF6B48BDE210C34FCB3FD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7E8842F719C86F0BD06E24F08E301682 /* PBXTargetDependency */,
+			);
+			name = "Pods-RZColorfulSwift_Tests";
+			productName = "Pods-RZColorfulSwift_Tests";
+			productReference = C1476EBB651A43D169C4495C14FA3638 /* Pods_RZColorfulSwift_Tests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		6B745EBB76CA025E22D5E000F28574F4 /* Pods-RZColorfulSwift_Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E8365DCEE28B9441BE2DB0E414F08861 /* Build configuration list for PBXNativeTarget "Pods-RZColorfulSwift_Example" */;
+			buildPhases = (
+				24E18ACBC226724060623CF55A6E2C20 /* Headers */,
+				6527F3667B7A62C5520D2B2BF8E068F5 /* Sources */,
+				5C78B490063D252193B48F98F293602A /* Frameworks */,
+				BD78CA3C81903D0265BB0343BE80FDFC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5F408B4D5E132E22F7BBAF180D749845 /* PBXTargetDependency */,
+			);
+			name = "Pods-RZColorfulSwift_Example";
+			productName = "Pods-RZColorfulSwift_Example";
+			productReference = C560C6EA28C78A8E5B8B81D0CA7C72FC /* Pods_RZColorfulSwift_Example.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		87C6E9B7582B17D114306D26755D8FFA /* RZColorfulSwift */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B6D805DFD6C93201348F6C92B5D650FD /* Build configuration list for PBXNativeTarget "RZColorfulSwift" */;
+			buildPhases = (
+				639F18EA5B20B5B6666A068B49C143E0 /* Headers */,
+				4A3CD6B9852BA8F18EA2FD689201AE1B /* Sources */,
+				F8F61B42A1441BECCC7C68C7D808DD51 /* Frameworks */,
+				27ED0BB6398686961D9206A21D6CF15B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RZColorfulSwift;
+			productName = RZColorfulSwift;
+			productReference = 6E80B4E49BE1CE3EB50F0EE52A078068 /* RZColorfulSwift.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1100;
+				LastUpgradeCheck = 1100;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = 912ECD7D3202C7FF0C3BAADE945250AC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6B745EBB76CA025E22D5E000F28574F4 /* Pods-RZColorfulSwift_Example */,
+				2257AC620190D56D4666714C1AF78B59 /* Pods-RZColorfulSwift_Tests */,
+				87C6E9B7582B17D114306D26755D8FFA /* RZColorfulSwift */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		27ED0BB6398686961D9206A21D6CF15B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		429EAF2AF6EEF6B48BDE210C34FCB3FD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BD78CA3C81903D0265BB0343BE80FDFC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4A3CD6B9852BA8F18EA2FD689201AE1B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED8673132236D4F7CE10627ACE217E30 /* ColorfulConferrerRZ.swift in Sources */,
+				14D7DAE6A33C86745FD80410218FE959 /* HtmlTransformRZ.swift in Sources */,
+				5D972611112A65BEDB83741DE5439E28 /* ImageAttributeRZ.swift in Sources */,
+				A70C6C952510186B6BB9D2BF3215C0E1 /* NSAttributedStringRZColorful.swift in Sources */,
+				4484150F5136B9C61852A7CBE6CDA00B /* NSAttributedStringRZHtml.swift in Sources */,
+				18F7986FEDDEF87693FD29037CDADF10 /* ParagraphStyleRZ.swift in Sources */,
+				A71B2B821D98FB11BAEA75D94854889F /* RZColorfulSwift-dummy.m in Sources */,
+				D118F7FC8A2631ED68381D6DF8850B6B /* RZColorfulSwiftBase.swift in Sources */,
+				D6570A77E57D20BB526994455A666427 /* ShadowStyleRZ.swift in Sources */,
+				178AA24186A750AF9EE858A521F3CF4E /* TapActionHelperRZ.swift in Sources */,
+				5A854182CA82CC695A4BE90EA32669AA /* TextAttributeRZ.swift in Sources */,
+				CF375BCBD17CBFCFDB902775F5849BD2 /* UILabelRZColorful.swift in Sources */,
+				B27E4783893BCE7D776863F8A85E15E4 /* UITextFieldRZColorful.swift in Sources */,
+				2B1457E54680098F43D453EDFB667FAB /* UITextViewRZColorful.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6527F3667B7A62C5520D2B2BF8E068F5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				08D7ADF6BB5B0907323FED68B156FD42 /* Pods-RZColorfulSwift_Example-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E9460A88AA57206CF2902144936681F6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5653EFA7E6629766019988587EDB4D57 /* Pods-RZColorfulSwift_Tests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5F408B4D5E132E22F7BBAF180D749845 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = RZColorfulSwift;
+			target = 87C6E9B7582B17D114306D26755D8FFA /* RZColorfulSwift */;
+			targetProxy = D2B53F26F9EE09F2502EC15B9D249174 /* PBXContainerItemProxy */;
+		};
+		7E8842F719C86F0BD06E24F08E301682 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-RZColorfulSwift_Example";
+			target = 6B745EBB76CA025E22D5E000F28574F4 /* Pods-RZColorfulSwift_Example */;
+			targetProxy = 0B94F9263E04E93D52E40A70FF72603C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1144B080EE85471418E0F6C53355FF18 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4A873B37E8D9991033D941A6FE82FAA4 /* RZColorfulSwift.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/RZColorfulSwift/RZColorfulSwift-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/RZColorfulSwift/RZColorfulSwift-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/RZColorfulSwift/RZColorfulSwift.modulemap";
+				PRODUCT_MODULE_NAME = RZColorfulSwift;
+				PRODUCT_NAME = RZColorfulSwift;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		25AD9454612BF454A1E3DC4CD4FA8C6D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		5F0B2A48546B3CE75A0767A1D799B59C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 77B301AD3AE649BBB72344076645DAA1 /* Pods-RZColorfulSwift_Tests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-RZColorfulSwift_Tests/Pods-RZColorfulSwift_Tests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-RZColorfulSwift_Tests/Pods-RZColorfulSwift_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		78296543BFAAA02B6A4FE31A38D01FAD /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FCDFC0E1F4BE60EEC083FB6460E19684 /* Pods-RZColorfulSwift_Tests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-RZColorfulSwift_Tests/Pods-RZColorfulSwift_Tests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-RZColorfulSwift_Tests/Pods-RZColorfulSwift_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		8C4E8A02DF4E9843640C8A64FAF896C8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CDDB7101DBD20682C8B3EDF954CF72F3 /* RZColorfulSwift.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/RZColorfulSwift/RZColorfulSwift-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/RZColorfulSwift/RZColorfulSwift-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/RZColorfulSwift/RZColorfulSwift.modulemap";
+				PRODUCT_MODULE_NAME = RZColorfulSwift;
+				PRODUCT_NAME = RZColorfulSwift;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		CA547D2C7E9A8A153DC2B27FBE00B112 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		EB13B368E43603F3D34628199F7D5AA8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D8BAB28B56C349F1BE573F462C4C4B23 /* Pods-RZColorfulSwift_Example.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-RZColorfulSwift_Example/Pods-RZColorfulSwift_Example-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-RZColorfulSwift_Example/Pods-RZColorfulSwift_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		F3FF942DE56623CCDDCA3BA56AEF389C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0E657B76159D34C7773B397576B34C0C /* Pods-RZColorfulSwift_Example.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-RZColorfulSwift_Example/Pods-RZColorfulSwift_Example-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-RZColorfulSwift_Example/Pods-RZColorfulSwift_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				25AD9454612BF454A1E3DC4CD4FA8C6D /* Debug */,
+				CA547D2C7E9A8A153DC2B27FBE00B112 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5DB2638D3C5B67641518253A6C7C0D5C /* Build configuration list for PBXNativeTarget "Pods-RZColorfulSwift_Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5F0B2A48546B3CE75A0767A1D799B59C /* Debug */,
+				78296543BFAAA02B6A4FE31A38D01FAD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B6D805DFD6C93201348F6C92B5D650FD /* Build configuration list for PBXNativeTarget "RZColorfulSwift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8C4E8A02DF4E9843640C8A64FAF896C8 /* Debug */,
+				1144B080EE85471418E0F6C53355FF18 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E8365DCEE28B9441BE2DB0E414F08861 /* Build configuration list for PBXNativeTarget "Pods-RZColorfulSwift_Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F3FF942DE56623CCDDCA3BA56AEF389C /* Debug */,
+				EB13B368E43603F3D34628199F7D5AA8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}
