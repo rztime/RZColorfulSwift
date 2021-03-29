@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
 
   s.description  = <<-DESC
   富文本方法集合，使用链式的方法快速简单的使用富文本NSAttributedString的功能
-  变更方法名xxx.rz_xxx()为xxx.rz.xxx()
+  变更使用方法名xxx.rz_xxx()为xxx.rz.xxx()
                  DESC
 
   s.homepage         = 'https://github.com/rztime/RZColorfulSwift'

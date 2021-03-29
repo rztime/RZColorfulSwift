@@ -22,18 +22,15 @@ class TestViewController: UIViewController {
         self.view.backgroundColor = UIColor.white
         
         self.title = "Results"
+
+//        let tempView = UIView.init(frame: .init(x: 100, y: 100, width: 100, height: 100))
+//        self.view.addSubview(tempView)
+//        tempView.rz.tap { (t) in
+//            print("\(t)")
+//        }
+//        tempView.backgroundColor = .red
+//        return
         
-        let tempView = UIView.init()
-        tempView.frame = .init(x: 100, y: 100, width: 100, height: 100)
-        tempView.backgroundColor = .red
-        self.view.addSubview(tempView)
-        tempView.rz.tap { _ in
-            print("11111111111")
-        }
-        tempView.rz.tap { _ in
-            print("22222222")
-        }
-        return
 //        let label = UILabel.init(frame: self.view.bounds)
 //        self.view.addSubview(label)
 //        label.numberOfLines = 0
@@ -114,13 +111,15 @@ class TestViewController: UIViewController {
         }
         let tt = text.attributedText.rz.codingToCompleteHtmlByWeb()
         print("\(tt ?? "")")
-        
-        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    deinit {
+        print("11111")
     }
 }
 

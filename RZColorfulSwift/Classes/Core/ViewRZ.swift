@@ -28,12 +28,8 @@ fileprivate extension UIView {
         set {
             objc_setAssociatedObject(self, &UIViewPerpotyName.taphandlerKey, newValue, .OBJC_ASSOCIATION_COPY_NONATOMIC)
         }
-
         get {
-            if let handler = objc_getAssociatedObject(self, &UIViewPerpotyName.taphandlerKey) {
-                return handler as? ((UIView) -> Void)
-            }
-            return nil
+            return objc_getAssociatedObject(self, &UIViewPerpotyName.taphandlerKey) as? ((UIView) -> Void)
         }
     }
     @objc func tapAction(_ tap: UITapGestureRecognizer) {
