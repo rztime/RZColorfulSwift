@@ -15,7 +15,10 @@
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		AEB5649ED77B0EE1DE76C899 /* Pods_RZColorfulSwift_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D961FCF5A818AED4CD2034E /* Pods_RZColorfulSwift_Tests.framework */; };
+		B25F1CCF278D7D8B00A0780C /* LabelFoldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25F1CCE278D7D8B00A0780C /* LabelFoldViewController.swift */; };
 		B272189525FB06300071873A /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B272189425FB06300071873A /* TestViewController.swift */; };
+		B29E0ACD278FB8EE00670401 /* LabelFoldTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29E0ACC278FB8EE00670401 /* LabelFoldTestViewController.swift */; };
+		B29E0ACF2790147D00670401 /* LabelTextClickedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29E0ACE2790147D00670401 /* LabelTextClickedViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,7 +50,11 @@
 		78B7B8840DAE0616DE6F21C6 /* Pods-RZColorfulSwift_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RZColorfulSwift_Tests.debug.xcconfig"; path = "Target Support Files/Pods-RZColorfulSwift_Tests/Pods-RZColorfulSwift_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		8EA15CECA0E5F6FF0686E25F /* Pods-RZColorfulSwift_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RZColorfulSwift_Tests.release.xcconfig"; path = "Target Support Files/Pods-RZColorfulSwift_Tests/Pods-RZColorfulSwift_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		B1E12B3A002CD6A60D5FC7C0 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		B25F1CCE278D7D8B00A0780C /* LabelFoldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelFoldViewController.swift; sourceTree = "<group>"; };
 		B272189425FB06300071873A /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		B29E0ACC278FB8EE00670401 /* LabelFoldTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelFoldTestViewController.swift; sourceTree = "<group>"; };
+		B29E0ACE2790147D00670401 /* LabelTextClickedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelTextClickedViewController.swift; sourceTree = "<group>"; };
+		B2C3AD0F276C22D800911218 /* RZColorfulSwift_Example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RZColorfulSwift_Example.entitlements; sourceTree = "<group>"; };
 		BBC50A1FF56B174471C9140F /* Pods-RZColorfulSwift_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RZColorfulSwift_Example.debug.xcconfig"; path = "Target Support Files/Pods-RZColorfulSwift_Example/Pods-RZColorfulSwift_Example.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -85,6 +92,7 @@
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
+				B2C3AD0F276C22D800911218 /* RZColorfulSwift_Example.entitlements */,
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACD21AFB9204008FA782 /* Example for RZColorfulSwift */,
 				607FACE81AFB9204008FA782 /* Tests */,
@@ -107,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
+				B25F1CCD278D7D1E00A0780C /* Demo */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				B272189425FB06300071873A /* TestViewController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
@@ -162,6 +171,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B25F1CCD278D7D1E00A0780C /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				B25F1CCE278D7D8B00A0780C /* LabelFoldViewController.swift */,
+				B29E0ACC278FB8EE00670401 /* LabelFoldTestViewController.swift */,
+				B29E0ACE2790147D00670401 /* LabelTextClickedViewController.swift */,
+			);
+			path = Demo;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -215,10 +234,12 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 9363D6U2QU;
 						LastSwiftMigration = 1240;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 9363D6U2QU;
 						LastSwiftMigration = 1240;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
@@ -295,10 +316,12 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RZColorfulSwift_Example/Pods-RZColorfulSwift_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/RZColorfulSwift/RZColorfulSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RZColorfulSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -334,6 +357,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B29E0ACD278FB8EE00670401 /* LabelFoldTestViewController.swift in Sources */,
+				B25F1CCF278D7D8B00A0780C /* LabelFoldViewController.swift in Sources */,
+				B29E0ACF2790147D00670401 /* LabelTextClickedViewController.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				B272189525FB06300071873A /* TestViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
@@ -482,14 +508,18 @@
 			baseConfigurationReference = BBC50A1FF56B174471C9140F /* Pods-RZColorfulSwift_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = RZColorfulSwift_Example.entitlements;
+				DEVELOPMENT_TEAM = 9363D6U2QU;
 				INFOPLIST_FILE = RZColorfulSwift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = com.rztime.RZColorfulSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -498,14 +528,18 @@
 			baseConfigurationReference = 4585CE6CF811F6DA164D2211 /* Pods-RZColorfulSwift_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = RZColorfulSwift_Example.entitlements;
+				DEVELOPMENT_TEAM = 9363D6U2QU;
 				INFOPLIST_FILE = RZColorfulSwift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = com.rztime.RZColorfulSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -513,6 +547,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 78B7B8840DAE0616DE6F21C6 /* Pods-RZColorfulSwift_Tests.debug.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = 9363D6U2QU;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -535,6 +570,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8EA15CECA0E5F6FF0686E25F /* Pods-RZColorfulSwift_Tests.release.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = 9363D6U2QU;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 					"$(inherited)",

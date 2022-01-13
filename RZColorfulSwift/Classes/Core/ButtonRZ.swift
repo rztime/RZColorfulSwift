@@ -8,7 +8,7 @@
 import UIKit
 
 public extension RZColorfulSwiftBase where T: UIButton {
-    func colorfulConfer(confer:ColorfulBlockRZ?, for state:UIControl.State) -> Void {
+    func colorfulConfer(confer: ColorfulBlockRZ?, for state: UIControl.State) {
         guard let confer = confer else {
             self.rz.setAttributedTitle(nil, for: state)
             return

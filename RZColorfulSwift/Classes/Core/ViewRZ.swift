@@ -21,7 +21,7 @@ public extension RZColorfulSwiftBase where T: UIView {
 // MARK: - 给view添加点击事件
 fileprivate extension UIView {
     struct UIViewPerpotyName {
-        static var taphandlerKey = "rztaphandler"
+        static var taphandlerKey = "rz_taphandlerKey"
     }
 
     var taphandler :((UIView) -> Void)? {

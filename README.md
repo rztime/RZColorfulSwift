@@ -58,6 +58,83 @@ text.rz.colorfulConfer { (confer) in
 
 ```
 
+### 给UITextView添加文本点击事件
+```swift
+text.rz.colorfulConfer { confer in
+    confer.text("哈哈哈哈")?.font(.systemFont(ofSize: 17)).textColor(.black)
+    confer.text("可点击字符串")?.font(.systemFont(ofSize: 17)).textColor(.red).tapAction("111111")
+} 
+text.rz.didTapTextView { (tabObj, textview) -> Bool in
+    print("text:\(tabObj)")  /// text:111111
+    return false
+}
+
+```
+
+
+### 给UILabel添加文本点击事件
+
+只需要给富文本添加tapActionByLable(即.rztapLabel)属性。
+注意，不要设置label.textAlignment，否则可能会导致出错。因为内部用的UITextView计算的点击位置的文本，label设置对齐方式之后，只要某一段富文本未设置段落属性，则这一段富文本对齐方式将被替换，而富文本在UITextView并不会被替换。
+所以如果要设置对齐方式，直接设置在confer.text().paragraphStyle?.alignment(.left)
+```swift
+label.rz.colorfulConfer { confer in
+    confer.text("哈哈哈哈\n")?.font(.systemFont(ofSize: 18)).textColor(.black)
+    confer.text("可点击文本1")?.font(.systemFont(ofSize: 18)).textColor(.red).tapActionByLable("1111").paragraphStyle?.alignment(.left)
+    confer.text("\n")
+    confer.text("可点击文本2")?.font(.systemFont(ofSize: 18)).textColor(.red).tapActionByLable("22222").paragraphStyle?.alignment(.center)
+    confer.text("\n")
+}
+label.rz.tapAction { label, tapActionId in
+    print("tapActionId:\(tapActionId)")
+}
+
+```
+
+### UILabel支持超过行数后，显示 "折叠"  "展开", 实现tapAction点击事件，并刷新，可以实现展开收起
+
+```swift
+class LabelFoldModel {
+    var isFold = true
+    let attributedString = NSAttributedString.rz.colorfulConfer { confer in
+        let text =
+        """
+        “中国人的饭碗任何时候都要牢牢端在自己手中，饭碗主要装中国粮”“保证粮食安全，大家都有责任，党政同责要真正见效”，习近平总书记强调指出。
+        民为国基，谷为民命。粮食问题不仅要算“经济账”，更要算“政治账”；不仅要顾当前，还要看长远。
+        \n今年，我国粮食生产喜获丰收，产量保持在1.3万亿斤以上，为开新局、应变局、稳大局发挥重要作用。但也要看到，当前我国粮食需求刚性增长，资源环境约束日益趋紧
+        \n粮食增面积、提产量的难度越来越大。全球新冠肺炎疫情持续蔓延，气候变化影响日益加剧，保障粮食供应链稳定难度加大。
+        """
+        confer.text(text)?.textColor(.black).font(.systemFont(ofSize: 16))
+    }
+    let showAll = NSAttributedString.rz.colorfulConfer { confer in
+        confer.text("...全部")?.textColor(.red).font(.systemFont(ofSize: 16)).tapActionByLable("all")
+    }
+    let showFold = NSAttributedString.rz.colorfulConfer { confer in
+        confer.text("...折叠")?.textColor(.red).font(.systemFont(ofSize: 16)).tapActionByLable("fold")
+    }
+}
+
+/// 设置文本超过4行，则追加“...全部”  全部显示时追加“...折叠”  
+let label = UILabel()
+label.frame = .init(x: 10, y: 100, width: 400, height: 500)
+cell.label.rz.tapAction { [weak self] (label, tapActionId) in
+    let item = self?.items[label.tag]
+    if tapActionId == "all" {
+        item?.isFold = false
+    } else if tapActionId == "fold" {
+        item?.isFold = true
+    }
+    reload()
+}
+
+func reload() {
+    let item = LabelFoldModel()
+    label.rz.set(attributedString: item.attributedString, maxLine: 4, maxWidth: 400, isFold: item.isFold, showAllText: item.showAll, showFoldText: item.showFold)
+}
+
+```
+
+
 ## 注意
 
 * 尽管我已经在代码中已经处理过（弱）引用问题，但是在实际运用写入text时，还是请尽量检查避免循环引用

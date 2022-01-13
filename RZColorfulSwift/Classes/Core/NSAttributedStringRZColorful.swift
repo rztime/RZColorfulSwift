@@ -77,6 +77,63 @@ public extension RZColorfulSwiftBase where T: NSAttributedString {
     }
 }
 
+public extension RZColorfulSwiftBase where T: NSAttributedString {
+    // 判断attributedString的内容，在label显示的话，是否超过line行数
+    func moreThan(line: Int, maxWidth: CGFloat) -> Bool {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.attributedText = self.rz
+        let tempSize = CGSize.init(width: maxWidth, height: CGFloat.greatestFiniteMagnitude)
+        let allHeight = label.textRect(forBounds: .init(origin: .zero, size: tempSize), limitedToNumberOfLines: 0).height
+        let lineHeight = label.textRect(forBounds: .init(origin: .zero, size: tempSize), limitedToNumberOfLines: line).height
+        return ceil(allHeight) > ceil(lineHeight)
+    }
+    /// 通过限制宽度，行数，获取内容，
+    /// 如果未超过 line 行数，返回原字符串
+    /// 超过行数，折叠时，将追加showAllText(如显示全文)， 全部展开时，显示showFoldText(如收起)
+    /// - Parameters:
+    ///   - maxline: 最大显示的行数,
+    ///   - maxWidth: 最大显示宽度
+    ///   - isFold: 当前是否折叠
+    ///   - showAllText: 如 “...显示全文” fold = true时，将追加在字符串后
+    ///   - showFoldText: 如 “收起全文” flod = FALSE，表示已全部展开，将追加在后边
+    /// - Returns: 字符串
+    func attributedStringBy(maxline: Int, maxWidth: CGFloat, isFold: Bool, showAllText: NSAttributedString?, showFoldText: NSAttributedString?) -> NSAttributedString? {
+        if self.rz.length == 0 {
+            return self.rz
+        }
+        if !self.moreThan(line: maxline, maxWidth: maxWidth) {
+            return self.rz
+        }
+        if !isFold {
+            let attr = NSMutableAttributedString.init(attributedString: self.rz)
+            if let showFoldText = showFoldText {
+                attr.append(showFoldText)
+            }
+            return attr
+        }
+        let showAll = showAllText ?? .init()
+        var (min, max) = (0, self.rz.length)
+        var end: Int = 0
+        while true {
+            end = (min + max) / 2
+            let sub = self.rz.attributedSubstring(from: .init(location: 0, length: end))
+            let tempAttr = NSMutableAttributedString.init(attributedString: sub)
+            tempAttr.append(showAll)
+            let more = tempAttr.rz.moreThan(line: maxline, maxWidth: maxWidth)
+            if more {
+                max = end
+            } else {
+                min = end
+            }
+            let tempEnd = (min + max) / 2
+            if tempEnd == end {
+                return tempAttr
+            }
+        }
+    }
+}
+
 public extension NSAttributedString {
     @available(iOS, introduced: 7.0, deprecated: 7.0, message: "Use .rz.colorfulConfer(confer: ColorfulBlockRZ) instead")
     static func rz_colorfulConfer(confer: ColorfulBlockRZ) -> NSAttributedString? {

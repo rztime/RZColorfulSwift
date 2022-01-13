@@ -11,6 +11,7 @@ import UIKit
 
 /// 需要将富文本属性转换为web的html的辅助类
 /// 因为系统转换方法，不支持部分标签（删除线、下划线、斜体、扩展、描边、书写方向等），所以其本质是将部分不支持的标签，通过转为css来支持，
+///  删除线 <s></s> 下划线<u></u> 斜体<em></em><i></i>  扩展
 public class HtmlTransformRZ {
     public typealias RZStyleConfigure = ((_ obj: Any, _ attr: NSDictionary) -> String)
     // 属性回调

@@ -1,6 +1,6 @@
 {
   "name": "RZColorfulSwift",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "summary": "NSAttributedString富文本的快捷设置方法集合,以及UITextView、UITextField、UILabel富文本简单优雅的使用",
   "description": "富文本方法集合，使用链式的方法快速简单的使用富文本NSAttributedString的功能\n变更使用方法名xxx.rz_xxx()为xxx.rz.xxx()",
   "homepage": "https://github.com/rztime/RZColorfulSwift",
@@ -13,10 +13,12 @@
   },
   "source": {
     "git": "https://github.com/rztime/RZColorfulSwift.git",
-    "tag": "0.2.2"
+    "tag": "0.3.0"
   },
   "platforms": {
-    "ios": "8.0"
+    "ios": "8.0",
+    "osx": "8.0",
+    "tvos": "8.0"
   },
   "source_files": "RZColorfulSwift/Classes/**/*"
 }

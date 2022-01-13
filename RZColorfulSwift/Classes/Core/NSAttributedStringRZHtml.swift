@@ -51,7 +51,7 @@ public extension RZColorfulSwiftBase where T: NSAttributedString {
     }
     /// 将富文本编码成html标签
     func codingToCompleteHtml() -> String? {
-        let exportParams = [NSAttributedString.DocumentAttributeKey.documentType: NSAttributedString.DocumentType.html]
+        let exportParams: [NSAttributedString.DocumentAttributeKey : Any] = [NSAttributedString.DocumentAttributeKey.documentType: NSAttributedString.DocumentType.html, NSAttributedString.DocumentAttributeKey.characterEncoding: String.Encoding.utf8.rawValue]
         if let htmlData = try? self.rz.data(from: NSMakeRange(0, self.rz.length), documentAttributes: exportParams) {
             var string = String.init(data: htmlData, encoding: String.Encoding.utf8)
             string = string?.replacingOccurrences(of: "pt;", with: "px;")

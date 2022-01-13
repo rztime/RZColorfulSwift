@@ -12,6 +12,11 @@ public protocol AttributePackageRZ {
     func package(_ para: NSMutableParagraphStyle?, _ sha: NSShadow?) -> NSAttributedString?
 }
 
+public extension NSAttributedString.Key {
+    /// 仅UILabel有效，添加label文本上文字点击事件的回调
+    static let rztapLabel: NSAttributedString.Key = NSAttributedString.Key(rawValue: "rztapLabel")
+}
+
 public class TextAttributeRZ {
     // 书写方向
     public enum WriteDirectionRZ {
@@ -189,19 +194,15 @@ public extension TextAttributeRZ {
     }
     /// 给文本添加点击事件的id
     @discardableResult
-    func tapAction(_ action: String?) -> Self {
-        if let url = action {
-            if let u = URL.init(string: url) {
-                return self.link(u)
-            }
-            if let u = URL.init(string: url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "") {
-                return self.link(u)
-            }
-            if let u = URL.init(string: url.removingPercentEncoding ?? "") {
-                return self.link(u)
-            }
-        }
-        return self.link(nil)
+    func tapAction(_ actionId: String?) -> Self {
+        attributeDict[.link] = actionId?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        return self
+    }
+    /// 给文本添加点击事件的id, 仅UILabel有效，需要实现label.rz.tapAction方法
+    @discardableResult
+    func tapActionByLable(_ actionId: String?) -> Self {
+        attributeDict[.rztapLabel] = actionId?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        return self
     }
     /// 基准线偏移值
     @discardableResult
@@ -239,6 +240,65 @@ public extension TextAttributeRZ {
     @discardableResult
     func textEffect(_ effect: NSAttributedString.TextEffectStyle) -> Self {
         attributeDict[.textEffect] = effect
+        return self
+    }
+
+    @discardableResult
+    /// 添加自定义的key value
+    func custom(key: NSAttributedString.Key, value: Any?) -> Self {
+        attributeDict[key] = value
+        return self
+    }
+}
+@available(iOS 15.0, *)
+public extension TextAttributeRZ {
+    @discardableResult
+    func inlinePresentationIntent(_ inlinePresentationIntent: InlinePresentationIntent?) -> Self {
+        attributeDict[.inlinePresentationIntent] = inlinePresentationIntent
+        return self
+    }
+    @discardableResult
+    func alternateDescription(_ alternateDescription: Any?) -> Self {
+        attributeDict[.alternateDescription] = alternateDescription
+        return self
+    }
+    @discardableResult
+    func imageURL(_ imageURL: Any?) -> Self {
+        attributeDict[.imageURL] = imageURL
+        return self
+    }
+    
+    @discardableResult
+    func languageIdentifier(_ languageIdentifier: Any?) -> Self {
+        attributeDict[.languageIdentifier] = languageIdentifier
+        return self
+    }
+    @discardableResult
+    func replacementIndex(_ replacementIndex: Any?) -> Self {
+        attributeDict[.replacementIndex] = replacementIndex
+        return self
+    }
+    @discardableResult
+    func morphology(_ morphology: Any?) -> Self {
+        attributeDict[.morphology] = morphology
+        return self
+    }
+    
+    @discardableResult
+    func inflectionRule(_ inflectionRule: Any?) -> Self {
+        attributeDict[.inflectionRule] = inflectionRule
+        return self
+    }
+    
+    @discardableResult
+    func inflectionAlternative(_ inflectionAlternative: Any?) -> Self {
+        attributeDict[.inflectionAlternative] = inflectionAlternative
+        return self
+    }
+    
+    @discardableResult
+    func presentationIntentAttributeName(_ presentationIntentAttributeName: Any?) -> Self {
+        attributeDict[.presentationIntentAttributeName] = presentationIntentAttributeName
         return self
     }
 }

@@ -18,12 +18,12 @@ public enum ConferInsertPositionRZ: Int {
 // MARK: - 对Label的富文本支持
 public extension RZColorfulSwiftBase where T: UILabel {
     /// 设置富文本 （原内容将被清空）
-    func colorfulConfer(confer:ColorfulBlockRZ?) -> Void {
+    func colorfulConfer(confer: ColorfulBlockRZ?) {
         self.rz.attributedText = nil
         self.colorfulConferInsetToLocation(0, confer)
     }
     /// 在指定位置插入富文本
-    func colorfulConferInsetTo(position: ConferInsertPositionRZ, _ append:ColorfulBlockRZ?) -> Void {
+    func colorfulConferInsetTo(position: ConferInsertPositionRZ, _ append: ColorfulBlockRZ?) {
         var location = 0
         switch position {
         case .Default, .Cursor, .End:
@@ -35,7 +35,7 @@ public extension RZColorfulSwiftBase where T: UILabel {
     }
     
     /// 在指定位置处加入富文本
-    func colorfulConferInsetToLocation(_ location:Int, _ confer:ColorfulBlockRZ?) -> Void {
+    func colorfulConferInsetToLocation(_ location: Int, _ confer: ColorfulBlockRZ?) {
         guard let confer = confer else { return }
         guard let conferrerColorful = NSAttributedString.rz.colorfulConfer(confer: confer), conferrerColorful.length > 0 else { return }
         let originAttr = self.rz.attributedText ?? NSAttributedString.init()
@@ -50,23 +50,3 @@ public extension RZColorfulSwiftBase where T: UILabel {
         return self.rz.attributedText?.length ?? 0
     }
 }
-
-public extension UILabel {
-    @available(iOS, introduced: 7.0, deprecated: 7.0, message: "Use .rz.colorfulConfer(confer:ColorfulBlockRZ?) instead")
-    func rz_colorfulConfer(confer:ColorfulBlockRZ?) -> Void {
-        self.rz.colorfulConfer(confer: confer)
-    }
-    @available(iOS, introduced: 7.0, deprecated: 7.0, message: "Use .rz.colorfulConferInsetTo(position: ConferInsertPositionRZ, _ append:ColorfulBlockRZ?) instead")
-    func rz_colorfulConferInsetTo(position: ConferInsertPositionRZ, _ append:ColorfulBlockRZ?) -> Void {
-        self.rz.colorfulConferInsetTo(position: position, append)
-    }
-    @available(iOS, introduced: 7.0, deprecated: 7.0, message: "Use .rz.colorfulConferInsetToLocation(_ location:Int, _ confer:ColorfulBlockRZ?) instead")
-    func rz_colorfulConferInsetToLocation(_ location:Int, _ confer:ColorfulBlockRZ?) -> Void {
-        self.rz.colorfulConferInsetToLocation(location, confer)
-    }
-    @available(iOS, introduced: 7.0, deprecated: 7.0, message: "Use .rz.getEndLocation() instead")
-    func getEndLocation() -> Int {
-        return self.rz.getEndLocation()
-    }
-}
-
