@@ -27,7 +27,6 @@ class LabelFoldTestViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         self.view.addSubview(label)
-        label.textAlignment = .right
         label.frame = .init(x: 10, y: 100, width: 400, height: 500)
 
         label.rz.tapAction { [weak self] (label, tapActionId, range) in
