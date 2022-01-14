@@ -32,7 +32,7 @@ fileprivate extension UIView {
             return objc_getAssociatedObject(self, &UIViewPerpotyName.taphandlerKey) as? ((UIView) -> Void)
         }
     }
-    @objc func tapAction(_ tap: UITapGestureRecognizer) {
+    @objc func rztapAction(_ tap: UITapGestureRecognizer) {
         if tap.state == .ended {
             self.taphandler?(self)
         }
@@ -54,7 +54,7 @@ fileprivate extension UIView {
                 }
             }
         })
-        tapges.addTarget(self, action: #selector(tapAction(_:)))
+        tapges.addTarget(self, action: #selector(rztapAction(_:)))
         self.addGestureRecognizer(tapges)
         self.taphandler = handler
         self.isUserInteractionEnabled = true
