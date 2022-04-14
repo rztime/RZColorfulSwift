@@ -14,7 +14,7 @@ public protocol AttributePackageRZ {
 
 public extension NSAttributedString.Key {
     /// 仅UILabel有效，添加label文本上文字点击事件的回调
-    static let rztapLabel: NSAttributedString.Key = NSAttributedString.Key(rawValue: "rztapLabel")
+    static let rztapLabel: NSAttributedString.Key = NSAttributedString.Key(rawValue: "RZTapActionByLabel")
 }
 
 public class TextAttributeRZ {

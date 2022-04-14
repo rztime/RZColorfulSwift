@@ -16,8 +16,7 @@ public enum ImageAttachmentHorizontalAlignRZ {
 
 public class ImageAttributeRZ {
     private let imageAttchment = NSTextAttachment.init()
-    private var attributeDict = NSMutableDictionary.init()  // 一些其他属性 
-    private var _url:URL?   // 添加url
+    private var attributeDict: [NSAttributedString.Key: Any] = [:]  // 一些其他属性
     private var _paragraphStyle : ParagraphStyleRZ<ImageAttributeRZ>?  // 样式
     private var _shadow : ShadowStyleRZ<ImageAttributeRZ>?            // 阴影
     private var yOffset: CGFloat?
@@ -43,9 +42,7 @@ extension ImageAttributeRZ: AttributePackageRZ {
         if let shadow = (_shadow?.shadow ?? sha)?.copy() {
             attr.addAttributes([NSAttributedString.Key.shadow: shadow], range: NSRange.init(location: 0, length: attr.string.count))
         }
-        if let url = _url {
-            attr.addAttributes([NSAttributedString.Key.link: url], range: NSRange.init(location: 0, length: attr.string.count))
-        }
+        attr.addAttributes(attributeDict, range: NSRange.init(location: 0, length: attr.string.count))
         return attr
     }
 }
@@ -132,23 +129,25 @@ public extension ImageAttributeRZ {
     /// 添加url
     @discardableResult
     func url(_ url: URL?) -> Self {
-        self._url = url
+        self.attributeDict[.link] = url
         return self
     }
     // 添加url
     @discardableResult
     func tapAction(_ action: String?) -> Self {
-        if let url = action {
-            if let u = URL.init(string: url) {
-                return self.url(u)
-            }
-            if let u = URL.init(string: url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "") {
-                return self.url(u)
-            }
-            if let u = URL.init(string: url.removingPercentEncoding ?? "") {
-                return self.url(u)
-            }
-        }
-        return self.url(nil)
+        self.attributeDict[.link] = action?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        return self
+    }
+    // 添加点击事件 仅UILabel有效
+    @discardableResult
+    func tapActionByLable(_ action: String?) -> Self {
+        self.attributeDict[.rztapLabel] = action?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        return self
+    }
+    /// 添加自定义的key value
+    @discardableResult
+    func custom(key: NSAttributedString.Key, value: Any?) -> Self {
+        self.attributeDict[key] = value
+        return self
     }
 }

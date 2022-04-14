@@ -63,7 +63,7 @@ class TestViewController: UIViewController {
         scroview.contentSize = CGSize.init(width: 0, height: 1000)
 //        text.isEditable = false
         text.rz.colorfulConfer { (confer) in
-//            confer.paragraphStyle?.lineSpacing(10).paragraphSpacingBefore(15).alignment(.left).and?.shadow?.shadowColor(.black).shadowOffset(.init(width: 3, height: 3)).shadowBlurRadius(3)
+            confer.paragraphStyle?.lineSpacing(10).paragraphSpacingBefore(15).alignment(.left).and?.shadow?.shadowColor(.black).shadowOffset(.init(width: 3, height: 3)).shadowBlurRadius(3)
 //            confer.paragraphStyle?.lineSpacing(20).and?.shadow?.shadowBlurRadius(3)
 //            confer.text("测试\n")?.textColor(.red).font(.systemFont(ofSize: 18))
 //            confer.htmlString("<p>测试文本</p><p>测试文本</p>")?.font(.systemFont(ofSize: 20)).textColor(.red)
@@ -84,10 +84,10 @@ class TestViewController: UIViewController {
 //            confer.text("\n")
 //            confer.image(UIImage.init(named: "indexMore"))?.size(CGSize.init(width: 50, height: 50), align: .center, font: UIFont.systemFont(ofSize: 15)).tapAction("xkkkk.com")
 //            confer.text("  图片居中对齐 : ")?.font(UIFont.systemFont(ofSize: 15)).textColor(.gray)
-            confer.htmlString("<span style=\"background-color: red;\"><s>sssssss<u>dddddd</u></s><em>xxxxxxx</em><i>yyyyyyy</i></span>")
+            confer.htmlString("<span style=\"background-color: red;\"><s>&#x5475;&#x5475;&#x54C8;&#x54C8;&#x54C8;sssssss<u>dddddd</u></s><em>xxxxxxx</em><i>yyyyyyy</i></span>")
             confer.text("删除线 下划线")?.strikethroughStyle(.styleSingle).strikethroughColor(.black).textColor(.red).font(.systemFont(ofSize: 17)).underlineStyle(.styleSingle).underlineColor(.red)
             confer.text("\n")
-            confer.text("斜体 扩展")?.obliqueness(1).textColor(.red).font(.systemFont(ofSize: 17)).expansion(1)
+            confer.text("斜体 扩展")?.obliqueness(1).textColor(.red).font(.systemFont(ofSize: 17)).expansion(1).paragraphStyle?.lineSpacing(10)
             confer.text("\n")
             confer.text("背景色")?.backgroundColor(.gray).textColor(.red).font(.systemFont(ofSize: 17))
             confer.text("\n")
@@ -109,20 +109,21 @@ class TestViewController: UIViewController {
             } else {
                 // Fallback on earlier versions
             }
+            confer.paragraphStyle?.lineSpacing(40)
 //            confer.text("自定义")?.custom(key: .rztap, value: "1111111")
         }
         text.delegate = self; 
-        text.rz.colorfulConfer { confer in
-            confer.text("哈哈哈哈\n")?.font(.systemFont(ofSize: 18)).textColor(.black)
-            confer.text("可点击文本1")?.font(.systemFont(ofSize: 18)).textColor(.red).tapActionByLable("1111").paragraphStyle?.alignment(.left)
-            confer.text("\n")
-            confer.text("可点击文本2")?.font(.systemFont(ofSize: 18)).textColor(.red).tapActionByLable("22222").paragraphStyle?.alignment(.center)
-            confer.text("\n")
-        } 
-        text.rz.didTapTextView { (tabObj, textview) -> Bool in
-            print("text:\(tabObj)")
-            return false
-        }
+//        text.rz.colorfulConfer { confer in
+//            confer.text("哈哈哈哈\n")?.font(.systemFont(ofSize: 18)).textColor(.black)
+//            confer.text("可点击文本1")?.font(.systemFont(ofSize: 18)).textColor(.red).tapActionByLable("1111").paragraphStyle?.alignment(.left)
+//            confer.text("\n")
+//            confer.text("可点击文本2")?.font(.systemFont(ofSize: 18)).textColor(.red).tapActionByLable("22222").paragraphStyle?.alignment(.center)
+//            confer.text("\n")
+//        }
+//        text.rz.didTapTextView { (tabObj, textview) -> Bool in
+//            print("text:\(tabObj)")
+//            return false
+//        }
 //        let tt = text.attributedText.rz.codingToCompleteHtmlByWeb()?.removingPercentEncoding
         let tt = text.attributedText.rz.codingToCompleteHtml()
         print("\(tt ?? "")")

@@ -123,5 +123,12 @@ public class ParagraphStyleRZ<T: AnyObject> {
             // Fallback on earlier versions
         }
         return self
-    } 
+    }
+    
+    public func usesDefaultHyphenation(_ hyp: Bool) -> Self {
+        if #available(iOS 15.0, *) {
+            paragraph.usesDefaultHyphenation = hyp
+        }
+        return self
+    }
 }

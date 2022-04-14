@@ -13,7 +13,7 @@ public extension RZColorfulSwiftBase where T: NSAttributedString {
     static func htmlString(_ html: String?) ->NSAttributedString? {
         guard let html = html, html.count > 0 else {return nil}
         if let data = html.data(using: String.Encoding.unicode) {
-            if let attr = try? NSMutableAttributedString.init(data: data, options: [NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil) {
+            if let attr = try? NSMutableAttributedString.init(data: data, options: [NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html, .characterEncoding: String.Encoding.utf8.rawValue], documentAttributes: nil) {
                 return attr
             }
         }
