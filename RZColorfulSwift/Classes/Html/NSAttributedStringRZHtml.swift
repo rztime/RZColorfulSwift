@@ -133,6 +133,44 @@ public extension RZColorfulSwiftBase where T: NSAttributedString {
         return html
     }
 }
+public extension RZColorfulSwiftBase where T: NSAttributedString {
+    func parapraghRange(for range: NSRange) -> NSRange {
+        let string = NSString.init(string: self.rz.string)
+        var star: Int = 0
+        var end: Int = 0
+        var ptr: Int = 0
+        string.getParagraphStart(&star, end: &end, contentsEnd: &ptr, for: range)
+        return .init(location: star, length: end - star)
+    }
+    /// 当前文本的所有段落
+    func allParapraghRange() -> [NSRange] {
+        var ranges: [NSRange] = []
+        var range: NSRange = .init(location: 0, length: 0)
+        while range.location < self.rz.length {
+            let rg = self.parapraghRange(for: range)
+            ranges.append(rg)
+            range.location = rg.location + rg.length
+        }
+        return ranges
+    }
+}
+extension String {
+    func ranges(of string: String) -> [NSRange] {
+        let temp = NSMutableString.init(string: self)
+        var tempRange = NSRange.init(location: 0, length: temp.length)
+        var ranges : [NSRange] = []
+        while tempRange.location < self.count {
+            let rg = temp.range(of: string, range: tempRange)
+            if rg.location != NSNotFound {
+                ranges.append(rg)
+            }
+            let location = rg.location + rg.length
+            tempRange = .init(location: location, length: self.count - location)
+        }
+        return ranges
+    }
+}
+
 public extension NSAttributedString {
     @available(iOS, introduced: 7.0, deprecated: 7.0, message: "Use .rz.htmlString(html) instead")
     static func htmlString(_ html: String?) ->NSAttributedString? {

@@ -27,7 +27,7 @@ class LabelFoldTestViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         self.view.addSubview(label)
-        label.frame = .init(x: 10, y: 100, width: 400, height: 500)
+        label.frame = .init(x: 10, y: 100, width: 400, height: 900)
 
         label.rz.tapAction { [weak self] (label, tapActionId, range) in
             if tapActionId == "all" {
@@ -38,8 +38,9 @@ class LabelFoldTestViewController: UIViewController {
             self?.reload()
         }
         reload()
+        
     }
     func reload() {
-        label.rz.set(attributedString: model.attributedString, maxLine: 4, maxWidth: 300, isFold: model.isFold, showAllText: model.showAll, showFoldText: model.showFold)
+        label.rz.set(attributedString: model.attributedString, maxLine: 4, maxWidth: 400, isFold: model.isFold, showAllText: model.showAll, showFoldText: model.showFold)
     }
 }

@@ -32,13 +32,10 @@ public extension RZColorfulSwiftProtocol {
 }
 
 extension UIView: RZColorfulSwiftProtocol { }
-//extension UILabel: RZColorfulSwiftProtocol { }
-//extension UITextView: RZColorfulSwiftProtocol { }
-//extension UITextField: RZColorfulSwiftProtocol { }
-//extension UIButton: RZColorfulSwiftProtocol { }
 
 extension NSAttributedString: RZColorfulSwiftProtocol { }
 extension UIColor: RZColorfulSwiftProtocol { }
+extension String: RZColorfulSwiftProtocol { }
 
 public typealias RZDidTapTextView = (_ tapObj: String, _ textView: UITextView) -> Bool
 public typealias ColorfulBlockRZ = ((_ confer: ColorfulConferrerRZ) -> Void)

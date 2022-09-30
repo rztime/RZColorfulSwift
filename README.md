@@ -1,6 +1,10 @@
 # RZColorfulSwift
 NSAttributedString 富文本方法 (图文混排、多样式文本)
 
+## Author
+
+rztime, rztime@vip.qq.com  QQ群：580839749
+
 ### [Objc版本看这里](https://github.com/rztime/RZColorful)
 ### 更新日志
 [更新日志](https://github.com/rztime/RZColorfulSwift/blob/master/UpdateLog.md)

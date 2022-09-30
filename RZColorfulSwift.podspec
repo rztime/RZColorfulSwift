@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'RZColorfulSwift'
-  s.version          = '0.3.0'
+  s.version          = '0.3.1'
   s.summary          = 'NSAttributedString富文本的快捷设置方法集合,以及UITextView、UITextField、UILabel富文本简单优雅的使用'
 
 # This description is used to generate tags and improve search results.
@@ -36,7 +36,6 @@ Pod::Spec.new do |s|
   #s.platform     = "8.0"
 
   s.source_files = 'RZColorfulSwift/Classes/**/*'
-  
   # s.resource_bundles = {
   #   'RZColorfulSwift' => ['RZColorfulSwift/Assets/*.png']
   # }

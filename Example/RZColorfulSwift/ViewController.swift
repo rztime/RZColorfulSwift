@@ -15,6 +15,7 @@ class ViewController: UIViewController {
                                                    ("UILabel 可点击文本", LabelTextClickedViewController.self),
                                                    ("可折叠Label in TableView", LabelFoldViewController.self),
                                                    ("可折叠Lbale", LabelFoldTestViewController.self),
+                                                   ("普通解析", NormalViewController.self),
     ]
     
     override func viewDidLoad() {

@@ -106,7 +106,12 @@ public class ParagraphStyleRZ<T: AnyObject> {
         paragraph.hyphenationFactor = factor
         return self
     }
-    
+    /// 设置textLsit，主要是列表功能
+    @discardableResult
+    public func textLists(_ list: [NSTextList]) -> Self {
+        paragraph.textLists = list
+        return self
+    }
     /// 未知
     @discardableResult
     public func defaultTabInterval(_ interval: CGFloat) -> Self {
@@ -119,12 +124,11 @@ public class ParagraphStyleRZ<T: AnyObject> {
     public func allowsDefaultTighteningForTruncation(_ allow: Bool) -> Self {
         if #available(iOS 9.0, *) {
             paragraph.allowsDefaultTighteningForTruncation = allow
-        } else {
-            // Fallback on earlier versions
         }
         return self
     }
-    
+    /// 未知
+    @discardableResult
     public func usesDefaultHyphenation(_ hyp: Bool) -> Self {
         if #available(iOS 15.0, *) {
             paragraph.usesDefaultHyphenation = hyp

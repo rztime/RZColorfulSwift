@@ -21,7 +21,7 @@ public extension RZColorfulSwiftBase where T: UIView {
 // MARK: - 给view添加点击事件
 fileprivate extension UIView {
     struct UIViewPerpotyName {
-        static var taphandlerKey = "rz_taphandlerKey"
+        static var taphandlerKey = "rz_colorful_taphandlerKey"
     }
 
     var taphandler :((UIView) -> Void)? {
@@ -46,13 +46,7 @@ fileprivate extension UIView {
         tapges.numberOfTouchesRequired = numberOfTouches
         tapges.numberOfTapsRequired = numberOfTaps
         self.gestureRecognizers?.forEach({ (obj) in
-            if let tap = obj as? UITapGestureRecognizer {
-                let touches = tap.numberOfTouchesRequired == numberOfTouches
-                let taps = tap.numberOfTapsRequired == numberOfTaps
-                if touches && taps {
-                    tapges.require(toFail: tap)
-                }
-            }
+            self.removeGestureRecognizer(obj)
         })
         tapges.addTarget(self, action: #selector(rztapAction(_:)))
         self.addGestureRecognizer(tapges)

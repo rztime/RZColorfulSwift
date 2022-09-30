@@ -63,10 +63,23 @@ public extension RZColorfulSwiftBase where T: UITextView {
         }
         let textView = self.rz
         let beginning = textView.beginningOfDocument
-        guard let star = textView.position(from: beginning, offset: range.location) else { return .zero }
-        guard let end = textView.position(from: star, offset: range.length) else { return .zero}
-        guard let textRange = textView.textRange(from: star, to: end) else { return .zero}
+        guard let star = textView.position(from: beginning, offset: range.location),
+              let end = textView.position(from: star, offset: range.length),
+              let textRange = textView.textRange(from: star, to: end) else { return .zero }
         return textView.firstRect(for: textRange)
+    }
+    /// 获取range对应的frames
+    func rectsFor(range: NSRange?) -> [CGRect] {
+        guard let range = range else {
+            return []
+        }
+        let textView = self.rz
+        let beginning = textView.beginningOfDocument
+        guard let star = textView.position(from: beginning, offset: range.location),
+              let end = textView.position(from: star, offset: range.length),
+              let textRange = textView.textRange(from: star, to: end) else { return [] }
+        let res = textView.selectionRects(for: textRange)
+        return res.map { $0.rect }
     }
 }
 // MARK: - 对TextView的富文本的支持
