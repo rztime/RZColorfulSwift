@@ -52,6 +52,7 @@
 		78B7B8840DAE0616DE6F21C6 /* Pods-RZColorfulSwift_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RZColorfulSwift_Tests.debug.xcconfig"; path = "Target Support Files/Pods-RZColorfulSwift_Tests/Pods-RZColorfulSwift_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		8EA15CECA0E5F6FF0686E25F /* Pods-RZColorfulSwift_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RZColorfulSwift_Tests.release.xcconfig"; path = "Target Support Files/Pods-RZColorfulSwift_Tests/Pods-RZColorfulSwift_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		B1E12B3A002CD6A60D5FC7C0 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		B20D9103296CFA7B0077BDDD /* UpdateLog.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = UpdateLog.md; path = ../UpdateLog.md; sourceTree = "<group>"; };
 		B25A727828179E95008DE92A /* Html.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Html.bundle; sourceTree = "<group>"; };
 		B25F1CCE278D7D8B00A0780C /* LabelFoldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelFoldViewController.swift; sourceTree = "<group>"; };
 		B26FDF06286E9B5000B55DD5 /* NormalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalViewController.swift; sourceTree = "<group>"; };
@@ -160,6 +161,7 @@
 		607FACF51AFB993E008FA782 /* Podspec Metadata */ = {
 			isa = PBXGroup;
 			children = (
+				B20D9103296CFA7B0077BDDD /* UpdateLog.md */,
 				666F9300FEA38C2868E29AA0 /* RZColorfulSwift.podspec */,
 				B1E12B3A002CD6A60D5FC7C0 /* README.md */,
 				549F2F1853345E10DAA98E71 /* LICENSE */,

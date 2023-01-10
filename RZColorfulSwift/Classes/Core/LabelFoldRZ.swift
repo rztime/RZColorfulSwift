@@ -77,6 +77,7 @@ class LabelFoldHeler: UIView {
         let tap = UITapGestureRecognizer.init(target: self, action: #selector(tapAction(_ :)))
         self.addGestureRecognizer(tap)
         self.tap = tapAction
+        self.isHidden = true
     }
     
     required init?(coder: NSCoder) {

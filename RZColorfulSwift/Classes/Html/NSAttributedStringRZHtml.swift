@@ -158,14 +158,15 @@ extension String {
     func ranges(of string: String) -> [NSRange] {
         let temp = NSMutableString.init(string: self)
         var tempRange = NSRange.init(location: 0, length: temp.length)
+        let length = (self as NSString).length
         var ranges : [NSRange] = []
-        while tempRange.location < self.count {
+        while tempRange.location < length {
             let rg = temp.range(of: string, range: tempRange)
             if rg.location != NSNotFound {
                 ranges.append(rg)
             }
             let location = rg.location + rg.length
-            tempRange = .init(location: location, length: self.count - location)
+            tempRange = .init(location: location, length: length - location)
         }
         return ranges
     }

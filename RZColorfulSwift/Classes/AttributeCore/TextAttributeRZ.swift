@@ -70,8 +70,12 @@ extension TextAttributeRZ: AttributePackageRZ {
         if let a = attributedText {
             attr = .init(attributedString: a)
         }
-        if let p = (_paragraphStyle?.paragraph ?? para)?.copy() {
-            attributeDict[.paragraphStyle] = p
+        if let p = (_paragraphStyle?.paragraph ?? para) {
+            if let p = p as? RZMutableParagraphStyle {
+                attributeDict[.paragraphStyle] = RZMutableParagraphStyle.copyWith(p)
+            } else {
+                attributeDict[.paragraphStyle] = p
+            }
         }
         if let sha = (_shadow?.shadow ?? sha)?.copy() {
             attributeDict[.shadow] = sha
@@ -81,8 +85,8 @@ extension TextAttributeRZ: AttributePackageRZ {
         return attr
     }
     public func package(_ attr: NSMutableAttributedString?) {
-        if let p = (_paragraphStyle?.paragraph)?.copy() {
-            attributeDict[.paragraphStyle] = p
+        if let p = (_paragraphStyle?.paragraph) {
+            attributeDict[.paragraphStyle] = RZMutableParagraphStyle.copyWith(p)
         }
         if let sha = (_shadow?.shadow)?.copy() {
             attributeDict[.shadow] = sha

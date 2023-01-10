@@ -45,8 +45,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         return 60
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell") ?? .init(style: .value1, reuseIdentifier: "cell")
+        let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell") ?? .init(style: .default, reuseIdentifier: "cell")
         let item = items[indexPath.row]
+        cell.textLabel?.numberOfLines = 0
         cell.textLabel?.text = "\(item.0)"
         cell.detailTextLabel?.text = "\(item.1)"
         return cell

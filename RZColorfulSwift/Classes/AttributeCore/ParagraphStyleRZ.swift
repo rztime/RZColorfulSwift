@@ -8,8 +8,28 @@
 
 import UIKit
 
+public class RZMutableParagraphStyle: NSMutableParagraphStyle {
+    /// 行数
+    var numberOfLines: Int = 0
+    /// 计算时，绘制的文本的最大宽度
+    var textDrawMaxWidth: CGFloat = 0
+    /// 截断时，根据LineBreakMode方式，添加的文本
+    var truncateText: NSAttributedString?
+    
+    public class func copyWith(_ p: RZMutableParagraphStyle) -> RZMutableParagraphStyle {
+        let para = RZMutableParagraphStyle.init()
+        if #available(iOS 9.0, *) {
+            para.setParagraphStyle(p)
+        }
+        para.numberOfLines = p.numberOfLines
+        para.textDrawMaxWidth = p.textDrawMaxWidth
+        para.truncateText = p.truncateText
+        return para
+    }
+}
+
 public class ParagraphStyleRZ<T: AnyObject> {
-    public var paragraph = NSMutableParagraphStyle.init()
+    public var paragraph = RZMutableParagraphStyle.init()
     
     public init(_ target: T?) {
         and = target
@@ -133,6 +153,19 @@ public class ParagraphStyleRZ<T: AnyObject> {
         if #available(iOS 15.0, *) {
             paragraph.usesDefaultHyphenation = hyp
         }
+        return self
+    }
+    /// 给段落添加行数限制，搭配NSLineBreakModel，将在段落里添加...占位
+    /// 有一定的使用条件，只对当前一段文本设置行数限制 如：
+    /// confer.text("1").
+    /// confer.text("2")?.paragraphStyle?.numberOfLines(3, maxWidth: width).lineBreakMode(.byTruncatingMiddle)
+    /// confer.text("3").
+    /// 只对2中的文本进行行数计算，如果前后有1、3，将不适用
+    @discardableResult
+    public func numberOfLines(_ line: Int, maxWidth: CGFloat, truncate: NSAttributedString? = nil) -> Self {
+        paragraph.numberOfLines = line
+        paragraph.textDrawMaxWidth = maxWidth
+        paragraph.truncateText = truncate
         return self
     }
 }

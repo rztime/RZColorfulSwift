@@ -17,12 +17,24 @@ public class ColorfulConferrerRZ {
         let text = NSMutableAttributedString.init()
         texts.forEach { (t) in
             if let t = t as? AttributePackageRZ, let tt = t.package(_paragraphStyle?.paragraph, _shadow?.shadow) {
-                text.append(tt)
+                if let p = tt.attribute(.paragraphStyle, at:0, effectiveRange: nil) as? RZMutableParagraphStyle, p.numberOfLines > 0, p.textDrawMaxWidth > 0 {
+                    /// 默认占位符 ... 也可以自定义
+                    let placeholder : NSAttributedString = p.truncateText ?? tt.rz.copyAttributeToText("...")
+                    let mode = p.lineBreakMode
+                    p.lineBreakMode = .byWordWrapping
+                    if let res = tt.rz.attributedStringBy(maxline: p.numberOfLines, maxWidth: p.textDrawMaxWidth, lineBreakMode: mode, placeHolder: placeholder) {
+                        text.append(res)
+                    } else {
+                        text.append(tt)
+                    }
+                } else {
+                    text.append(tt)
+                }
             }
         }
         texts.removeAllObjects()
         return text
-    } 
+    }
 }
 // MARK 可使用的方法
 public extension ColorfulConferrerRZ { 

@@ -76,7 +76,30 @@ public extension RZColorfulSwiftBase where T: NSAttributedString {
         return rect.size
     }
 }
-
+public extension RZColorfulSwiftBase where T: NSAttributedString {
+    /// 给text 标记属性（如对关键字进行标红显示）
+    func markText(_ text: String?, attribute: [NSAttributedString.Key: Any]) -> NSAttributedString {
+        guard let keyword = text, !keyword.isEmpty else { return self.rz }
+        let attr = NSMutableAttributedString.init(attributedString: self.rz)
+        let text = self.rz.string as NSString
+        var range = NSRange.init(location: 0, length: text.length)
+        while range.length > 0 {
+            let r = text.range(of: keyword, range: range)
+            if r.location != NSNotFound {
+                attr.addAttributes(attribute, range: r)
+                range = .init(location: r.upperBound, length: range.upperBound - r.upperBound)
+            } else {
+                break
+            }
+        }
+        return attr
+    }
+    /// 将self的属性设置到text上
+    func copyAttributeToText(_ text: String) -> NSAttributedString {
+        let dict = self.rz.attributes(at: 0, effectiveRange: nil)
+        return NSAttributedString.init(string: text, attributes: dict)
+    }
+}
 public extension RZColorfulSwiftBase where T: NSAttributedString {
     // 判断attributedString的内容，在label显示的话，是否超过line行数
     func moreThan(line: Int, maxWidth: CGFloat) -> Bool {
@@ -99,7 +122,7 @@ public extension RZColorfulSwiftBase where T: NSAttributedString {
     ///   - showFoldText: 如 “收起全文” flod = FALSE，表示已全部展开，将追加在后边
     /// - Returns: 字符串
     func attributedStringBy(maxline: Int, maxWidth: CGFloat, isFold: Bool, showAllText: NSAttributedString?, showFoldText: NSAttributedString?) -> NSAttributedString? {
-        if self.rz.length == 0 {
+        if self.rz.length == 0 || maxline == 0 {
             return self.rz
         }
         if !self.moreThan(line: maxline, maxWidth: maxWidth) {
@@ -110,7 +133,7 @@ public extension RZColorfulSwiftBase where T: NSAttributedString {
             if let showFoldText = showFoldText {
                 attr.append(showFoldText)
             }
-            return attr
+            return attr 
         }
         let showAll = showAllText ?? .init()
         var (min, max) = (0, self.rz.length)
@@ -120,6 +143,52 @@ public extension RZColorfulSwiftBase where T: NSAttributedString {
             let sub = self.rz.attributedSubstring(from: .init(location: 0, length: end))
             let tempAttr = NSMutableAttributedString.init(attributedString: sub)
             tempAttr.append(showAll)
+            let more = tempAttr.rz.moreThan(line: maxline, maxWidth: maxWidth)
+            if more {
+                max = end
+            } else {
+                min = end
+            }
+            let tempEnd = (min + max) / 2
+            if tempEnd == end {
+                return tempAttr
+            }
+        }
+    }
+    
+    /// 对富文本进行截断处理
+    /// - Parameters:
+    ///   - maxline: 设置超过多少截断
+    ///   - maxWidth: 显示的最大宽度
+    ///   - lineBreakMode: 截断方式
+    ///   - placeHolder: 截断时占位的"..."文字
+    func attributedStringBy(maxline: Int, maxWidth: CGFloat, lineBreakMode: NSLineBreakMode, placeHolder: NSAttributedString?) -> NSAttributedString? {
+        if self.rz.length == 0 || maxline == 0 {
+            return self.rz
+        }
+        if !self.moreThan(line: maxline, maxWidth: maxWidth) {
+            return self.rz
+        }
+  
+        let holder = placeHolder ?? .init()
+        var (min, max) = (0, self.rz.length)
+        var end: Int = 0
+        while true {
+            end = (min + max) / 2
+            let sub = self.rz.attributedSubstring(from: .init(location: 0, length: end))
+            let tempAttr = NSMutableAttributedString.init(attributedString: sub)
+            switch lineBreakMode {
+            case .byWordWrapping, .byCharWrapping, .byClipping:
+                break
+            case .byTruncatingHead:
+                tempAttr.insert(holder, at: 0)
+            case .byTruncatingTail:
+                tempAttr.append(holder)
+            case .byTruncatingMiddle:
+                tempAttr.insert(holder, at: Int(tempAttr.length / 2))
+            @unknown default:
+                break
+            }
             let more = tempAttr.rz.moreThan(line: maxline, maxWidth: maxWidth)
             if more {
                 max = end

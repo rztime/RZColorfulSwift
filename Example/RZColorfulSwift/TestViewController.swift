@@ -63,7 +63,7 @@ class TestViewController: UIViewController {
         scroview.contentSize = CGSize.init(width: 0, height: 1000)
 //        text.isEditable = false
         text.rz.colorfulConfer { (confer) in
-            confer.paragraphStyle?.lineSpacing(200).paragraphSpacingBefore(15).alignment(.left).and?.shadow?.shadowColor(.black).shadowOffset(.init(width: 3, height: 3)).shadowBlurRadius(3)
+            confer.paragraphStyle?.lineSpacing(20).paragraphSpacingBefore(15).alignment(.left).and?.shadow?.shadowColor(.black).shadowOffset(.init(width: 3, height: 3)).shadowBlurRadius(3)
             confer.text("哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈")
 //            confer.paragraphStyle?.lineSpacing(20).and?.shadow?.shadowBlurRadius(3)
 //            confer.text("测试\n")?.textColor(.red).font(.systemFont(ofSize: 18))
