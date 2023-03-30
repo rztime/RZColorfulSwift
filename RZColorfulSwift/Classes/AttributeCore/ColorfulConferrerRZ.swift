@@ -17,7 +17,7 @@ public class ColorfulConferrerRZ {
         let text = NSMutableAttributedString.init()
         texts.forEach { (t) in
             if let t = t as? AttributePackageRZ, let tt = t.package(_paragraphStyle?.paragraph, _shadow?.shadow) {
-                if let p = tt.attribute(.paragraphStyle, at:0, effectiveRange: nil) as? RZMutableParagraphStyle, p.numberOfLines > 0, p.textDrawMaxWidth > 0 {
+                if tt.length > 0, let p = tt.attribute(.paragraphStyle, at:0, effectiveRange: nil) as? RZMutableParagraphStyle, p.numberOfLines > 0, p.textDrawMaxWidth > 0 {
                     /// 默认占位符 ... 也可以自定义
                     let placeholder : NSAttributedString = p.truncateText ?? tt.rz.copyAttributeToText("...")
                     let mode = p.lineBreakMode
