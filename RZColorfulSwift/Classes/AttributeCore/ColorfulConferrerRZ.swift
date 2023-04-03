@@ -37,7 +37,7 @@ public class ColorfulConferrerRZ {
     }
 }
 // MARK 可使用的方法
-public extension ColorfulConferrerRZ { 
+public extension ColorfulConferrerRZ {
     /// 文字
     @discardableResult
     func text(_ text: String?) -> TextAttributeRZ? {
@@ -49,8 +49,10 @@ public extension ColorfulConferrerRZ {
     /// 富文本（如网页源码）
     @discardableResult
     func htmlString(_ htmlString: String?) -> TextAttributeRZ? {
-        guard let htmlString = htmlString, htmlString.count > 0 else { return nil }
-        let attr = NSAttributedString.rz.htmlString(htmlString)
+        guard let htmlString = htmlString, htmlString.count > 0,
+              let attr = NSAttributedString.rz.htmlString(htmlString), attr.length > 0 else {
+            return nil
+        }
         let attribute = TextAttributeRZ.init(attributedText: attr)
         self.texts.add(attribute)
         return attribute;
@@ -84,7 +86,7 @@ public extension ColorfulConferrerRZ {
         }
         return nil
     }
-
+    
     /// 段落
     var paragraphStyle: ParagraphStyleRZ<ColorfulConferrerRZ>? {
         get {

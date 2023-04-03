@@ -14,12 +14,7 @@ public struct RZColorfulSwiftBase<T> {
     }
 }
 
-public protocol RZColorfulSwiftProtocol {
-    associatedtype T
-    static var rz: RZColorfulSwiftBase<T>.Type { get set }
-    var rz: RZColorfulSwiftBase<T> { get set }
-}
-
+public protocol RZColorfulSwiftProtocol {}
 public extension RZColorfulSwiftProtocol {
     static var rz: RZColorfulSwiftBase<Self>.Type {
         get { return RZColorfulSwiftBase<Self>.self }
