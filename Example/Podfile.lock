@@ -1,7 +1,7 @@
 PODS:
-  - Kingfisher (4.10.1)
-  - RZColorfulSwift (0.4.0)
-  - SnapKit (4.2.0)
+  - Kingfisher (6.3.1)
+  - RZColorfulSwift (0.5.0)
+  - SnapKit (5.6.0)
 
 DEPENDENCIES:
   - Kingfisher
@@ -18,10 +18,10 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
-  RZColorfulSwift: be0a34377c4855336445c2f034117fb19019feac
-  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
+  Kingfisher: 016c8b653a35add51dd34a3aba36b580041acc74
+  RZColorfulSwift: 22bd67ef4daa9e9bbc56aae4f572577591275877
+  SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
 
-PODFILE CHECKSUM: a9e9e2373075b8c723a09ef0a0c49805435fb8d4
+PODFILE CHECKSUM: 5f52a6ef92a9821b0a337e6279b5e2ef5f87507d
 
 COCOAPODS: 1.11.3
