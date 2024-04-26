@@ -197,7 +197,61 @@ public extension RZColorfulSwiftBase where T: NSAttributedString {
             }
             let tempEnd = (min + max) / 2
             if tempEnd == end {
-                return tempAttr
+                if more {
+                    max -= 1
+                } else {
+                    return tempAttr
+                }
+            }
+        }
+    }
+    
+    /// 头部截断（逆向）从最后一个字反向往前保留最后maxLine行数的文字
+    /// - Parameters:
+    ///   - maxline: 最大行数
+    ///   - maxWidth: 最大宽度
+    ///   - lineBreakMode: placeholder插入的方式
+    ///   - placeHolder: 截断时占位的"..."文字
+    func headTruncatingAttributedStringBy(maxline: Int, maxWidth: CGFloat, lineBreakMode: NSLineBreakMode, placeHolder: NSAttributedString?) -> NSAttributedString? {
+        if self.rz.length == 0 || maxline == 0 {
+            return self.rz
+        }
+        if !self.moreThan(line: maxline, maxWidth: maxWidth) {
+            return self.rz
+        }
+  
+        let holder = placeHolder ?? .init()
+        var (min, max) = (0, self.rz.length)
+        var star: Int = 0
+        while true {
+            star = (min + max) / 2
+            let sub = self.rz.attributedSubstring(from: .init(location: star, length: self.rz.length - star))
+            let tempAttr = NSMutableAttributedString.init(attributedString: sub)
+            switch lineBreakMode {
+            case .byWordWrapping, .byCharWrapping, .byClipping:
+                break
+            case .byTruncatingHead:
+                tempAttr.insert(holder, at: 0)
+            case .byTruncatingTail:
+                tempAttr.append(holder)
+            case .byTruncatingMiddle:
+                tempAttr.insert(holder, at: Int(tempAttr.length / 2))
+            @unknown default:
+                break
+            }
+            let more = tempAttr.rz.moreThan(line: maxline, maxWidth: maxWidth)
+            if more {
+                min = star
+            } else {
+                max = star
+            }
+            let tempEnd = (min + max) / 2
+            if tempEnd == star {
+                if more {
+                    min += 1
+                } else {
+                    return tempAttr
+                }
             }
         }
     }

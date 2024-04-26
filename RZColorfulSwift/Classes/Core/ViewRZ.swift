@@ -17,19 +17,15 @@ public extension RZColorfulSwiftBase where T: UIView {
         self.rz.tap(numberOfTouches, numberOfTaps, handler)
     }
 }
-
+private var taphandlerKeyName: UInt8 = 0
 // MARK: - 给view添加点击事件
 fileprivate extension UIView {
-    struct UIViewPerpotyName {
-        static var taphandlerKey = "rz_colorful_taphandlerKey"
-    }
-
     var taphandler :((UIView) -> Void)? {
         set {
-            objc_setAssociatedObject(self, &UIViewPerpotyName.taphandlerKey, newValue, .OBJC_ASSOCIATION_COPY_NONATOMIC)
+            objc_setAssociatedObject(self, &taphandlerKeyName, newValue, .OBJC_ASSOCIATION_COPY_NONATOMIC)
         }
         get {
-            return objc_getAssociatedObject(self, &UIViewPerpotyName.taphandlerKey) as? ((UIView) -> Void)
+            return objc_getAssociatedObject(self, &taphandlerKeyName) as? ((UIView) -> Void)
         }
     }
     @objc func rztapAction(_ tap: UITapGestureRecognizer) {

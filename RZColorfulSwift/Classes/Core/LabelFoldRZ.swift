@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+private var rz_labelTextRectKey: UInt8 = 0
 public extension UILabel {
     fileprivate struct RZLabelDraw {
         static var rz_labelTextRectKey = "rz_labelTextRectKey"
@@ -14,10 +14,10 @@ public extension UILabel {
     // 用于记录文本绘制的区域，label绘制的文本，将在此区域居中绘制
     var drawTextRect: CGRect {
         set {
-            objc_setAssociatedObject(self, &RZLabelDraw.rz_labelTextRectKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objc_setAssociatedObject(self, &rz_labelTextRectKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
         get {
-            return (objc_getAssociatedObject(self, &RZLabelDraw.rz_labelTextRectKey) as? CGRect) ?? .zero
+            return (objc_getAssociatedObject(self, &rz_labelTextRectKey) as? CGRect) ?? .zero
         }
     }
     // 单例，用于交换drawText方法
