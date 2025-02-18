@@ -44,8 +44,5 @@ class LabelTextClickedViewController: UIViewController {
             confer.text("\n")
             confer.text("可点击文本2")?.font(.systemFont(ofSize: 18)).textColor(.red).tapActionByLable("22222").paragraphStyle?.alignment(.center)
         }
-        /// 对富文本进行截断
-        let attr = NSAttributedString.init(string: "")
-        let newattr = attr.rz.attributedStringBy(maxline: 3, maxWidth: 300, lineBreakMode: .byTruncatingTail, placeHolder: NSAttributedString.init(string: "..."))
     }
 }

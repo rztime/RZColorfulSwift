@@ -55,7 +55,6 @@ extension LabelFoldViewController: UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
-        
     }
 }
 
@@ -72,7 +71,7 @@ class LabelFoldModel {
         confer.text(text)?.textColor(.black).font(.systemFont(ofSize: 16))
     }
     let showAll = NSAttributedString.rz.colorfulConfer { confer in
-        confer.text("...啊还是大富科技哈萨克京东方拉克丝京东方看加拉手快点解封了卡就实力坑爹房间雷克萨京东方扣垃圾啊实力坑爹房间拉萨")?.textColor(.red).font(.systemFont(ofSize: 16)).tapActionByLable("all")
+        confer.text("...显示全文")?.textColor(.red).font(.systemFont(ofSize: 16)).tapActionByLable("all")
     }
     let showFold = NSAttributedString.rz.colorfulConfer { confer in
         confer.text("...折叠")?.textColor(.red).font(.systemFont(ofSize: 16)).tapActionByLable("fold")
@@ -84,6 +83,7 @@ class LabelFoldCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.contentView.addSubview(label)
+        self.selectionStyle = .none
         label.snp.makeConstraints { make in
             make.edges.equalToSuperview().inset(10)
         }

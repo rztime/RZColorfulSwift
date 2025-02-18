@@ -6,6 +6,7 @@ target 'RZColorfulSwift_Example' do
   pod 'RZColorfulSwift', :path => '../'
   pod 'SnapKit'
   pod 'Kingfisher'
+  pod 'QuicklySwift'
   
   target 'RZColorfulSwift_Tests' do
     inherit! :search_paths

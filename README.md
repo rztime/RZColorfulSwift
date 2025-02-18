@@ -39,12 +39,13 @@ pod 'RZColorfulSwift'
 * 主要的功能：
     * AttributeCore
         * ColorfulConferrerRZ.swift                         富文本中对文字、图片、段落、阴影、网页源码等归纳集合
-        * TextAttributeRZ.swift                                对文字的属性方法设置集合
-        * ImageAttributeRZ.swift                            对图片的 属性方法集合
-        * ParagraphStyleRZ.swift                           对段落样式的一个属性方法集合
+        * AttributeKeyRZ.siwft                              富文本内可以设置的所有的方法（NSAttributedString.key）
+        * TextAttributeRZ.swift                             文字 继承于AttributeKeyRZ
+        * ImageAttributeRZ.swift                            图片 继承于AttributeKeyRZ
+        * ParagraphStyleRZ.swift                            对段落样式的一个属性方法集合
         * ShadowStyleRZ.swift                               对阴影样式的一个属性方法集合
     * Core 对UILabel、UITextView、UITextField添加的富文本快捷写入提供入口
-        * NSAttributedString       富文本的方法
+        * NSAttributedString                                富文本的方法
         * UILabel                       
         * UITextView
         * UITextField
@@ -192,6 +193,10 @@ NSAttributedString.rz.codingToCompleteHtmlByWeb()
 可以参考webLabels的初始化来完成自定义
 
 另外，按照数组顺序，优先级高的在前
+
+### NSAttributedString 转 HTML 行内样式的方法
+
+可以参考[RZRichTextView](https://github.com/rztime/RZRichTextView)里[code2Html](https://github.com/rztime/RZRichTextView/blob/master/RZRichTextView/Classes/RZHtml.swift)方法
 
 ## 最后
 * 在使用过程中，如果您发现有什么问题，欢迎向我反馈，谢谢

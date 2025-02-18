@@ -13,10 +13,9 @@ public enum ImageAttachmentHorizontalAlignRZ {
     case center
     case top
 }
-
-public class ImageAttributeRZ {
+/// 可设置的富文本方法请查看AttributeKeyRZ
+public class ImageAttributeRZ: AttributeKeyRZ {
     private let imageAttchment = NSTextAttachment.init()
-    private var attributeDict: [NSAttributedString.Key: Any] = [:]  // 一些其他属性
     private var _paragraphStyle : ParagraphStyleRZ<ImageAttributeRZ>?  // 样式
     private var _shadow : ShadowStyleRZ<ImageAttributeRZ>?            // 阴影
     private var yOffset: CGFloat?
@@ -28,26 +27,7 @@ public class ImageAttributeRZ {
         }
     }
 }
-extension ImageAttributeRZ: AttributePackageRZ {
-    public func package(_ para: NSMutableParagraphStyle?, _ sha: NSShadow?) -> NSAttributedString? {
-        guard let _ = self.imageAttchment.image else { return nil }
-        if let y = yOffset {
-            let bounds = imageAttchment.bounds
-            imageAttchment.bounds = CGRect(x: bounds.origin.x, y: bounds.origin.y - y, width: bounds.size.width, height: bounds.size.height)
-        }
-        let attr = NSMutableAttributedString.init(attributedString: NSAttributedString.init(attachment: imageAttchment))
-        if let pa = (_paragraphStyle?.paragraph ?? para)?.copy() {
-            attr.addAttributes([NSAttributedString.Key.paragraphStyle: pa], range: NSRange.init(location: 0, length: attr.string.count))
-        }
-        if let shadow = (_shadow?.shadow ?? sha)?.copy() {
-            attr.addAttributes([NSAttributedString.Key.shadow: shadow], range: NSRange.init(location: 0, length: attr.string.count))
-        }
-        attr.addAttributes(attributeDict, range: NSRange.init(location: 0, length: attr.string.count))
-        return attr
-    }
-}
-
-// MARK 可使用的方法
+// MARK: 可使用的方法
 public extension ImageAttributeRZ {
     /// 设置段落样式，使用and连接之后可继续设置图片属性
     var paragraphStyle : ParagraphStyleRZ<ImageAttributeRZ>? {
@@ -125,29 +105,22 @@ public extension ImageAttributeRZ {
         self.yOffset = yOffset
         return self
     }
-    
-    /// 添加url
-    @discardableResult
-    func url(_ url: URL?) -> Self {
-        self.attributeDict[.link] = url
-        return self
-    }
-    // 添加url
-    @discardableResult
-    func tapAction(_ action: String?) -> Self {
-        self.attributeDict[.link] = action?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-        return self
-    }
-    // 添加点击事件 仅UILabel有效
-    @discardableResult
-    func tapActionByLable(_ action: String?) -> Self {
-        self.attributeDict[.rztapLabel] = action?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-        return self
-    }
-    /// 添加自定义的key value
-    @discardableResult
-    func custom(key: NSAttributedString.Key, value: Any?) -> Self {
-        self.attributeDict[key] = value
-        return self
+}
+extension ImageAttributeRZ: AttributePackageRZ {
+    public func package(_ para: NSMutableParagraphStyle?, _ sha: NSShadow?) -> NSAttributedString? {
+        guard let _ = self.imageAttchment.image else { return nil }
+        if let y = yOffset {
+            let bounds = imageAttchment.bounds
+            imageAttchment.bounds = CGRect(x: bounds.origin.x, y: bounds.origin.y - y, width: bounds.size.width, height: bounds.size.height)
+        }
+        let attr = NSMutableAttributedString.init(attributedString: NSAttributedString.init(attachment: imageAttchment))
+        if let pa = (_paragraphStyle?.paragraph ?? para)?.copy() {
+            attr.addAttributes([NSAttributedString.Key.paragraphStyle: pa], range: NSRange.init(location: 0, length: attr.string.count))
+        }
+        if let shadow = (_shadow?.shadow ?? sha)?.copy() {
+            attr.addAttributes([NSAttributedString.Key.shadow: shadow], range: NSRange.init(location: 0, length: attr.string.count))
+        }
+        attr.addAttributes(attributeDict, range: NSRange.init(location: 0, length: attr.string.count))
+        return attr
     }
 }

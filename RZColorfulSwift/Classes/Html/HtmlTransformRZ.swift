@@ -214,15 +214,15 @@ public extension HtmlTransformRZ {
         return temp
     }
     /// 书写方向转换
-    static func directionTrans(_ value: Int) -> TextAttributeRZ.WriteDirectionRZ {
+    static func directionTrans(_ value: Int) -> WriteDirectionRZ {
         switch value {
-        case TextAttributeRZ.WriteDirectionRZ.LRE.rawValue():
+        case WriteDirectionRZ.LRE.rawValue():
             return .LRE
-        case TextAttributeRZ.WriteDirectionRZ.LRO.rawValue():
+        case WriteDirectionRZ.LRO.rawValue():
             return .LRO
-        case TextAttributeRZ.WriteDirectionRZ.RLE.rawValue():
+        case WriteDirectionRZ.RLE.rawValue():
             return .RLE
-        case TextAttributeRZ.WriteDirectionRZ.RLO.rawValue():
+        case WriteDirectionRZ.RLO.rawValue():
             return .RLO
         default:
             return .LRO
