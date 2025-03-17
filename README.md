@@ -1,13 +1,32 @@
 # RZColorfulSwift
-NSAttributedString 富文本方法 (图文混排、多样式文本)
+
+[![CI Status](https://img.shields.io/travis/rztime/RZColorfulSwift.svg?style=flat)](https://travis-ci.org/rztime/RZColorfulSwift)
+[![Version](https://img.shields.io/cocoapods/v/RZColorfulSwift.svg?style=flat)](https://cocoapods.org/pods/RZColorfulSwift)
+[![License](https://img.shields.io/cocoapods/l/RZColorfulSwift.svg?style=flat)](https://cocoapods.org/pods/RZColorfulSwift)
+[![Platform](https://img.shields.io/cocoapods/p/RZColorfulSwift.svg?style=flat)](https://cocoapods.org/pods/RZColorfulSwift)
+
+iOS NSAttributedString 富文本方法 (图文混排、多样式文本); 文本超行，自动添加"折叠"、"全部"; markdown 转 html;
+支持UILabel、UITextView、UITextField中可点击带链接的文本
+
+## Installation
+
+RZColorfulSwift is available through [CocoaPods](https://cocoapods.org). To install
+it, simply add the following line to your Podfile:
+
+```ruby
+pod 'RZColorfulSwift'
+```
+
 
 ## Author
 
 rztime, rztime@vip.qq.com  QQ群：580839749
 
-### [Objc版本看这里](https://github.com/rztime/RZColorful)
+### Objc版本看这里[RZColorful](https://github.com/rztime/RZColorful)
+
 ### 更新日志
 [更新日志](https://github.com/rztime/RZColorfulSwift/blob/master/UpdateLog.md)
+
 
 * NSAttributedString 的多样化设置(文字字体、颜色、阴影、段落样式、url、下划线，以及图文混排等等)
 * 添加UITextField、UITextView、UILabel的attributedText的富文本设置。
@@ -15,6 +34,7 @@ rztime, rztime@vip.qq.com  QQ群：580839749
 
 ## 关于RZColorfulSwift
 * 对NSAttributeString的初始化做支持
+* 支持 markdown 文档转换为html
 * 支持UILabel、UITextView、UITextField的attributedText的设置。
 * 包含的属性快捷设置：
     * 段落样式

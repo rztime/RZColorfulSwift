@@ -16,6 +16,7 @@ class ViewController: UIViewController {
                                                    ("可折叠Label in TableView", LabelFoldViewController.self),
                                                    ("可折叠Lbale", LabelFoldTestViewController.self),
                                                    ("普通解析", NormalViewController.self),
+                                                   ("Markdown解析为html", MDToHtmlViewController.self),
     ]
     
     override func viewDidLoad() {

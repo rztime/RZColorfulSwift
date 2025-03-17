@@ -2,7 +2,7 @@ PODS:
   - Kingfisher (6.3.1)
   - QuicklySwift (0.8.0):
     - SnapKit
-  - RZColorfulSwift (0.5.0)
+  - RZColorfulSwift (0.7.0)
   - SnapKit (5.6.0)
 
 DEPENDENCIES:
@@ -24,7 +24,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Kingfisher: 016c8b653a35add51dd34a3aba36b580041acc74
   QuicklySwift: 80500fa7115415902b0a0626f21c816966cf3727
-  RZColorfulSwift: c4cb0c4668a77a9a1b5cb1a884f6ae20f2be3f58
+  RZColorfulSwift: dc922d9007e22e549bb749a6fe467b803bc542f0
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
 
 PODFILE CHECKSUM: 62e73462ad0e54d4b9c12953c4e4f2bc0cbe05a4
