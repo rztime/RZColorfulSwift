@@ -25,6 +25,7 @@ class NormalViewController: UIViewController {
  
         label.rz.colorfulConfer { confer in
             confer.paragraphStyle?.textLists([.init(markerFormat: .box, options: 0)])
+            confer.htmlString("<span>文本测试</span><a href=\"www.baidu.com\">百度一下</a>")?.font(.systemFont(ofSize: 17))
             confer.text("2222")?.font(.systemFont(ofSize: 20))
             confer.text("\n")?.font(.systemFont(ofSize: 20))
             confer.text("背景色")?.backgroundColor(.blue).font(.systemFont(ofSize: 20))

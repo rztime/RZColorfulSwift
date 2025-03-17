@@ -14,6 +14,24 @@ public extension RZColorfulSwiftBase where T: NSAttributedString {
         guard let html = html, html.count > 0 else {return nil}
         if let data = html.data(using: String.Encoding.unicode) {
             if let attr = try? NSMutableAttributedString.init(data: data, options: [NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html, .characterEncoding: String.Encoding.utf8.rawValue], documentAttributes: nil) {
+                // 修复URL在未设置http时，会自动添加如 “applewebdata://BF307C6C-5A2C-4F76-B3A0-6FD67E66CF82/”
+                func fixurl(urlString: String) -> String? {
+                    if !urlString.hasPrefix("applewebdata://") {
+                        return nil
+                    }
+                    return urlString.replacingOccurrences(of: "^(?:applewebdata://[0-9A-Z-]*/?)", with: "", options: .regularExpression)
+                }
+                attr.enumerateAttribute(.link, in: .init(location: 0, length: attr.length)) { link, range, _ in
+                    if let link = link as? URL {
+                        if let fix = fixurl(urlString: link.absoluteString), let url = URL.init(string: fix) {
+                            attr.addAttribute(.link, value: url, range: range)
+                        }
+                    } else if let link = link as? String {
+                        if let fix = fixurl(urlString: link) {
+                            attr.addAttribute(.link, value: fix, range: range)
+                        }
+                    }
+                }
                 return attr
             }
         }
