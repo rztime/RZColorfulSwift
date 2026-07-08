@@ -65,7 +65,6 @@ public extension ColorfulConferrerRZ {
         self.texts.add(attribute)
         return attribute
     }
-    
     /// url图片 可以设置size，maxSize （会直接下载图片，所以在主线程时会阻塞线程）
     /// 支持本地filepath路径的图片
     @discardableResult
@@ -86,7 +85,15 @@ public extension ColorfulConferrerRZ {
         }
         return nil
     }
-    
+    @discardableResult
+    /// 添加自定义view（view的size需要正确设置），
+    /// 原理是用一个空白图片填充到NSAttachment，然后在该位置处将view加在父视图上
+    func view(_ view: UIView?) -> ImageAttributeRZ? {
+        guard let view = view else { return nil }
+        let attribute = ImageAttributeRZ.init(nil, view)
+        self.texts.add(attribute)
+        return attribute
+    }
     /// 段落
     var paragraphStyle: ParagraphStyleRZ<ColorfulConferrerRZ>? {
         get {

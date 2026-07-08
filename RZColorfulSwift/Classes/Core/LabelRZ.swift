@@ -38,6 +38,10 @@ public extension RZColorfulSwiftBase where T: UILabel {
     func colorfulConferInsetToLocation(_ location: Int, _ confer: ColorfulBlockRZ?) {
         guard let confer = confer else { return }
         guard let conferrerColorful = NSAttributedString.rz.colorfulConfer(confer: confer), conferrerColorful.length > 0 else { return }
+        if location == 0 {
+            self.rz.attributedText = conferrerColorful
+            return
+        }
         let originAttr = self.rz.attributedText ?? NSAttributedString.init()
         let attr = NSMutableAttributedString.init(attributedString:originAttr)
         var loc = max(location, 0)
@@ -71,24 +75,25 @@ public extension RZColorfulSwiftBase where T: UILabel {
         self.rz.attributedText = attr.rz.attributedStringBy(maxline: maxLine, maxWidth: maxWidth, isFold: isFold, showAllText: showAllText, showFoldText: showFoldText)
     }
     
-    /// 给UILabel添加富文本点击事件，给NSAttributedString添加".rztapLabel"属性即可
-    func tapAction(_ tapAction:((_ label: UILabel, _ tapActionId: String, _ range: NSRange) -> Void)?) {
-        let label = self.rz
-        label.isUserInteractionEnabled = true
-        var v: LabelFoldHeler? = self.rz.subviews.first(where: {$0.isKind(of: LabelFoldHeler.self)}) as? LabelFoldHeler
-        if v == nil {
-            _ = UILabel.rz_swizzledSelector
-            v = .init(target: self.rz, tapAction: { label, text, range in
-                tapAction?(label, text, range)
-            })
-            guard let v = v else { return }
-            self.rz.addSubview(v)
-            let v1 = v
-            let left = NSLayoutConstraint.init(item: v1, attribute: .left, relatedBy: .equal, toItem: label, attribute: .left, multiplier: 1, constant: 0)
-            let top = NSLayoutConstraint.init(item: v1, attribute: .top, relatedBy: .equal, toItem: label, attribute: .top, multiplier: 1, constant: 0)
-            let right = NSLayoutConstraint.init(item: v1, attribute: .right, relatedBy: .equal, toItem: label, attribute: .right, multiplier: 1, constant: 0)
-            let bottom = NSLayoutConstraint.init(item: v1, attribute: .bottom, relatedBy: .equal, toItem: label, attribute: .bottom, multiplier: 1, constant: 0)
-            label.addConstraints([left, top, right, bottom])
+    /// 设置富文本
+    /// - Parameters:
+    ///   - attributedString: 富文本
+    ///   - maxLine: 最多行数
+    ///   - maxWidth: 最大宽度
+    ///   - lineBreakMode: 截取方式
+    ///   - placeHolder: 超过后，截断的地方占位文本
+    func set(attributedString: NSAttributedString?, maxLine: Int, maxWidth: CGFloat, lineBreakMode: NSLineBreakMode, placeHolder: NSAttributedString?) {
+        self.rz.numberOfLines = 0
+        guard let attr = attributedString, attr.length != 0 else {
+            self.rz.attributedText = nil
+            return
         }
+        self.rz.attributedText = attr.rz.attributedStringBy(maxline: maxLine, maxWidth: maxWidth, lineBreakMode: lineBreakMode, placeHolder: placeHolder)
+    }
+    /// 给UILabel添加富文本点击事件，给NSAttributedString添加"tapAction"属性即可
+    /// 注意：lineBreakMode只能为0或者1，否则内部TextKit计算属性文本位置可能出错
+    func tapAction(_ tapAction:((_ sender: Any, _ tapActionId: String, _ range: NSRange) -> Void)?) {
+        let v = self.rz.activeColorful()
+        v?.tapAction = tapAction
     }
 }

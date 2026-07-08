@@ -32,6 +32,10 @@ public extension RZColorfulSwiftBase where T: UITextField {
     func colorfulConferInsetToLocation(_ location: Int, _ confer: ColorfulBlockRZ?) {
         guard let confer = confer else { return }
         guard let conferrerColorful = NSAttributedString.rz.colorfulConfer(confer: confer), conferrerColorful.length > 0 else { return }
+        if location == 0 {
+            self.rz.attributedText = conferrerColorful
+            return
+        }
         let originAttr = self.rz.attributedText ?? NSAttributedString.init()
         let attr = NSMutableAttributedString.init(attributedString:originAttr)
         var loc = max(location, 0)
@@ -62,36 +66,5 @@ public extension RZColorfulSwiftBase where T: UITextField {
         let endPosition = self.rz.position(from: beginning, offset: range.location + range.length) ?? UITextPosition.init()
         let selectionRange = self.rz.textRange(from: startPosition, to: endPosition)
         self.rz.selectedTextRange = selectionRange
-    }
-}
-//MARK: 替换成textField.rz.colorful.....
-public extension UITextField {
-    @available(iOS, introduced: 7.0, deprecated: 7.0, message: "Use .rz.colorfulConfer(confer: confer) instead")
-    func rz_colorfulConfer(confer: ColorfulBlockRZ?) -> Void {
-        self.rz.colorfulConfer(confer: confer)
-    }
-    @available(iOS, introduced: 7.0, deprecated: 7.0, message: "Use .rz.colorfulConferInsetTo(position: position, append) instead")
-    func rz_colorfulConferInsetTo(position: ConferInsertPositionRZ, _ append: ColorfulBlockRZ?) -> Void {
-        self.rz.colorfulConferInsetTo(position: position, append)
-    }
-    @available(iOS, introduced: 7.0, deprecated: 7.0, message: "Use .rz.colorfulConferInsetToLocation(location, confer) instead")
-    func rz_colorfulConferInsetToLocation(_ location: Int, _ confer: ColorfulBlockRZ?) -> Void {
-        self.rz.colorfulConferInsetToLocation(location, confer)
-    }
-    @available(iOS, introduced: 7.0, deprecated: 7.0, message: "Use .rz.getEndLocation() instead")
-    func getEndLocation() -> Int {
-        return self.rz.getEndLocation()
-    }
-    @available(iOS, introduced: 7.0, deprecated: 7.0, message: "Use .rz.getCursorLocation() instead")
-    func getCursorLocation() -> Int {
-        return self.rz.getCursorLocation()
-    }
-    @available(iOS, introduced: 7.0, deprecated: 7.0, message: "Use .rz.selectedRange() instead")
-    func rz_selectedRange() -> NSRange {
-        return self.rz.selectedRange()
-    }
-    @available(iOS, introduced: 7.0, deprecated: 7.0, message: "Use .rz.setSelectedRange(range: range) instead")
-    func rz_setSelectedRange(range: NSRange) -> Void {
-        self.rz.setSelectedRange(range: range)
     }
 }

@@ -1,32 +1,38 @@
 PODS:
   - Kingfisher (6.3.1)
-  - QuicklySwift (0.8.0):
+  - QuicklySwift (1.1.0):
     - SnapKit
   - RZColorfulSwift (0.7.0)
   - SnapKit (5.6.0)
 
 DEPENDENCIES:
   - Kingfisher
-  - QuicklySwift
+  - QuicklySwift (from `https://github.com/rztime/QuicklySwift.git`)
   - RZColorfulSwift (from `../`)
   - SnapKit
 
 SPEC REPOS:
   trunk:
     - Kingfisher
-    - QuicklySwift
     - SnapKit
 
 EXTERNAL SOURCES:
+  QuicklySwift:
+    :git: https://github.com/rztime/QuicklySwift.git
   RZColorfulSwift:
     :path: "../"
 
+CHECKOUT OPTIONS:
+  QuicklySwift:
+    :commit: 8210a9515af696b1849e70580228123521d571ba
+    :git: https://github.com/rztime/QuicklySwift.git
+
 SPEC CHECKSUMS:
   Kingfisher: 016c8b653a35add51dd34a3aba36b580041acc74
-  QuicklySwift: 80500fa7115415902b0a0626f21c816966cf3727
-  RZColorfulSwift: dc922d9007e22e549bb749a6fe467b803bc542f0
+  QuicklySwift: 18ecfce4a8223163254584d434d409a59318da42
+  RZColorfulSwift: 36b1555e7dbc749d05579293aed6224f71ab31e5
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
 
-PODFILE CHECKSUM: 62e73462ad0e54d4b9c12953c4e4f2bc0cbe05a4
+PODFILE CHECKSUM: e4919dd1e426f0d6afd9d9332240300eea5e271e
 
-COCOAPODS: 1.15.0
+COCOAPODS: 1.16.2

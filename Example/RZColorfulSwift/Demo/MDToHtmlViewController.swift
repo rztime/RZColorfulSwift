@@ -20,62 +20,62 @@ class MDToHtmlViewController: UIViewController {
                 make.edges.equalToSuperview()
             })
         ])
-        let md = #"""
-        ## 关于RZColorfulSwift
-        * 对NSAttributeString的初始化做支持
-        * 支持UILabel、UITextView、UITextField的attributedText的设置。
-        * 包含的属性快捷设置：
-            * 段落样式
-            * 阴影
-            * 文本字体、颜色
-            * 文本所在区域对应的背景颜色
-            * 连体字
-            * 字间距
-            * 删除线、下划线，及其线条颜色
-            * 描边，及其颜色
-            * 斜体字
-            * 拉伸
-            * 通过html源码加载富文本
-            * 通过url添加图片到富文本
-            * 等等
-        ## How to use
-        ```
-        use_frameworks!
-
-        pod 'RZColorfulSwift'
-        ```
-        * 主要的功能：
-            * AttributeCore
-                * ColorfulConferrerRZ.swift                         富文本中对文字、图片、段落、阴影、网页源码等归纳集合
-                * AttributeKeyRZ.siwft                              富文本内可以设置的所有的方法（NSAttributedString.key）
-                * TextAttributeRZ.swift                             文字 继承于AttributeKeyRZ
-                * ImageAttributeRZ.swift                            图片 继承于AttributeKeyRZ
-                * ParagraphStyleRZ.swift                            对段落样式的一个属性方法集合
-                * ShadowStyleRZ.swift                               对阴影样式的一个属性方法集合
-            * Core 对UILabel、UITextView、UITextField添加的富文本快捷写入提供入口
-                * NSAttributedString                                富文本的方法
-                * UILabel
-                * UITextView
-                * UITextField
-        可以覆盖原文本、追加、以及指定位置插入等功能
-            
-        ### 基本的简单使用方法与OC版本差不多 [查看详细用法](https://github.com/rztime/RZColorful)
-        ```swift
-        text.rz.colorfulConfer { (confer) in
-            confer.paragraphStyle?.lineSpacing(10).paragraphSpacingBefore(15)
-
-            confer.image(UIImage.init(named: "indexMore"))?.bounds(CGRect.init(x: 0, y: 0, width: 20, height: 20))
-            confer.text("  姓名 : ")?.font(UIFont.systemFont(ofSize: 15)).textColor(.gray)
-            confer.text("rztime")?.font(UIFont.systemFont(ofSize: 15)).textColor(.black)
-        }
-
-        ```
-        """#
-        let html = MarkDownRZ.parse(md)?.mdcss
+        let html = MarkDownRZ.parse(markDown)?.mdcss
         /// 解析md后的html，没有任何的样式，需要自行组装head里style：颜色、字号、列表、代码等等）
         webView.loadHTMLString(html ?? "", baseURL: nil)
     }
 }
+let markDown = #"""
+## 关于RZColorfulSwift
+* 对NSAttributeString的初始化做支持
+* 支持UILabel、UITextView、UITextField的attributedText的设置。
+* 包含的属性快捷设置：
+    * 段落样式
+    * 阴影
+    * 文本字体、颜色
+    * 文本所在区域对应的背景颜色
+    * 连体字
+    * 字间距
+    * 删除线、下划线，及其线条颜色
+    * 描边，及其颜色
+    * 斜体字
+    * 拉伸
+    * 通过html源码加载富文本
+    * 通过url添加图片到富文本
+    * 等等
+## How to use
+```
+use_frameworks!
+
+pod 'RZColorfulSwift'
+```
+* 主要的功能：
+    * AttributeCore
+        * ColorfulConferrerRZ.swift                         富文本中对文字、图片、段落、阴影、网页源码等归纳集合
+        * AttributeKeyRZ.siwft                              富文本内可以设置的所有的方法（NSAttributedString.key）
+        * TextAttributeRZ.swift                             文字 继承于AttributeKeyRZ
+        * ImageAttributeRZ.swift                            图片 继承于AttributeKeyRZ
+        * ParagraphStyleRZ.swift                            对段落样式的一个属性方法集合
+        * ShadowStyleRZ.swift                               对阴影样式的一个属性方法集合
+    * Core 对UILabel、UITextView、UITextField添加的富文本快捷写入提供入口
+        * NSAttributedString                                富文本的方法
+        * UILabel
+        * UITextView
+        * UITextField
+可以覆盖原文本、追加、以及指定位置插入等功能
+    
+### 基本的简单使用方法与OC版本差不多 [查看详细用法](https://github.com/rztime/RZColorful)
+```swift
+text.rz.colorfulConfer { (confer) in
+    confer.paragraphStyle?.lineSpacing(10).paragraphSpacingBefore(15)
+
+    confer.image(UIImage.init(named: "indexMore"))?.bounds(CGRect.init(x: 0, y: 0, width: 20, height: 20))
+    confer.text("  姓名 : ")?.font(UIFont.systemFont(ofSize: 15)).textColor(.gray)
+    confer.text("rztime")?.font(UIFont.systemFont(ofSize: 15)).textColor(.black)
+}
+
+```
+"""#
 extension String {
     var mdcss: String {
         return """

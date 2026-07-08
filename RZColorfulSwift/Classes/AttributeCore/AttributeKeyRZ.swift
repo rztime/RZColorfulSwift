@@ -8,8 +8,10 @@
 import UIKit
 import Foundation
 public extension NSAttributedString.Key {
-    /// 仅UILabel有效，添加label文本上文字点击事件的回调
-    static let rztapLabel: NSAttributedString.Key = NSAttributedString.Key(rawValue: "RZTapActionByLabel")
+    /// 原rztapLabel,改为rztapAction, 不在区分UILabel、UITextView
+    static let rztapAction: NSAttributedString.Key = NSAttributedString.Key(rawValue: "RZTapAction")
+    static let rzclicked: NSAttributedString.Key = NSAttributedString.Key(rawValue: "RZClickedAction")
+    static let rzbackgroundView: NSAttributedString.Key = NSAttributedString.Key(rawValue: "RZColorfulBackgroundView")
 }
 /// 富文本属性，附件和文本，都可以设置相关的属性，TextAttributeRZ、ImageAttributeRZ继承于此
 public class AttributeKeyRZ {
@@ -92,31 +94,7 @@ public extension AttributeKeyRZ {
         attributeDict[.strokeWidth] = width
         return self
     }
-    /// 给文本添加链接，并且可点击跳转浏览器打开  仅UITextView点击有效
-    @discardableResult
-    func link(_ link: URL?) -> Self {
-        attributeDict[.link] = link
-        return self
-    }
-    /// 给文本添加链接，并且可点击跳转浏览器打开  仅UITextView点击有效
-    @discardableResult
-    func url(_ link: URL?) -> Self {
-        attributeDict[.link] = link
-        return self
-    }
-    /// 给文本添加点击事件的id
-    @discardableResult
-    func tapAction(_ actionId: String?) -> Self {
-        attributeDict[.link] = actionId?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-        return self
-    }
-    /// 给文本添加点击事件的id, 仅UILabel有效，需要实现label.rz.tapAction方法
-    @discardableResult
-    func tapActionByLable(_ actionId: String?) -> Self {
-        attributeDict[.rztapLabel] = actionId?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-        return self
-    }
-    /// 基准线偏移值
+    /// 基准线偏移值 （正：向上  负：向下）
     @discardableResult
     func baselineOffset(_ offset: NSNumber?) -> Self {
         attributeDict[.baselineOffset] = offset
@@ -162,6 +140,39 @@ public extension AttributeKeyRZ {
         return self
     }
 }
+// MARK: - 点击、自定义相关
+public extension AttributeKeyRZ {
+    /// 给文本添加链接
+    /// link和tapAction，都可以给UITextView和UILabel添加点击事件，区别在于link可能会有蓝色
+    @discardableResult
+    func link(_ link: URL?) -> Self {
+        attributeDict[.link] = link
+        return self
+    }
+    /// 给文本添加点击事件
+    /// 不区分UILabel、UITextView
+    @discardableResult
+    func tapAction(_ actionId: String?) -> Self {
+        attributeDict[.rztapAction] = actionId?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        return self
+    }
+    /// 添加点击事件(block方式)
+    @discardableResult
+    func clicked(clicked: ColorfulClickedRZ?) -> Self {
+        attributeDict[.rzclicked] = clicked
+        return self
+    }
+    /// 添加一个backgroundView
+    /// UIlabel中，backgroundView是在文本上面
+    /// UITextView中，backgroundView是在文本下面
+    /// 如果UIView.isUserInteractionEnabled = true, 则将不会触发tapAction，link，clicked等事件
+    @discardableResult
+    func backgroundView(_ views: ColorfulBackgroundViewRZ?) -> Self {
+        attributeDict[.rzbackgroundView] = views
+        return self
+    }
+}
+
 @available(iOS 14.0, *)
 public extension AttributeKeyRZ {
     /// 和kern类似，设置字间距
@@ -267,6 +278,29 @@ public extension AttributeKeyRZ {
     @discardableResult
     func localizedNumberFormat(_ format: Any?) -> Self {
         attributeDict[.localizedNumberFormat] = format
+        return self
+    }
+    @discardableResult
+    func textHighight(_ style: NSAttributedString.TextHighlightStyle?) -> Self {
+        attributeDict[.textHighlightStyle] = style
+        return self
+    }
+    @discardableResult
+    func textHightlightColorScheme(_ cs: NSAttributedString.TextHighlightColorScheme?) -> Self {
+        attributeDict[.textHighlightColorScheme] = cs
+        return self
+    }
+    @discardableResult
+    func adaptiveImageGlyph(_ glyph: Bool?) -> Self {
+        attributeDict[.adaptiveImageGlyph] = glyph
+        return self
+    }
+}
+@available(iOS 18.2, *)
+public extension AttributeKeyRZ {
+    @discardableResult
+    func writingToolsExclusion(_ value: Bool?) -> Self {
+        attributeDict[.writingToolsExclusionAttributeName] = value
         return self
     }
 }

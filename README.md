@@ -5,8 +5,12 @@
 [![License](https://img.shields.io/cocoapods/l/RZColorfulSwift.svg?style=flat)](https://cocoapods.org/pods/RZColorfulSwift)
 [![Platform](https://img.shields.io/cocoapods/p/RZColorfulSwift.svg?style=flat)](https://cocoapods.org/pods/RZColorfulSwift)
 
-iOS NSAttributedString 富文本方法 (图文混排、多样式文本); 文本超行，自动添加"折叠"、"全部"; markdown 转 html;
-支持UILabel、UITextView、UITextField中可点击带链接的文本
+iOS NSAttributedString 富文本方法 (图文混排、多样式文本); 
+文本超行，可自动添加"折叠"、"全部"; 
+markdown 转 html;
+UILabel、UITextView的富文本支持添加自定义view、显示gif、给文本添加背景图、文本支持点击等功能
+
+2.0.0版本后，富文本添加的点击功能更友好，富文本的布局计算更高效
 
 ## Installation
 
@@ -14,6 +18,8 @@ RZColorfulSwift is available through [CocoaPods](https://cocoapods.org). To inst
 it, simply add the following line to your Podfile:
 
 ```ruby
+use_frameworks!
+
 pod 'RZColorfulSwift'
 ```
 
@@ -24,19 +30,26 @@ rztime, rztime@vip.qq.com  QQ群：580839749
 
 ### Objc版本看这里[RZColorful](https://github.com/rztime/RZColorful)
 
+## License
+
+RZColorfulSwift is available under the MIT license. See the LICENSE file for more info.
+
+
 ### 更新日志
 [更新日志](https://github.com/rztime/RZColorfulSwift/blob/master/UpdateLog.md)
 
+UITextView实现的富文本编辑器[RZRichTextView](https://github.com/rztime/RZRichTextView)
 
-* NSAttributedString 的多样化设置(文字字体、颜色、阴影、段落样式、url、下划线，以及图文混排等等)
+* NSAttributedString 的多样化设置(文字字体、颜色、阴影、段落样式、url、下划线，以及图文混排、显示gif，backgroundView，文本点击等等)
 * 添加UITextField、UITextView、UILabel的attributedText的富文本设置。
 
 
 ## 关于RZColorfulSwift
 * 对NSAttributeString的初始化做支持
 * 支持 markdown 文档转换为html
+* 支持 HTML 与 NSAttributedString互换
 * 支持UILabel、UITextView、UITextField的attributedText的设置。
-* 包含的属性快捷设置：
+* 包含的属性设置：
     * 段落样式
     * 阴影
     * 文本字体、颜色
@@ -46,16 +59,17 @@ rztime, rztime@vip.qq.com  QQ群：580839749
     * 删除线、下划线，及其线条颜色
     * 描边，及其颜色
     * 斜体字
+    * 上标 下标
     * 拉伸
+    * 链接
     * 通过html源码加载富文本
     * 通过url添加图片到富文本
+    * 添加自定义view，可用于显示gif、自定义标签等等
+    * 添加backgroundView，在文本背后的位置显示view
+    * 文本、图片、自定义view的点击事件
     * 等等
 ## How to use
-```
-use_frameworks!
 
-pod 'RZColorfulSwift'
-```
 * 主要的功能：
     * AttributeCore
         * ColorfulConferrerRZ.swift                         富文本中对文字、图片、段落、阴影、网页源码等归纳集合
@@ -71,7 +85,7 @@ pod 'RZColorfulSwift'
         * UITextField
 可以覆盖原文本、追加、以及指定位置插入等功能
     
-### 基本的简单使用方法与OC版本差不多 [查看详细用法](https://github.com/rztime/RZColorful)
+### 基本方法（UILabel和UITextView用法一样）
 ```swift
 text.rz.colorfulConfer { (confer) in
     confer.paragraphStyle?.lineSpacing(10).paragraphSpacingBefore(15)
@@ -80,139 +94,61 @@ text.rz.colorfulConfer { (confer) in
     confer.text("  姓名 : ")?.font(UIFont.systemFont(ofSize: 15)).textColor(.gray)
     confer.text("rztime")?.font(UIFont.systemFont(ofSize: 15)).textColor(.black)
 }
-
 ```
 
-### 给UITextView添加文本点击事件
-```swift
-text.rz.colorfulConfer { confer in
-    confer.text("哈哈哈哈")?.font(.systemFont(ofSize: 17)).textColor(.black)
-    confer.text("可点击字符串")?.font(.systemFont(ofSize: 17)).textColor(.red).tapAction("111111")
-} 
-text.rz.didTapTextView { (tabObj, textview) -> Bool in
-    print("text:\(tabObj)")  /// text:111111
-    return false
-}
+### 进阶用法（UILabel和UITextView用法一样）
 
-```
-
-
-### 给UILabel添加文本点击事件
-
-只需要给富文本添加tapActionByLable(即.rztapLabel)属性。
-注意，不要设置label.textAlignment，否则可能会导致出错。因为内部用的UITextView计算的点击位置的文本，label设置对齐方式之后，只要某一段富文本未设置段落属性，则这一段富文本对齐方式将被替换，而富文本在UITextView并不会被替换。
-所以如果要设置对齐方式，直接设置在confer.text().paragraphStyle?.alignment(.left)
+* 点击、自定义view、backgroundView等等
 ```swift
 label.rz.colorfulConfer { confer in
-    confer.text("哈哈哈哈\n")?.font(.systemFont(ofSize: 18)).textColor(.black)
-    confer.text("可点击文本1")?.font(.systemFont(ofSize: 18)).textColor(.red).tapActionByLable("1111").paragraphStyle?.alignment(.left)
-    confer.text("\n")
-    confer.text("可点击文本2")?.font(.systemFont(ofSize: 18)).textColor(.red).tapActionByLable("22222").paragraphStyle?.alignment(.center)
-    confer.text("\n")
-}
-label.rz.tapAction { label, tapActionId in
-    print("tapActionId:\(tapActionId)")
-}
-
-```
-
-### UILabel支持超过行数后，显示 "折叠"  "展开", 实现tapAction点击事件，并刷新，可以实现展开收起
-
-```swift
-class LabelFoldModel {
-    var isFold = true
-    let attributedString = NSAttributedString.rz.colorfulConfer { confer in
-        let text =
-        """
-        “中国人的饭碗任何时候都要牢牢端在自己手中，饭碗主要装中国粮”“保证粮食安全，大家都有责任，党政同责要真正见效”，习近平总书记强调指出。
-        民为国基，谷为民命。粮食问题不仅要算“经济账”，更要算“政治账”；不仅要顾当前，还要看长远。
-        \n今年，我国粮食生产喜获丰收，产量保持在1.3万亿斤以上，为开新局、应变局、稳大局发挥重要作用。但也要看到，当前我国粮食需求刚性增长，资源环境约束日益趋紧
-        \n粮食增面积、提产量的难度越来越大。全球新冠肺炎疫情持续蔓延，气候变化影响日益加剧，保障粮食供应链稳定难度加大。
-        """
-        confer.text(text)?.textColor(.black).font(.systemFont(ofSize: 16))
+    // 给富文本添加点击事件tapAction或者clicked
+    confer.text("<隐私政策>")?.font(.systemFont(ofSize: 17)).textColor(.red).tapAction("<隐私政策>")
+    confer.text("<用户协议>")?.font(.systemFont(ofSize: 16)).textColor(.blue).clicked { sender, range in
+        print("---用户协议")
     }
-    let showAll = NSAttributedString.rz.colorfulConfer { confer in
-        confer.text("...全部")?.textColor(.red).font(.systemFont(ofSize: 16)).tapActionByLable("all")
-    }
-    let showFold = NSAttributedString.rz.colorfulConfer { confer in
-        confer.text("...折叠")?.textColor(.red).font(.systemFont(ofSize: 16)).tapActionByLable("fold")
-    }
-}
-
-/// 设置文本超过4行，则追加“...全部”  全部显示时追加“...折叠”  
-let label = UILabel()
-label.frame = .init(x: 10, y: 100, width: 400, height: 500)
-cell.label.rz.tapAction { [weak self] (label, tapActionId) in
-    let item = self?.items[label.tag]
-    if tapActionId == "all" {
-        item?.isFold = false
-    } else if tapActionId == "fold" {
-        item?.isFold = true
-    }
-    reload()
-}
-
-func reload() {
-    let item = LabelFoldModel()
-    label.rz.set(attributedString: item.attributedString, maxLine: 4, maxWidth: 400, isFold: item.isFold, showAllText: item.showAll, showFoldText: item.showFold)
-}
-
-```
-
-
-## 注意
-
-* 尽管我已经在代码中已经处理过（弱）引用问题，但是在实际运用写入text时，还是请尽量检查避免循环引用
-
-
-# 关于 NSAttributedString 转 HTML
-
-### 系统提供的方法
-```swift
-    /// 将富文本编码成html标签
-    func codingToCompleteHtml() -> String? {
-        do {
-            let exportParams = [NSAttributedString.DocumentAttributeKey.documentType: NSAttributedString.DocumentType.html]
-            let htmlData = try self.data(from: NSMakeRange(0, self.length), documentAttributes: exportParams)
-            var string = String.init(data: htmlData, encoding: String.Encoding.utf8)
-            string = string?.replacingOccurrences(of: "pt;", with: "px;")
-            string = string?.replacingOccurrences(of: "pt}", with: "px}")
-            return string
-        } catch {
-            return nil
+    // 添加自定义view，可以显示gif的UIImageView，view可以自行实现点击事件，也可以在后边添加tapAction或者clicked
+    confer.view(gifView())?.size(.init(width: 200, height: 100), align: .center, font: .systemFont(ofSize: 16))
+    // 给文本添加背景图，可以自行实现点击事件，也可以在后边添加tapAction或者clicked
+    confer.text("hello")?.font(.systemFont(ofSize: 16)).textColor(.red).backgroundView { rects in
+        return rects.compactMap { rect -> UIView in
+            // 带圆角的view
+            let view = UIView.init(frame: rect).qalpha(0.3).qbackgroundColor(.qhex("123456")).qcornerRadius(3, true)
+            view.frame.size.height = 21
+            view.qtap { view in
+                print("--- 点击背景")
+            }
+            return view
         }
     }
-```
-其css样式，主要在doc文档的style中，以下部分属性不支持
-* 删除线、下划线、斜体、扩展、描边、书写方向等
-
-为了支持这些属性，所以必须将其css写入到对应的文本style中，而NSAttributedString转换为html之后，文档比较多，如果通过其他方式去找这些样式，比较麻烦，所以最好是直接将style带入到对应的文本中去，这样就比较好解决
-* 1.对富文本设置NSAttributedString.Key.link，我们可以知道，\<\a href="link" 这个link就是我们设置的内容，也只有这个，是除了文本之外，可以带入到html的东西，所以基于此，有一个取巧方法
-* 2.对'删除线、下划线、斜体、扩展、描边、书写方向等'这些系统不支持的css样式，选择自己设置好css，然后将css设置到NSAttributedString.Key.link，最后通过将href改变，就完成了style的设置
-        如：
-
-            confer.text("删除线 下划线")?.strikethroughStyle(.single).strikethroughColor(.black).textColor(.red).font(.systemFont(ofSize: 17)).underlineStyle(.single).underlineColor(.red)
-        
-
-            正常转换之后为 <p class='p1'><span class="s1"> 删除线 下划线</span></p>
-
-            通过写入NSAttributedString.Key.link变成
-            <p class="p1"><span class="s1"><a style="text-decoration: line-through underline; text-decoration-color: #000000FF;"> 删除线 ;<span class="s2"> </span>下划线</a></span></p>
-            这样就取巧，将不支持的属性css样式添加进去了，虽然这里是<a>标签，因为没有href，所以和普通标签一样
-        
-
-### 参考代码
-```swift 
-NSAttributedString.rz.codingToCompleteHtmlByWeb()
+}
+label.rz.tapAction { label, tapActionId, range in
+    print("\(tapActionId)") // <隐私政策>
+}
+如果不实现label.rz.tapAction()方法，则需要调用label.activeColorful(),否则clicked、backgroundView、自定义view将无法实现
 ```
 
-这里将我自己已知的不支持的css加了进去
-看'HtmlTransformRZ.share.webLabels'
+* 自定义截断内容
+```
+// 系统默认超行时显示"..."，这可以使用自定义的内容去替换"..."
+label.rz.set(attributedString: displayText, maxLine: 3, maxWidth: qscreenwidth - 40, lineBreakMode: .byTruncatingTail, placeHolder: customText)
+```
 
-也可以通过HtmlTransformRZ.share.webLabels插入自定义的需要写入到style的标签
-可以参考webLabels的初始化来完成自定义
-
-另外，按照数组顺序，优先级高的在前
+* 超行时 折叠 展开
+```
+// UILabel UITextView 超行时显示 展开、折叠
+// isFold: 默认当前是展开还是折叠状态，如果未超行，则完全显示，超行且折叠时就将showAllText追加在最后
+// showAllText: 显示全文，需要实现tapAction，或者clicked
+// foldtext: 收起，需要实现tapAction，或者clicked
+$0.rz.tapAction { [weak self] label, tapActionId, range in
+    if tapActionId == "...显示全文" {
+        isFold = false
+    } else if tapActionId == "收起" {
+        isFold = true
+    }
+    // 刷新， 重新执行label.rz.set方法
+}
+label.rz.set(attributedString: displayText, maxLine: 3, maxWidth: qscreenwidth - 40, isFold: isFold, showAllText: showAllText, showFoldText: foldtext)
+```
 
 ### NSAttributedString 转 HTML 行内样式的方法
 

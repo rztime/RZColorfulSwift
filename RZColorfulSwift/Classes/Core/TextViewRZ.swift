@@ -35,6 +35,10 @@ public extension RZColorfulSwiftBase where T: UITextView {
     func colorfulConferInsetToLocation(_ location: Int, _ confer: ColorfulBlockRZ?) {
         guard let confer = confer else { return }
         guard let conferrerColorful = NSAttributedString.rz.colorfulConfer(confer: confer), conferrerColorful.length > 0 else { return }
+        if location == 0 {
+            self.rz.attributedText = conferrerColorful
+            return
+        }
         let originAttr = self.rz.attributedText ?? NSAttributedString.init()
         let attr = NSMutableAttributedString.init(attributedString: originAttr)
         var loc = max(location, 0)
@@ -49,12 +53,6 @@ public extension RZColorfulSwiftBase where T: UITextView {
     // 光标的位置
     func getCursorLocation() -> Int {
         return self.rz.selectedRange.location
-    }
-    
-    // 给UItextView添加点击属性时，点击的事件的回调，
-    // 默认 return false  （true时，将打开浏览器）
-    func didTapTextView(rzdidTapTextView: @escaping RZDidTapTextView) {
-        self.rz.didTapTextView = rzdidTapTextView
     }
     /// 获取range文本所在的位置
     func rectFor(range: NSRange?) -> CGRect? {
@@ -82,62 +80,81 @@ public extension RZColorfulSwiftBase where T: UITextView {
         return res.map { $0.rect }
     }
 }
-// MARK: - 对TextView的富文本的支持
+
+public extension RZColorfulSwiftBase where T: UITextView {
+    
+    /// 设置富文本（超过行数后，自动追加“展开” “收起”）
+    /// - Parameters:
+    ///   - attributedString: 原文
+    ///   - maxLine: 最大显示行数
+    ///   - maxWidth: 最大显示宽度，这个宽度用于计算文本行
+    ///   - isFold: 当前是否折叠
+    ///   - showAllText: 超过了行数之后，折叠状态显示的文本 如”展开“  需要给文本设置rztapLabel属性
+    ///   - showFoldText: 超过行数之后，全部展开状态显示的文本  如”收起“  需要给文本设置rztapLabel属性
+    ///   根据 tapAction返回的tapActionId, 可判断点击的是展开还是收起
+    func set(attributedString: NSAttributedString?, maxLine: Int, maxWidth: CGFloat, isFold: Bool, showAllText: NSAttributedString?, showFoldText: NSAttributedString?) {
+        guard let attr = attributedString, attr.length != 0 else {
+            self.rz.attributedText = nil
+            return
+        }
+        self.rz.attributedText = attr.rz.attributedStringBy(maxline: maxLine, maxWidth: maxWidth, isFold: isFold, showAllText: showAllText, showFoldText: showFoldText)
+    }
+    
+    /// 设置富文本
+    /// - Parameters:
+    ///   - attributedString: 富文本
+    ///   - maxLine: 最多行数
+    ///   - maxWidth: 最大宽度
+    ///   - lineBreakMode: 截取方式
+    ///   - placeHolder: 超过后，截断的地方占位文本
+    func set(attributedString: NSAttributedString?, maxLine: Int, maxWidth: CGFloat, lineBreakMode: NSLineBreakMode, placeHolder: NSAttributedString?) {
+        guard let attr = attributedString, attr.length != 0 else {
+            self.rz.attributedText = nil
+            return
+        }
+        self.rz.attributedText = attr.rz.attributedStringBy(maxline: maxLine, maxWidth: maxWidth, lineBreakMode: lineBreakMode, placeHolder: placeHolder)
+    }
+    /// 给UITextView添加富文本点击事件，给NSAttributedString添加".rztapLabel"属性即可
+    /// 注意：lineBreakMode只能为0或者1，否则内部TextKit计算属性文本位置可能出错
+    func tapAction(_ tapAction:((_ sender: Any, _ tapActionId: String, _ range: NSRange) -> Void)?) {
+        let v = self.rz.activeColorful()
+        v?.tapAction = tapAction
+    }
+    func disableLink(_ disable: Bool = true) {
+        self.rz.rzhelper.disablelink = true
+    }
+    func disableAttachment(_ disable: Bool = true) {
+        self.rz.rzhelper.disableAttachment = true
+    }
+}
+private nonisolated(unsafe) var rzTextViewHelperkey : UInt8 = 1
 public extension UITextView {
-    @available(iOS, introduced: 7.0, deprecated: 7.0, message: "Use .rz.colorfulConfer(confer: confer) instead")
-    func rz_colorfulConfer(confer: ColorfulBlockRZ?) -> Void {
-        self.rz.colorfulConfer(confer: confer)
+    var rzhelper: RZTextViewHelper {
+        set {
+            objc_setAssociatedObject(self, &rzTextViewHelperkey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+        get {
+            if let helper = objc_getAssociatedObject(self, &rzTextViewHelperkey) as? RZTextViewHelper {
+                return helper
+            }
+            let helper = RZTextViewHelper.init()
+            self.delegate = helper
+            self.rzhelper = helper
+            return helper
+        }
     }
-    @available(iOS, introduced: 7.0, deprecated: 7.0, message: "Use .rz.colorfulConferInsetTo(position: position, append) instead")
-    func rz_colorfulConferInsetTo(position: ConferInsertPositionRZ, _ append: ColorfulBlockRZ?) -> Void {
-        self.rz.colorfulConferInsetTo(position: position, append)
+}
+public class RZTextViewHelper: NSObject, UITextViewDelegate {
+    public var disablelink = false
+    public var disableAttachment = false
+
+    @available(iOS 10.0, *)
+    public func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+        return !disablelink
     }
-    @available(iOS, introduced: 7.0, deprecated: 7.0, message: "Use .rz.colorfulConferInsetToLocation(location, confer) instead")
-    func rz_colorfulConferInsetToLocation(_ location: Int, _ confer: ColorfulBlockRZ?) -> Void {
-        self.rz.colorfulConferInsetToLocation(location, confer)
-    }
-    @available(iOS, introduced: 7.0, deprecated: 7.0, message: "Use .rz.getEndLocation() instead")
-    func getEndLocation() -> Int {
-        self.rz.getEndLocation()
-    }
-    @available(iOS, introduced: 7.0, deprecated: 7.0, message: "Use .rz.getCursorLocation() instead")
-    func getCursorLocation() -> Int {
-        return self.rz.getCursorLocation()
-    }
-    @available(iOS, introduced: 7.0, deprecated: 7.0, message: "Use .rz.didTapTextView(rzdidTapTextView: rzdidTapTextView) instead")
-    func rzDidTapTextView(rzdidTapTextView: @escaping RZDidTapTextView) {
-        self.rz.didTapTextView(rzdidTapTextView: rzdidTapTextView)
-    }
+    @available(iOS 10.0, *)
+    public func textView(_ textView: UITextView, shouldInteractWith textAttachment: NSTextAttachment, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+        return !disableAttachment
+    }    
 }
 
-// 添加的辅助属性，非主动使用方法
-internal extension UITextView {
-    private struct RZPropertyKey {
-        static let rzHelperKey = UnsafeRawPointer.init(bitPattern: "rzHelperKey".hashValue)
-        static let rzDidTapTextViewKey = UnsafeRawPointer.init(bitPattern: "rzDidTapTextViewKey".hashValue)
-    }
-    private var rzHelper: TapActionHelperRZ? {
-        set {
-            objc_setAssociatedObject(self, UITextView.RZPropertyKey.rzHelperKey!, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-        }
-        get {
-            if let rzh = objc_getAssociatedObject(self, UITextView.RZPropertyKey.rzHelperKey!) as? TapActionHelperRZ {
-                return rzh
-            }
-            return nil
-        }
-    }
-    // 点击事件
-    var didTapTextView : RZDidTapTextView? {
-        set {
-            objc_setAssociatedObject(self, UITextView.RZPropertyKey.rzDidTapTextViewKey!, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_COPY_NONATOMIC)
-            self.rzHelper = TapActionHelperRZ.init(self)
-        }
-        get {
-            if let rzdtv = objc_getAssociatedObject(self, UITextView.RZPropertyKey.rzDidTapTextViewKey!) as? RZDidTapTextView {
-                return rzdtv
-            }
-            return nil
-        }
-    }
-}

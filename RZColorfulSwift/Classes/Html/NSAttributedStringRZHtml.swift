@@ -190,29 +190,6 @@ extension String {
     }
 }
 
-public extension NSAttributedString {
-    @available(iOS, introduced: 7.0, deprecated: 7.0, message: "Use .rz.htmlString(html) instead")
-    static func htmlString(_ html: String?) ->NSAttributedString? {
-        return self.rz.htmlString(html)
-    }
-    @available(iOS, introduced: 7.0, deprecated: 7.0, message: "Use .rz.codingToHtmlWithImagesURLSIfHad(urls: urls) instead")
-    func rz_codingToHtmlWithImagesURLSIfHad(urls: [String]?) -> String? {
-        return self.rz.codingToHtmlWithImagesURLSIfHad(urls: urls)
-    }
-    @available(iOS, introduced: 7.0, deprecated: 7.0, message: "Use .rz.codingToCompleteHtml() instead")
-    func rz_codingToCompleteHtml() -> String? {
-        return self.rz.codingToCompleteHtml()
-    }
-    @available(iOS, introduced: 7.0, deprecated: 7.0, message: "Use .rz.codingToCompleteHtmlByWeb() instead")
-    func rz_codingToCompleteHtmlByWeb() -> String? {
-        return self.rz.codingToCompleteHtmlByWeb()
-    }
-    @available(iOS, introduced: 7.0, deprecated: 7.0, message: "Use .rz.rz_codingToHtmlByWebWithImagesURLSIfHad(urls: urls) instead")
-    func rz_codingToHtmlByWebWithImagesURLSIfHad(urls: [String]?) -> String? {
-        return self.rz.codingToHtmlByWebWithImagesURLSIfHad(urls: urls)
-    }
-}
-
 public class ArrayHelperRZ {
     /// 比较两个数组 obj包含obj2时，return true (只比较了 NSAttributedString.Key，和String)
     static func compare(obj: [Any]?, obj2: [Any]?) -> Bool {

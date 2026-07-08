@@ -13,6 +13,26 @@ public enum ImageAttachmentHorizontalAlignRZ {
     case center
     case top
 }
+private var attach_custom_key: UInt8 = 1
+public extension NSTextAttachment {
+    var customView: UIView? {
+        set {
+            objc_setAssociatedObject(self, &attach_custom_key, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+        get {
+            return objc_getAssociatedObject(self, &attach_custom_key) as? UIView
+        }
+    }
+}
+public struct EmptyImagePlaceholderRZ {
+    static var share: EmptyImagePlaceholderRZ = .init()
+    /// 透明图片
+    lazy var image: UIImage = {
+        let size = CGSize.init(width: 1, height: 1)
+        let renderer = UIGraphicsImageRenderer(size: size)
+        return renderer.image { context in }
+    }()
+}
 /// 可设置的富文本方法请查看AttributeKeyRZ
 public class ImageAttributeRZ: AttributeKeyRZ {
     private let imageAttchment = NSTextAttachment.init()
@@ -20,10 +40,14 @@ public class ImageAttributeRZ: AttributeKeyRZ {
     private var _shadow : ShadowStyleRZ<ImageAttributeRZ>?            // 阴影
     private var yOffset: CGFloat?
     
-    public init(_ image: UIImage? = nil) {
+    public init(_ image: UIImage? = nil, _ view: UIView? = nil) {
         if let image = image {
             self.imageAttchment.image = image
             self.imageAttchment.bounds = .init(origin: .zero, size: image.size)
+        } else if let view = view {
+            self.imageAttchment.image = EmptyImagePlaceholderRZ.share.image
+            self.imageAttchment.bounds = view.bounds
+            self.imageAttchment.customView = view
         }
     }
 }
@@ -100,6 +124,7 @@ public extension ImageAttributeRZ {
         return self
     }
     /// y轴偏移量，在某些情况下，在对齐之后需要做上下偏移时，用此方法，请在设置size之后或者bounds之后使用
+    /// yoffset轴为负时，图片上移
     @discardableResult
     func yOffset(_ yOffset: CGFloat?) -> Self {
         self.yOffset = yOffset

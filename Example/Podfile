@@ -1,12 +1,12 @@
 use_frameworks!
 
-platform :ios, '11.0'
+platform :ios, '12.0'
 
 target 'RZColorfulSwift_Example' do
   pod 'RZColorfulSwift', :path => '../'
   pod 'SnapKit'
   pod 'Kingfisher'
-  pod 'QuicklySwift'
+  pod 'QuicklySwift', :git => 'https://github.com/rztime/QuicklySwift.git'
   
   target 'RZColorfulSwift_Tests' do
     inherit! :search_paths

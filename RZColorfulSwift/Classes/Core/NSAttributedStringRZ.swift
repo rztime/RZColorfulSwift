@@ -100,16 +100,32 @@ public extension RZColorfulSwiftBase where T: NSAttributedString {
         return NSAttributedString.init(string: text, attributes: dict)
     }
 }
+public let shareTextLayout = TextLayoutRZ.init(attributedText: .init(), size: .zero)
 public extension RZColorfulSwiftBase where T: NSAttributedString {
-    // 判断attributedString的内容，在label显示的话，是否超过line行数
+    /// 绘制的总位置
+    /// - Parameters:
+    ///   - size: 内容的最大size
+    ///   - numberofLines: 行数
+    func usedRect(size: CGSize, numberofLines: Int) -> CGRect {
+        shareTextLayout.updateAttributedString(self.rz)
+        shareTextLayout.updateSize(size)
+        shareTextLayout.updateNumberOfLines(numberofLines)
+        return shareTextLayout.usedRect()
+    }
+    /// 计算moreThan时，需注意最后一个字符串是否为\n,如果是则需要追加一个字符，否则计算结果可能会导致多出一行空白
+    func moreThanFix() -> NSAttributedString {
+        let attr = self.rz
+        if attr.string.hasSuffix("\n") {
+            return attr.rz.attributedStringByAppend(attributedString: .init(string: "1"))
+        }
+        return attr
+    }
+    // 判断attributedString的内容，是否超过line行数
     func moreThan(line: Int, maxWidth: CGFloat) -> Bool {
-        let label = UILabel()
-        label.numberOfLines = 0
-        label.attributedText = self.rz
-        let tempSize = CGSize.init(width: maxWidth, height: CGFloat.greatestFiniteMagnitude)
-        let allHeight = label.textRect(forBounds: .init(origin: .zero, size: tempSize), limitedToNumberOfLines: 0).height
-        let lineHeight = label.textRect(forBounds: .init(origin: .zero, size: tempSize), limitedToNumberOfLines: line).height
-        return ceil(allHeight) > ceil(lineHeight)
+        if line == 0 { return false }
+        shareTextLayout.updateSize(.init(width: maxWidth, height: CGFloat.greatestFiniteMagnitude))
+        shareTextLayout.updateAttributedString(self.moreThanFix())
+        return shareTextLayout.moreThanLines(line)
     }
     /// 通过限制宽度，行数，获取内容，
     /// 如果未超过 line 行数，返回原字符串
@@ -122,7 +138,7 @@ public extension RZColorfulSwiftBase where T: NSAttributedString {
     ///   - showFoldText: 如 “收起全文” flod = FALSE，表示已全部展开，将追加在后边
     /// - Returns: 字符串
     func attributedStringBy(maxline: Int, maxWidth: CGFloat, isFold: Bool, showAllText: NSAttributedString?, showFoldText: NSAttributedString?) -> NSAttributedString? {
-        guard self.rz.length > 0, maxline > 0, maxWidth > 0 else {
+        guard maxline > 0, maxWidth > 0, self.rz.length > 0 else {
             return self.rz
         }
         if !self.moreThan(line: maxline, maxWidth: maxWidth) {
@@ -133,7 +149,7 @@ public extension RZColorfulSwiftBase where T: NSAttributedString {
             if let showFoldText = showFoldText {
                 attr.append(showFoldText)
             }
-            return attr 
+            return attr
         }
         return self.attributedStringBy(maxline: maxline, maxWidth: maxWidth, lineBreakMode: .byTruncatingTail, placeHolder: showAllText)
     }
@@ -145,7 +161,7 @@ public extension RZColorfulSwiftBase where T: NSAttributedString {
     ///   - placeHolder: 截断时占位的"..."文字
     func attributedStringBy(maxline: Int, maxWidth: CGFloat, lineBreakMode: NSLineBreakMode, placeHolder: NSAttributedString?) -> NSAttributedString? {
         // 检查输入参数是否有效，如果无效则返回原始富文本
-        guard self.rz.length > 0, maxline > 0, maxWidth > 0 else {
+        guard maxline > 0, maxWidth > 0, self.rz.length > 0 else {
             return self.rz
         }
         // 如果文本行数未超过最大行数，则返回原始富文本
@@ -255,7 +271,7 @@ public extension RZColorfulSwiftBase where T: NSAttributedString {
     ///   - 方法（A）抛弃前半部分，在最前边插入placeholder
     ///   - headxxx抛弃前半部分，然后根据mode再不同位置插入placeholder
     func headTruncatingAttributedStringBy(maxline: Int, maxWidth: CGFloat, lineBreakMode: NSLineBreakMode, placeHolder: NSAttributedString?) -> NSAttributedString? {
-        guard self.rz.length > 0, maxline > 0, maxWidth > 0 else {
+        guard maxline > 0, maxWidth > 0, self.rz.length > 0 else {
             return self.rz
         }
         if !self.moreThan(line: maxline, maxWidth: maxWidth) {
@@ -291,36 +307,6 @@ public extension RZColorfulSwiftBase where T: NSAttributedString {
         return result
     }
 }
-public extension NSAttributedString {
-    @available(iOS, introduced: 7.0, deprecated: 7.0, message: "Use .rz.colorfulConfer(confer: ColorfulBlockRZ) instead")
-    static func rz_colorfulConfer(confer: ColorfulBlockRZ) -> NSAttributedString? {
-        return self.rz.colorfulConfer(confer: confer)
-    }
-    @available(iOS, introduced: 7.0, deprecated: 7.0, message: "Use .rz.attributedStringByAppend(attributedString: NSAttributedString) instead")
-    func attributedStringByAppend(attributedString: NSAttributedString) -> NSAttributedString {
-        return self.rz.attributedStringByAppend(attributedString: attributedString)
-    }
-    @available(iOS, introduced: 7.0, deprecated: 7.0, message: "Use .rz.colorfulAttr(attr: ColorfulAttrBlockRZ) instead")
-    func rz_colorfulAttr(attr: ColorfulAttrBlockRZ) -> NSAttributedString? {
-        return self.rz.colorfulAttr(attr: attr)
-    }
-    @available(iOS, introduced: 7.0, deprecated: 7.0, message: "Use .rz.images() instead")
-    func rz_images() -> [UIImage] {
-        return self.rz.images()
-    }
-    @available(iOS, introduced: 7.0, deprecated: 7.0, message: "Use .rz.sizeWithConditionWidth(width: width) instead")
-    func sizeWithConditionWidth(width: Float) -> CGSize {
-        return self.rz.sizeWithConditionWidth(width: width)
-    }
-    @available(iOS, introduced: 7.0, deprecated: 7.0, message: "Use .rz.sizeWithConditionHeight(height: height) instead")
-    func sizeWithConditionHeight(height: Float) -> CGSize {
-        return self.rz.sizeWithConditionHeight(height: height)
-    }
-    @available(iOS, introduced: 7.0, deprecated: 7.0, message: "Use .rz.sizeWithCondition(size: size) instead")
-    func sizeWithCondition(size: CGSize) -> CGSize {
-        return self.rz.sizeWithCondition(size: size)
-    }
-}
 // MARK: - NSMutableAttributedString 直接添加富文本的属性
 public extension RZColorfulSwiftBase where T: NSMutableAttributedString {
     /// 给富文本添加属性
@@ -328,12 +314,5 @@ public extension RZColorfulSwiftBase where T: NSMutableAttributedString {
         let attrx = TextAttributeRZ.init(attributedText: self.rz)
         attr(attrx)
         attrx.package(self.rz)
-    }
-}
-public extension NSMutableAttributedString {
-    /// 给富文本添加属性
-    @available(iOS, introduced: 7.0, deprecated: 7.0, message: "Use .rz.colorfulAttrAppend(attr: ColorfulAttrBlockRZ) instead")
-    func rz_colorfulAttrAppend(attr: ColorfulAttrBlockRZ) {
-        self.rz.colorfulAttrAppend(attr: attr)
     }
 }

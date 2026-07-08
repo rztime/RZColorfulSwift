@@ -35,3 +35,9 @@ extension String: RZColorfulSwiftProtocol { }
 public typealias RZDidTapTextView = (_ tapObj: String, _ textView: UITextView) -> Bool
 public typealias ColorfulBlockRZ = ((_ confer: ColorfulConferrerRZ) -> Void)
 public typealias ColorfulAttrBlockRZ = ((_ attr: TextAttributeRZ) -> Void)
+
+public typealias ColorfulBackgroundViewRZ = ((_ rects: [CGRect]) -> [UIView])
+/// Any 为UILabel或者UITextView
+public typealias ColorfulClickedRZ = ((_ sender: Any?, _ range: NSRange) -> Void)
+/// Any 为UILabel或者UITextView
+public typealias ColorfulTapActionRZ = ((_ sender: Any?, _ actionId: String, _ range: NSRange) -> Void)
